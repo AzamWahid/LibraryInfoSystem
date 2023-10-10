@@ -1,1 +1,5 @@
 /App/Data/*
+/App/LibraryInfoSystem/bin/*
+/App/LibraryInfoSystem/bin/Debug/*
+/App/LibraryInfoSystem/bin/Debug/net6.0-windows/*
+/App/LibraryInfoSystem/obj/*

@@ -4,5 +4,8 @@
     <Compile Update="book\frmBook.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Register_Login\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

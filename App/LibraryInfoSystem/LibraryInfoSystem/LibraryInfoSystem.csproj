@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>images\bookicon2.ico</ApplicationIcon>
+    <StartupObject>LibraryInfoSystem.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,6 +24,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Register_Login\frmLogin.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
 

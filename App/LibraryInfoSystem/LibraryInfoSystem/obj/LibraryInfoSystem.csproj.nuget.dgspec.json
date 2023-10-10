@@ -1,37 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Virtual University\\7th\\CS619\\Final\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj": {}
+    "H:\\Persnol\\UNI\\7th\\cs619\\Final\\LibraryInfoSystem\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj": {}
   },
   "projects": {
-    "F:\\Virtual University\\7th\\CS619\\Final\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj": {
+    "H:\\Persnol\\UNI\\7th\\cs619\\Final\\LibraryInfoSystem\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Virtual University\\7th\\CS619\\Final\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj",
+        "projectUniqueName": "H:\\Persnol\\UNI\\7th\\cs619\\Final\\LibraryInfoSystem\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj",
         "projectName": "LibraryInfoSystem",
-        "projectPath": "F:\\Virtual University\\7th\\CS619\\Final\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj",
-        "packagesPath": "C:\\Users\\Azam-lt\\.nuget\\packages\\",
-        "outputPath": "F:\\Virtual University\\7th\\CS619\\Final\\App\\LibraryInfoSystem\\LibraryInfoSystem\\obj\\",
+        "projectPath": "H:\\Persnol\\UNI\\7th\\cs619\\Final\\LibraryInfoSystem\\App\\LibraryInfoSystem\\LibraryInfoSystem\\LibraryInfoSystem.csproj",
+        "packagesPath": "C:\\Users\\azam\\.nuget\\packages\\",
+        "outputPath": "H:\\Persnol\\UNI\\7th\\cs619\\Final\\LibraryInfoSystem\\App\\LibraryInfoSystem\\LibraryInfoSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Azam-lt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\azam\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows"
+          "net6.0-windows7.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
-            "targetAlias": "net6.0-windows",
+            "targetAlias": "net6.0-windows7.0",
             "projectReferences": {}
           }
         },
@@ -43,7 +38,7 @@
       },
       "frameworks": {
         "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows",
+          "targetAlias": "net6.0-windows7.0",
           "dependencies": {
             "DocumentFormat.OpenXml": {
               "target": "Package",
@@ -73,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
