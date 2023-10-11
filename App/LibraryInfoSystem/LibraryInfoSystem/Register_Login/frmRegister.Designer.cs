@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbUName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,15 +42,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbCnfmPass = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbtnFaculty = new System.Windows.Forms.RadioButton();
             this.rbtnStudent = new System.Windows.Forms.RadioButton();
             this.btnRegister = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.linkLableLogin = new System.Windows.Forms.LinkLabel();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbUName
@@ -102,6 +105,7 @@
             this.tbUEmail.Name = "tbUEmail";
             this.tbUEmail.Size = new System.Drawing.Size(173, 23);
             this.tbUEmail.TabIndex = 4;
+            this.tbUEmail.Validating += new System.ComponentModel.CancelEventHandler(this.tbUEmail_Validating);
             // 
             // label4
             // 
@@ -155,7 +159,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rbtnFaculty);
             this.groupBox1.Controls.Add(this.rbtnStudent);
             this.groupBox1.Location = new System.Drawing.Point(63, 196);
             this.groupBox1.Name = "groupBox1";
@@ -164,16 +168,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Type";
             // 
-            // radioButton1
+            // rbtnFaculty
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(151, 22);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(63, 19);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Faculty";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbtnFaculty.AutoSize = true;
+            this.rbtnFaculty.Location = new System.Drawing.Point(151, 22);
+            this.rbtnFaculty.Name = "rbtnFaculty";
+            this.rbtnFaculty.Size = new System.Drawing.Size(63, 19);
+            this.rbtnFaculty.TabIndex = 1;
+            this.rbtnFaculty.TabStop = true;
+            this.rbtnFaculty.Text = "Faculty";
+            this.rbtnFaculty.UseVisualStyleBackColor = true;
             // 
             // rbtnStudent
             // 
@@ -197,6 +201,7 @@
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // label7
             // 
@@ -216,6 +221,7 @@
             this.linkLableLogin.TabIndex = 15;
             this.linkLableLogin.TabStop = true;
             this.linkLableLogin.Text = "Login here!";
+            this.linkLableLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLableLogin_LinkClicked);
             // 
             // label8
             // 
@@ -251,6 +257,10 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Registration";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -262,12 +272,14 @@
             this.Controls.Add(this.linkLableLogin);
             this.Controls.Add(this.label7);
             this.Name = "frmRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
             this.Load += new System.EventHandler(this.frmRegister_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,5 +307,7 @@
         private LinkLabel linkLableLogin;
         private Label label8;
         private GroupBox groupBox2;
+        private ErrorProvider errorProvider1;
+        private RadioButton rbtnFaculty;
     }
 }

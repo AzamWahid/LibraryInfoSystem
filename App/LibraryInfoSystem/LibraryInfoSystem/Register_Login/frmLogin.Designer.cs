@@ -83,6 +83,7 @@
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Login";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // label7
             // 
@@ -102,6 +103,7 @@
             this.linkLableLogin.TabIndex = 15;
             this.linkLableLogin.TabStop = true;
             this.linkLableLogin.Text = "Register here!";
+            this.linkLableLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLableLogin_LinkClicked);
             // 
             // label1
             // 
@@ -129,6 +131,7 @@
             this.Controls.Add(this.tbUEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
