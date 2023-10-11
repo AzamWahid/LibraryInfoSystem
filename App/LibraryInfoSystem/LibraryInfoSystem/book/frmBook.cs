@@ -186,7 +186,7 @@ namespace LibraryInfoSystem
             if (tbBookTitle.Text == "")
             {
                 MessageBox.Show("Book Name should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookName.Focus();
+                tbBookTitle.Focus();
                 return false;
             }
             if (tbBookDesc.Text == "")
