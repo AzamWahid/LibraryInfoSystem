@@ -1,5 +1,10 @@
 /App/Data/*
-/App/LibraryInfoSystem/bin/*
+/App/LibraryInfoSystem/LibraryInfoSystem/bin/*
 /App/LibraryInfoSystem/bin/Debug/*
-/App/LibraryInfoSystem/bin/Debug/net6.0-windows/*
-/App/LibraryInfoSystem/obj/*
+/App/LibraryInfoSystem/LibraryInfoSystem/bin/Debug/*
+/App/LibraryInfoSystem/LibraryInfoSystem/bin/Debug/net6.0-windows7.0/*
+/App/LibraryInfoSystem/LibraryInfoSystem/obj/*
+/App/LibraryInfoSystem/LibraryInfoSystem/obj/Debug/net6.0-windows7.0/*
+/App/LibraryInfoSystem/.vs/LibraryInfoSystem/FileContentIndex/*
+/App/LibraryInfoSystem/.vs/*
+/App/LibraryInfoSystem/.vs/LibraryInfoSystem/v17/.suo
