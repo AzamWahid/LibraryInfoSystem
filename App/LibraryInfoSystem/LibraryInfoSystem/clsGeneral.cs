@@ -11,7 +11,6 @@ namespace LibraryInfoSystem
     {
         public static string getConnectionString()
         {
-           // string ConnectionString = @"Data Source=azam-lt\sql19;Initial Catalog=bookstore;User ID=sa;Password=sasasa-1;MultipleActiveResultSets=True";
             string connectionString = ConfigurationManager.ConnectionStrings["Connection_String"].ConnectionString;
 
             return connectionString;

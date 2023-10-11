@@ -26,3 +26,4 @@ H:\Persnol\UNI\7th\cs619\Final\LibraryInfoSystem\App\LibraryInfoSystem\LibraryIn
 H:\Persnol\UNI\7th\cs619\Final\LibraryInfoSystem\App\LibraryInfoSystem\LibraryInfoSystem\obj\Debug\net6.0-windows7.0\LibraryInfoSystem.pdb
 H:\Persnol\UNI\7th\cs619\Final\LibraryInfoSystem\App\LibraryInfoSystem\LibraryInfoSystem\obj\Debug\net6.0-windows7.0\LibraryInfoSystem.genruntimeconfig.cache
 H:\Persnol\UNI\7th\cs619\Final\LibraryInfoSystem\App\LibraryInfoSystem\LibraryInfoSystem\obj\Debug\net6.0-windows7.0\ref\LibraryInfoSystem.dll
+H:\Persnol\UNI\7th\cs619\Final\LibraryInfoSystem\App\LibraryInfoSystem\LibraryInfoSystem\obj\Debug\net6.0-windows7.0\LibraryInfoSystem.Register_Login.frmLogin.resources

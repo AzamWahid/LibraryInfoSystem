@@ -21,5 +21,27 @@ namespace LibraryInfoSystem.Register_Login
         {
 
         }
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            ClsLogin login = new ClsLogin();
+            login.UEmail = tbUEmail.Text;
+            login.UPass = tbPass.Text;
+            if (login.ChectUser())
+            {
+                MessageBox.Show("Login success");
+            }
+            else
+            {
+                MessageBox.Show("Invalid User email or password","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void linkLableLogin_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmRegister frmRegister = new frmRegister();
+            this.Hide();   
+            frmRegister.Show();
+        }
+
+
     }
 }
