@@ -32,7 +32,7 @@
             this.tbUEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbPass = new System.Windows.Forms.TextBox();
-            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnlogin = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.linkLableLogin = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,18 +72,18 @@
             this.tbPass.Size = new System.Drawing.Size(173, 23);
             this.tbPass.TabIndex = 8;
             // 
-            // btnRegister
+            // btnlogin
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.btnRegister.Location = new System.Drawing.Point(144, 128);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(173, 35);
-            this.btnRegister.TabIndex = 13;
-            this.btnRegister.Text = "Login";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            this.btnlogin.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnlogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnlogin.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.btnlogin.Location = new System.Drawing.Point(144, 128);
+            this.btnlogin.Name = "btnlogin";
+            this.btnlogin.Size = new System.Drawing.Size(173, 35);
+            this.btnlogin.TabIndex = 13;
+            this.btnlogin.Text = "Login";
+            this.btnlogin.UseVisualStyleBackColor = false;
+            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
             // 
             // label7
             // 
@@ -124,7 +124,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkLableLogin);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnRegister);
+            this.Controls.Add(this.btnlogin);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbPass);
             this.Controls.Add(this.label3);
@@ -144,7 +144,7 @@
         private TextBox tbUEmail;
         private Label label5;
         private TextBox tbPass;
-        private Button btnRegister;
+        private Button btnlogin;
         private Label label7;
         private LinkLabel linkLableLogin;
         private Label label1;

@@ -16,7 +16,7 @@ namespace LibraryInfoSystem
         private void frmBook_Load(object sender, EventArgs e)
         {
             getListData();
-            btnNew_Click(sender,e);
+            btnNew_Click(sender, e);
         }
 
         private void getListData()
@@ -45,8 +45,8 @@ namespace LibraryInfoSystem
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            tbBookID.Text = "";
-            tbBookName.Text = "";
+            //tbBookID.Text = "";
+            tbBookTitle.Text = "";
             tbBookAuthor.Text = "";
             tbBookDesc.Text = "";
             tbBookEdition.Text = "0";
@@ -65,7 +65,7 @@ namespace LibraryInfoSystem
             {
                 getEdit(dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
             }
-            tbBookID.Focus();
+            //tbBookID.Focus();
 
         }
         private void getEdit(string _bookID)
@@ -82,8 +82,8 @@ namespace LibraryInfoSystem
                 btnUpdate.BackColor = Color.SteelBlue;
 
 
-                tbBookID.Text = book.BookID;
-                tbBookName.Text = book.BookName;
+                //tbBookID.Text = book.BookID;
+                tbBookTitle.Text = book.BookName;
                 tbBookAuthor.Text = book.Author;
                 tbBookDesc.Text = book.Description;
                 tbBookEdition.Text = book.Edition.ToString();
@@ -100,8 +100,8 @@ namespace LibraryInfoSystem
             {
                 ClsBook book = new ClsBook();
 
-                book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookName.Text;
+                //book.BookID = tbBookID.Text.Trim();
+                book.BookName = tbBookTitle.Text;
                 book.Author = tbBookAuthor.Text;
                 book.Description = tbBookDesc.Text;
                 book.Edition = int.Parse(tbBookEdition.Text);
@@ -118,8 +118,8 @@ namespace LibraryInfoSystem
             {
                 ClsBook book = new ClsBook();
 
-                book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookName.Text;
+                //book.BookID = tbBookID.Text.Trim();
+                book.BookName = tbBookTitle.Text;
                 book.Author = tbBookAuthor.Text;
                 book.Description = tbBookDesc.Text;
                 book.Edition = int.Parse(tbBookEdition.Text);
@@ -177,13 +177,13 @@ namespace LibraryInfoSystem
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
         private bool saveCheck()
         {
-            if (tbBookID.Text == "")
-            {
-                MessageBox.Show("Book ID should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookID.Focus();
-                return false;
-            }
-            if (tbBookName.Text == "")
+            //if (tbBookID.Text == "")
+            //{
+            //    MessageBox.Show("Book ID should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    tbBookID.Focus();
+            //    return false;
+            // }
+            if (tbBookTitle.Text == "")
             {
                 MessageBox.Show("Book Name should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbBookName.Focus();
@@ -215,12 +215,12 @@ namespace LibraryInfoSystem
         //-------------------------------------------------BOOK ID TEXTBOX VALIDATION-------------------------------------------------------------------------
         private void tbBookID_Validated(object sender, EventArgs e)
         {
-            if ((tbBookID.Text != null) && (previousBookId != tbBookID.Text))
-            {
-                previousBookId = tbBookID.Text;
-                getEdit(tbBookID.Text.Trim());
-                tbBookID.Text = previousBookId;
-            }
+            //if ((tbBookCode.Text != null) && (previousBookId != tbBookCode.Text))
+            //{
+            //    previousBookId = tbBookID.Text;
+            //    getEdit(tbBookID.Text.Trim());
+            //    tbBookID.Text = previousBookId;
+            //}
         }
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
         private void frmBook_Activated(object sender, EventArgs e)
@@ -238,6 +238,16 @@ namespace LibraryInfoSystem
             else if (string.IsNullOrEmpty(tbBookEdition.Text))
             {
                 tbBookEdition.Text = "0";
+            }
+        }
+
+        private void mskYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            int year;
+            if (!int.TryParse(mskYear.Text, out year) || year < 1900 || year > 3000)
+            {
+                MessageBox.Show("Year must be between 1900 and 3000.", "Invalid Year", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true; // Cancel the event to keep focus on the MaskedTextBox.
             }
         }
     }

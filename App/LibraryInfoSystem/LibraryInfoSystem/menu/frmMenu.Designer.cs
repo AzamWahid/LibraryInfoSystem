@@ -28,51 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.asdasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.asdasdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            btnBookManagement = new Button();
+            btnUserManagement = new Button();
+            SuspendLayout();
             // 
-            // menuStrip1
+            // btnBookManagement
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Silver;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asdasToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            btnBookManagement.BackColor = Color.LightGoldenrodYellow;
+            btnBookManagement.FlatStyle = FlatStyle.Flat;
+            btnBookManagement.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBookManagement.Image = Properties.Resources.book21;
+            btnBookManagement.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBookManagement.Location = new Point(27, 132);
+            btnBookManagement.Name = "btnBookManagement";
+            btnBookManagement.Size = new Size(240, 95);
+            btnBookManagement.TabIndex = 1;
+            btnBookManagement.Text = "          Book Management";
+            btnBookManagement.UseVisualStyleBackColor = false;
+            btnBookManagement.Click += btnBookManagement_Click;
             // 
-            // asdasToolStripMenuItem
+            // btnUserManagement
             // 
-            this.asdasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.asdasdToolStripMenuItem});
-            this.asdasToolStripMenuItem.Name = "asdasToolStripMenuItem";
-            this.asdasToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.asdasToolStripMenuItem.Text = "asdas";
-            // 
-            // asdasdToolStripMenuItem
-            // 
-            this.asdasdToolStripMenuItem.Name = "asdasdToolStripMenuItem";
-            this.asdasdToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.asdasdToolStripMenuItem.Text = "asdasd";
+            btnUserManagement.BackColor = Color.Wheat;
+            btnUserManagement.FlatStyle = FlatStyle.Flat;
+            btnUserManagement.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnUserManagement.Image = Properties.Resources.user1;
+            btnUserManagement.ImageAlign = ContentAlignment.MiddleLeft;
+            btnUserManagement.Location = new Point(27, 22);
+            btnUserManagement.Name = "btnUserManagement";
+            btnUserManagement.Size = new Size(240, 95);
+            btnUserManagement.TabIndex = 0;
+            btnUserManagement.Text = "          User Management";
+            btnUserManagement.UseVisualStyleBackColor = false;
+            btnUserManagement.Click += btnUserManagement_Click;
             // 
             // frmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "frmMenu";
-            this.Text = "frmMenu";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(792, 422);
+            Controls.Add(btnBookManagement);
+            Controls.Add(btnUserManagement);
+            IsMdiContainer = true;
+            Name = "frmMenu";
+            Text = "frmMenu";
+            WindowState = FormWindowState.Maximized;
+            ResumeLayout(false);
         }
 
         #endregion
@@ -80,5 +81,9 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem asdasToolStripMenuItem;
         private ToolStripMenuItem asdasdToolStripMenuItem;
+        private Button button1;
+        private Button button2;
+        private Button btnBookManagement;
+        private Button btnUserManagement;
     }
 }

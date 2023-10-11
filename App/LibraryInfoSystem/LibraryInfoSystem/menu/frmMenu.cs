@@ -16,5 +16,17 @@ namespace LibraryInfoSystem.menu
         {
             InitializeComponent();
         }
+
+        private void btnUserManagement_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBookManagement_Click(object sender, EventArgs e)
+        {
+            frmBook frmBook = new frmBook();
+            frmBook.MdiParent = this;
+            frmBook.Show();
+        }
     }
 }
