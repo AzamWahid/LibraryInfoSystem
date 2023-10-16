@@ -13,35 +13,35 @@ namespace LibraryInfoSystem
         {
             InitializeComponent();
         }
-        private void frmBook_Load(object sender, EventArgs e)
+
+        private void frmBorrow_Load(object sender, EventArgs e)
         {
             getListData();
             btnNew_Click(sender, e);
         }
-
         private void getListData()
         {
             ClsBook book = new ClsBook();
             BookList = book.GetBooks();
-            dgvList.DataSource = BookList;
+            dgvBookList.DataSource = BookList;
             setGrid();
         }
         private void setGrid()
         {
-            dgvList.Columns["BookID"].HeaderText = "Book ID";
-            dgvList.Columns["BookID"].Width = 50;
+            dgvBookList.Columns["BookID"].HeaderText = "Book ID";
+            dgvBookList.Columns["BookID"].Width = 50;
 
-            dgvList.Columns["BookName"].HeaderText = "Book Name";
-            dgvList.Columns["BookName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvBookList.Columns["BookName"].HeaderText = "Book Name";
+            dgvBookList.Columns["BookName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            dgvList.Columns["Author"].HeaderText = "Book Author";
-            dgvList.Columns["Author"].Width = 80;
+            dgvBookList.Columns["Author"].HeaderText = "Book Author";
+            dgvBookList.Columns["Author"].Width = 80;
 
-            dgvList.Columns["Description"].HeaderText = "Book Description";
-            dgvList.Columns["Description"].Width = 80;
+            dgvBookList.Columns["Description"].HeaderText = "Book Description";
+            dgvBookList.Columns["Description"].Width = 80;
 
-            dgvList.Columns["Edition"].HeaderText = "Edition";
-            dgvList.Columns["Edition"].Width = 50;
+            dgvBookList.Columns["Edition"].HeaderText = "Edition";
+            dgvBookList.Columns["Edition"].Width = 50;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -51,19 +51,19 @@ namespace LibraryInfoSystem
             tbBookDesc.Text = "";
             tbBookEdition.Text = "0";
 
-            btnSave.Enabled = true;
+            btnBorrow.Enabled = true;
             btnUpdate.Enabled = false;
 
-            btnSave.BackColor = Color.LightSeaGreen;
+            btnBorrow.BackColor = Color.LightSeaGreen;
             btnUpdate.BackColor = Color.LightGray;
             this.Text = "BOOK (NEW)";
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dgvList.Rows.Count > 0)
+            if (dgvBookList.Rows.Count > 0)
             {
-                getEdit(dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+                getEdit(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
             }
             //tbBookID.Focus();
 
@@ -76,8 +76,8 @@ namespace LibraryInfoSystem
             if (!string.IsNullOrEmpty(book.BookID))
             {
                 this.Text = "BOOK (EDIT)";
-                btnSave.Enabled = false;
-                btnSave.BackColor = Color.LightGray;
+                btnBorrow.Enabled = false;
+                btnBorrow.BackColor = Color.LightGray;
                 btnUpdate.Enabled = true;
                 btnUpdate.BackColor = Color.SteelBlue;
 
@@ -134,14 +134,14 @@ namespace LibraryInfoSystem
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (dgvList.Rows.Count > 0)
+            if (dgvBookList.Rows.Count > 0)
             {
-                string bookID = dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim();
+                string bookID = dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim();
 
                 ClsBook book = new ClsBook();
                 book.BookID = bookID;
 
-                if (MessageBox.Show("Are you sure you want to delete " + dgvList.CurrentRow.Cells["BookName"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + dgvBookList.CurrentRow.Cells["BookName"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     book.DeleteBook();
                     MessageBox.Show("Record Delete Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -160,7 +160,7 @@ namespace LibraryInfoSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                dgvList.DataSource = BookList;
+                dgvBookList.DataSource = BookList;
             }
             else
             {
@@ -171,7 +171,7 @@ namespace LibraryInfoSystem
                     book.Description.ToLower().Contains(searchTerm) ||
                     book.Edition.ToString().Contains(searchTerm)
                 ).ToList();
-                dgvList.DataSource = filteredList;
+                dgvBookList.DataSource = filteredList;
             }
         }
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
@@ -206,9 +206,9 @@ namespace LibraryInfoSystem
         //-------------------------------------------------GRID DOUBLE CLICK EDIT-------------------------------------------------------------------------
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvList.Rows.Count > 0)
+            if (dgvBookList.Rows.Count > 0)
             {
-                getEdit(dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+                getEdit(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
             }
         }
 
@@ -229,26 +229,19 @@ namespace LibraryInfoSystem
         }
 
         //-------------------------------------------------BOOK EDITION NUMERIC ALLOW ONLY-------------------------------------------------------------------------
-        private void tbBookEdition_TextChanged(object sender, EventArgs e)
+        private void tbBorrowDays_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbBookEdition.Text) && !int.TryParse(tbBookEdition.Text, out _))
+            if (!string.IsNullOrEmpty(tbBorrowDays.Text) && !int.TryParse(tbBorrowDays.Text, out _))
             {
-                tbBookEdition.Text = "0";
+                tbBorrowDays.Text = "0";
             }
-            else if (string.IsNullOrEmpty(tbBookEdition.Text))
+            else if (string.IsNullOrEmpty(tbBorrowDays.Text))
             {
-                tbBookEdition.Text = "0";
+                tbBorrowDays.Text = "0";
             }
         }
 
-        private void mskYear_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            int year;
-            if (!int.TryParse(mskYear.Text, out year) || year < 1900 || year > 3000)
-            {
-                MessageBox.Show("Year must be between 1900 and 3000.", "Invalid Year", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                e.Cancel = true; // Cancel the event to keep focus on the MaskedTextBox.
-            }
-        }
+ 
+
     }
 }
