@@ -20,7 +20,8 @@ namespace LibraryInfoSystem.Register_Login
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            tbUEmail.Text = "azamwahid@outlook.com";
+            tbPass.Text = "azam";
         }
         private void btnlogin_Click(object sender, EventArgs e)
         {

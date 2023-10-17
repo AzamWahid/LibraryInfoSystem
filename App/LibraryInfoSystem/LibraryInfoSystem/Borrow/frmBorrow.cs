@@ -1,3 +1,5 @@
+using LibraryInfoSystem.Borrow;
+using LibraryInfoSystem.Register_Login;
 using System.Data;
 
 namespace LibraryInfoSystem
@@ -16,143 +18,81 @@ namespace LibraryInfoSystem
 
         private void frmBorrow_Load(object sender, EventArgs e)
         {
+            dcBorrowDate.Value = DateTime.Now;
+            GetBorrowNumber();
             getListData();
-            btnNew_Click(sender, e);
+        }
+        private void GetBorrowNumber()
+        { 
         }
         private void getListData()
         {
-            ClsBook book = new ClsBook();
-            BookList = book.GetBooks();
+            ClsBorrow borrow = new ClsBorrow();
+            BookList = borrow.GetBooks();
             dgvBookList.DataSource = BookList;
             setGrid();
         }
         private void setGrid()
         {
-            dgvBookList.Columns["BookID"].HeaderText = "Book ID";
-            dgvBookList.Columns["BookID"].Width = 50;
+            dgvBookList.Columns["BookID"].Visible = false;
+            dgvBookList.Columns["BookCode"].Visible = false;
 
-            dgvBookList.Columns["BookName"].HeaderText = "Book Name";
-            dgvBookList.Columns["BookName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvBookList.Columns["BookTitle"].HeaderText = "Book Title";
+            dgvBookList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvBookList.Columns["Author"].HeaderText = "Book Author";
             dgvBookList.Columns["Author"].Width = 80;
 
-            dgvBookList.Columns["Description"].HeaderText = "Book Description";
-            dgvBookList.Columns["Description"].Width = 80;
+            dgvBookList.Columns["ISBN"].HeaderText = "Book ISBN";
+            dgvBookList.Columns["ISBN"].Width = 80;
+
+            dgvBookList.Columns["Year"].HeaderText = "Year";
+            dgvBookList.Columns["Year"].Width = 45;
 
             dgvBookList.Columns["Edition"].HeaderText = "Edition";
-            dgvBookList.Columns["Edition"].Width = 50;
-        }
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            //tbBookID.Text = "";
-            tbBookTitle.Text = "";
-            tbBookAuthor.Text = "";
-            tbBookDesc.Text = "";
-            tbBookEdition.Text = "0";
+            dgvBookList.Columns["Edition"].Width = 45;
 
-            btnBorrow.Enabled = true;
-            btnUpdate.Enabled = false;
-
-            btnBorrow.BackColor = Color.LightSeaGreen;
-            btnUpdate.BackColor = Color.LightGray;
-            this.Text = "BOOK (NEW)";
+            dgvBookList.Columns["NoofCopies"].HeaderText = "Copies";
+            dgvBookList.Columns["NoofCopies"].Width = 45;
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            if (dgvBookList.Rows.Count > 0)
-            {
-                getEdit(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
-            }
-            //tbBookID.Focus();
-
-        }
-        private void getEdit(string _bookID)
-        {
-            ClsBook book = new ClsBook();
-            book.BookID = _bookID;
-            book.GetBookById();
-            if (!string.IsNullOrEmpty(book.BookID))
-            {
-                this.Text = "BOOK (EDIT)";
-                btnBorrow.Enabled = false;
-                btnBorrow.BackColor = Color.LightGray;
-                btnUpdate.Enabled = true;
-                btnUpdate.BackColor = Color.SteelBlue;
-
-
-                //tbBookID.Text = book.BookID;
-                tbBookTitle.Text = book.BookName;
-                tbBookAuthor.Text = book.Author;
-                tbBookDesc.Text = book.Description;
-                tbBookEdition.Text = book.Edition.ToString();
-            }
-            else
-            {
-                btnNew_Click(new object(), new EventArgs());
-
-            }
-        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (saveCheck())
             {
                 ClsBook book = new ClsBook();
 
-                //book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookTitle.Text;
-                book.Author = tbBookAuthor.Text;
-                book.Description = tbBookDesc.Text;
-                book.Edition = int.Parse(tbBookEdition.Text);
+                ////book.BookID = tbBookID.Text.Trim();
+                //book.BookName = tbBookTitle.Text;
+                //book.Author = tbBookAuthor.Text;
+                //book.Description = tbBookDesc.Text;
+                //book.Edition = int.Parse(tbBookEdition.Text);
 
                 book.AddBook();
 
-                MessageBox.Show("Record Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnNew_Click(sender, e);
+                MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (saveCheck())
             {
-                ClsBook book = new ClsBook();
+                ClsBorrow borrow = new ClsBorrow();
+                ClsLogin login = new ClsLogin();
 
-                //book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookTitle.Text;
-                book.Author = tbBookAuthor.Text;
-                book.Description = tbBookDesc.Text;
-                book.Edition = int.Parse(tbBookEdition.Text);
+                borrow.BorrowNo = long.Parse(tbRefNo.Text);
+                borrow.BorrowDate = dcBorrowDate.Value;
+                borrow.BorrowUID = login.UID;
 
 
-                book.UpdateBook();
+             //   borrow.UpdateBook();
 
                 MessageBox.Show("Record Update Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 getListData();
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (dgvBookList.Rows.Count > 0)
-            {
-                string bookID = dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim();
-
-                ClsBook book = new ClsBook();
-                book.BookID = bookID;
-
-                if (MessageBox.Show("Are you sure you want to delete " + dgvBookList.CurrentRow.Cells["BookName"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    book.DeleteBook();
-                    MessageBox.Show("Record Delete Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnNew_Click(sender, e);
-                }
-                else
-                {
-                    MessageBox.Show("Delete Cancel", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-        }
+     
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -165,11 +105,13 @@ namespace LibraryInfoSystem
             else
             {
                 var filteredList = BookList.Where(book =>
-                    book.BookID.ToLower().Contains(searchTerm) ||
-                    book.BookName.ToLower().Contains(searchTerm) ||
+                    book.BookTitle.ToLower().Contains(searchTerm) ||
                     book.Author.ToLower().Contains(searchTerm) ||
-                    book.Description.ToLower().Contains(searchTerm) ||
-                    book.Edition.ToString().Contains(searchTerm)
+                    book.ISBN.ToLower().Contains(searchTerm) ||
+                    book.Year.ToString().Contains(searchTerm) ||
+                    book.Edition.ToString().Contains(searchTerm) ||
+                    book.NoofCopies.ToString().Contains(searchTerm)
+
                 ).ToList();
                 dgvBookList.DataSource = filteredList;
             }
@@ -204,14 +146,19 @@ namespace LibraryInfoSystem
             return true;
         }
         //-------------------------------------------------GRID DOUBLE CLICK EDIT-------------------------------------------------------------------------
-        private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvBookList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvBookList.Rows.Count > 0)
             {
-                getEdit(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+
+                tbBookTitle.Text = dgvBookList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
+                tbBookAuthor.Text = dgvBookList.CurrentRow.Cells["Author"].Value.ToString().Trim();
+                tbBookISBN.Text = dgvBookList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
+                mskYear.Text = dgvBookList.CurrentRow.Cells["Year"].Value.ToString().Trim();
+                tbBookEdition.Text = dgvBookList.CurrentRow.Cells["Edition"].Value.ToString().Trim();
             }
         }
-
         //-------------------------------------------------BOOK ID TEXTBOX VALIDATION-------------------------------------------------------------------------
         private void tbBookID_Validated(object sender, EventArgs e)
         {
@@ -241,7 +188,6 @@ namespace LibraryInfoSystem
             }
         }
 
- 
 
     }
 }

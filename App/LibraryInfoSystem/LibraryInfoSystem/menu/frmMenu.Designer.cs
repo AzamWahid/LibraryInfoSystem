@@ -28,52 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnBookManagement = new Button();
-            btnUserManagement = new Button();
-            SuspendLayout();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip2.SuspendLayout();
+            this.SuspendLayout();
             // 
-            // btnBookManagement
+            // menuStrip2
             // 
-            btnBookManagement.BackColor = Color.LightGoldenrodYellow;
-            btnBookManagement.FlatStyle = FlatStyle.Flat;
-            btnBookManagement.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnBookManagement.Image = Properties.Resources.book21;
-            btnBookManagement.ImageAlign = ContentAlignment.MiddleLeft;
-            btnBookManagement.Location = new Point(27, 132);
-            btnBookManagement.Name = "btnBookManagement";
-            btnBookManagement.Size = new Size(240, 95);
-            btnBookManagement.TabIndex = 1;
-            btnBookManagement.Text = "          Book Management";
-            btnBookManagement.UseVisualStyleBackColor = false;
-            btnBookManagement.Click += btnBookManagement_Click;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adminToolStripMenuItem,
+            this.userToolStripMenuItem});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(792, 24);
+            this.menuStrip2.TabIndex = 3;
+            this.menuStrip2.Text = "menuStrip2";
             // 
-            // btnUserManagement
+            // adminToolStripMenuItem
             // 
-            btnUserManagement.BackColor = Color.Wheat;
-            btnUserManagement.FlatStyle = FlatStyle.Flat;
-            btnUserManagement.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnUserManagement.Image = Properties.Resources.user1;
-            btnUserManagement.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUserManagement.Location = new Point(27, 22);
-            btnUserManagement.Name = "btnUserManagement";
-            btnUserManagement.Size = new Size(240, 95);
-            btnUserManagement.TabIndex = 0;
-            btnUserManagement.Text = "          User Management";
-            btnUserManagement.UseVisualStyleBackColor = false;
-            btnUserManagement.Click += btnUserManagement_Click;
+            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bookManagementToolStripMenuItem});
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.adminToolStripMenuItem.Text = "Admin";
+            // 
+            // bookManagementToolStripMenuItem
+            // 
+            this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bookManagementToolStripMenuItem.Text = "Book Management";
+            this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.borrowToolStripMenuItem});
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.userToolStripMenuItem.Text = "User";
+            // 
+            // borrowToolStripMenuItem
+            // 
+            this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Text = "Borrow Book";
+            this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(792, 422);
-            Controls.Add(btnBookManagement);
-            Controls.Add(btnUserManagement);
-            IsMdiContainer = true;
-            Name = "frmMenu";
-            Text = "frmMenu";
-            WindowState = FormWindowState.Maximized;
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(792, 422);
+            this.Controls.Add(this.menuStrip2);
+            this.IsMdiContainer = true;
+            this.MainMenuStrip = this.menuStrip2;
+            this.Name = "frmMenu";
+            this.Text = "Library Information System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -85,5 +104,10 @@
         private Button button2;
         private Button btnBookManagement;
         private Button btnUserManagement;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem adminToolStripMenuItem;
+        private ToolStripMenuItem bookManagementToolStripMenuItem;
+        private ToolStripMenuItem userToolStripMenuItem;
+        private ToolStripMenuItem borrowToolStripMenuItem;
     }
 }

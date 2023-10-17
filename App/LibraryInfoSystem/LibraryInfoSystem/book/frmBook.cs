@@ -4,7 +4,7 @@ namespace LibraryInfoSystem
 {
     public partial class frmBook : Form
     {
-        string previousBookId = "";
+        string previousBookCode = "";
 
         //ClsBook Book = new ClsBook();
         DataTable dt_list = new DataTable();
@@ -28,28 +28,36 @@ namespace LibraryInfoSystem
         }
         private void setGrid()
         {
-            dgvList.Columns["BookID"].HeaderText = "Book ID";
-            dgvList.Columns["BookID"].Width = 50;
+            dgvList.Columns["BookCode"].HeaderText = "Book Code";
+            dgvList.Columns["BookCode"].Width = 60;
 
-            dgvList.Columns["BookName"].HeaderText = "Book Name";
-            dgvList.Columns["BookName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvList.Columns["BookTitle"].HeaderText = "Book Title";
+            dgvList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvList.Columns["Author"].HeaderText = "Book Author";
             dgvList.Columns["Author"].Width = 80;
 
-            dgvList.Columns["Description"].HeaderText = "Book Description";
-            dgvList.Columns["Description"].Width = 80;
+            dgvList.Columns["ISBN"].HeaderText = "Book ISBN";
+            dgvList.Columns["ISBN"].Width = 80;
+
+            dgvList.Columns["Year"].HeaderText = "Year";
+            dgvList.Columns["Year"].Width = 45;
 
             dgvList.Columns["Edition"].HeaderText = "Edition";
-            dgvList.Columns["Edition"].Width = 50;
+            dgvList.Columns["Edition"].Width = 45;
+
+            dgvList.Columns["NoofCopies"].HeaderText = "Copies";
+            dgvList.Columns["NoofCopies"].Width = 45;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {
-            //tbBookID.Text = "";
+            tbBookCode.Text = "";
             tbBookTitle.Text = "";
             tbBookAuthor.Text = "";
-            tbBookDesc.Text = "";
+            tbBookIsbn.Text = "";
+            mskYear.Text = "";
             tbBookEdition.Text = "0";
+            tbNoOfCopies.Text = "0";
 
             btnSave.Enabled = true;
             btnUpdate.Enabled = false;
@@ -68,12 +76,12 @@ namespace LibraryInfoSystem
             //tbBookID.Focus();
 
         }
-        private void getEdit(string _bookID)
+        private void getEdit(string _BookCode)
         {
             ClsBook book = new ClsBook();
-            book.BookID = _bookID;
+            book.BookCode = _BookCode;
             book.GetBookById();
-            if (!string.IsNullOrEmpty(book.BookID))
+            if (!string.IsNullOrEmpty(book.BookCode))
             {
                 this.Text = "BOOK (EDIT)";
                 btnSave.Enabled = false;
@@ -81,12 +89,13 @@ namespace LibraryInfoSystem
                 btnUpdate.Enabled = true;
                 btnUpdate.BackColor = Color.SteelBlue;
 
-
-                //tbBookID.Text = book.BookID;
-                tbBookTitle.Text = book.BookName;
+                tbBookCode.Text = book.BookCode;
+                tbBookTitle.Text = book.BookTitle;
                 tbBookAuthor.Text = book.Author;
-                tbBookDesc.Text = book.Description;
+                tbBookIsbn.Text = book.ISBN;
+                mskYear.Text = book.Year.ToString();
                 tbBookEdition.Text = book.Edition.ToString();
+                tbNoOfCopies.Text = book.NoofCopies.ToString();
             }
             else
             {
@@ -100,16 +109,19 @@ namespace LibraryInfoSystem
             {
                 ClsBook book = new ClsBook();
 
-                //book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookTitle.Text;
+                book.BookCode = tbBookCode.Text;
+                book.BookTitle = tbBookTitle.Text;
                 book.Author = tbBookAuthor.Text;
-                book.Description = tbBookDesc.Text;
-                book.Edition = int.Parse(tbBookEdition.Text);
+                book.ISBN = tbBookIsbn.Text;
+                book.Year = long.Parse(mskYear.Text);
+                book.Edition = long.Parse(tbBookEdition.Text);
+                book.NoofCopies = long.Parse(tbNoOfCopies.Text);
 
                 book.AddBook();
 
                 MessageBox.Show("Record Saved Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnNew_Click(sender, e);
+                getListData();
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -118,12 +130,13 @@ namespace LibraryInfoSystem
             {
                 ClsBook book = new ClsBook();
 
-                //book.BookID = tbBookID.Text.Trim();
-                book.BookName = tbBookTitle.Text;
+                book.BookCode = tbBookCode.Text;
+                book.BookTitle = tbBookTitle.Text;
                 book.Author = tbBookAuthor.Text;
-                book.Description = tbBookDesc.Text;
-                book.Edition = int.Parse(tbBookEdition.Text);
-
+                book.ISBN = tbBookIsbn.Text;
+                book.Year = long.Parse(mskYear.Text);
+                book.Edition = long.Parse(tbBookEdition.Text);
+                book.NoofCopies = long.Parse(tbNoOfCopies.Text);
 
                 book.UpdateBook();
 
@@ -136,16 +149,18 @@ namespace LibraryInfoSystem
         {
             if (dgvList.Rows.Count > 0)
             {
-                string bookID = dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim();
+                string bookCode = dgvList.CurrentRow.Cells["BookCode"].Value.ToString().Trim();
 
                 ClsBook book = new ClsBook();
-                book.BookID = bookID;
+                book.BookCode = bookCode;
 
-                if (MessageBox.Show("Are you sure you want to delete " + dgvList.CurrentRow.Cells["BookName"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete " + dgvList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     book.DeleteBook();
                     MessageBox.Show("Record Delete Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnNew_Click(sender, e);
+                    getListData();
+
                 }
                 else
                 {
@@ -165,11 +180,14 @@ namespace LibraryInfoSystem
             else
             {
                 var filteredList = BookList.Where(book =>
-                    book.BookID.ToLower().Contains(searchTerm) ||
-                    book.BookName.ToLower().Contains(searchTerm) ||
+                    book.BookCode.ToLower().Contains(searchTerm) ||
+                    book.BookTitle.ToLower().Contains(searchTerm) ||
                     book.Author.ToLower().Contains(searchTerm) ||
-                    book.Description.ToLower().Contains(searchTerm) ||
-                    book.Edition.ToString().Contains(searchTerm)
+                    book.ISBN.ToLower().Contains(searchTerm) ||
+                    book.Year.ToString().Contains(searchTerm) ||
+                    book.Edition.ToString().Contains(searchTerm) ||
+                    book.NoofCopies.ToString().Contains(searchTerm)
+
                 ).ToList();
                 dgvList.DataSource = filteredList;
             }
@@ -177,28 +195,46 @@ namespace LibraryInfoSystem
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
         private bool saveCheck()
         {
-            //if (tbBookID.Text == "")
-            //{
-            //    MessageBox.Show("Book ID should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //    tbBookID.Focus();
-            //    return false;
-            // }
+            if (tbBookCode.Text == "")
+            {
+                MessageBox.Show("Book ID should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbBookCode.Focus();
+                return false;
+            }
             if (tbBookTitle.Text == "")
             {
                 MessageBox.Show("Book Name should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbBookTitle.Focus();
                 return false;
             }
-            if (tbBookDesc.Text == "")
+            if (tbBookIsbn.Text == "")
             {
                 MessageBox.Show("Book Description should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookDesc.Focus();
+                tbBookIsbn.Focus();
                 return false;
             }
             if (tbBookAuthor.Text == "")
             {
                 MessageBox.Show("Book Author should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbBookAuthor.Focus();
+                return false;
+            }
+            if (mskYear.Text == "")
+            {
+                MessageBox.Show("Book Year should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                mskYear.Focus();
+                return false;
+            }
+            if (tbBookEdition.Text == "0")
+            {
+                MessageBox.Show("Book Edition should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbBookEdition.Focus();
+                return false;
+            }
+            if (tbNoOfCopies.Text == "0")
+            {
+                MessageBox.Show("Book No. Of copies should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbNoOfCopies.Focus();
                 return false;
             }
             return true;
@@ -208,19 +244,19 @@ namespace LibraryInfoSystem
         {
             if (dgvList.Rows.Count > 0)
             {
-                getEdit(dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+                getEdit(dgvList.CurrentRow.Cells["BookCode"].Value.ToString().Trim());
             }
         }
 
         //-------------------------------------------------BOOK ID TEXTBOX VALIDATION-------------------------------------------------------------------------
-        private void tbBookID_Validated(object sender, EventArgs e)
+        private void tbBookCode_Validated(object sender, EventArgs e)
         {
-            //if ((tbBookCode.Text != null) && (previousBookId != tbBookCode.Text))
-            //{
-            //    previousBookId = tbBookID.Text;
-            //    getEdit(tbBookID.Text.Trim());
-            //    tbBookID.Text = previousBookId;
-            //}
+            if ((tbBookCode.Text != null) && (previousBookCode != tbBookCode.Text))
+            {
+                previousBookCode = tbBookCode.Text;
+                getEdit(tbBookCode.Text.Trim());
+                tbBookCode.Text = previousBookCode;
+            }
         }
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
         private void frmBook_Activated(object sender, EventArgs e)
@@ -250,5 +286,7 @@ namespace LibraryInfoSystem
                 e.Cancel = true; // Cancel the event to keep focus on the MaskedTextBox.
             }
         }
+
+
     }
 }

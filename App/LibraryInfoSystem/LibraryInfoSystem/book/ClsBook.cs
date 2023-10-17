@@ -5,11 +5,13 @@ namespace LibraryInfoSystem
 {
     public class ClsBook
     {
-        public string? BookID { get; set; }
-        public string? BookName { get; set; }
-        public string? Author { get; set; }
-        public string? Description { get; set; }
-        public int Edition { get; set; }
+        public string? BookCode { get; set; }
+            public string? BookTitle { get; set; }
+            public string? Author { get; set; }
+            public string? ISBN { get; set; }
+            public long? Year { get; set; }
+            public long Edition { get; set; }
+        public long NoofCopies { get; set; }
 
         private readonly SqlConnection connection;
 
@@ -35,11 +37,13 @@ namespace LibraryInfoSystem
                 {
                     ClsBook book = new ClsBook();
 
-                    book.BookID = reader["book_ID"].ToString().Trim();
-                    book.BookName = reader["book_Name"].ToString();
-                    book.Author = reader["book_Author"].ToString();
-                    book.Description = reader["book_Description"].ToString();
-                    book.Edition = Convert.ToInt32(reader["edition"]);
+                    book.BookCode = reader["BookCode"].ToString().Trim();
+                    book.BookTitle = reader["BookTitle"].ToString();
+                    book.Author = reader["BookAuthor"].ToString();
+                    book.ISBN = reader["BookISBN"].ToString();
+                    book.Year = long.Parse(reader["BookYear"].ToString());
+                    book.Edition = long.Parse(reader["BookEdition"].ToString());
+                    book.NoofCopies = long.Parse(reader["BookNoofCopies"].ToString());
                     bookList.Add(book);
                 }
             }
@@ -52,7 +56,7 @@ namespace LibraryInfoSystem
             SqlCommand cmd = new SqlCommand("sp_getBookEdit", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@book_ID", this.BookID);
+            cmd.Parameters.AddWithValue("@BookCode", this.BookCode);
 
             connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -60,15 +64,17 @@ namespace LibraryInfoSystem
             if (reader != null && reader.HasRows)
             {
                 reader.Read();
-                this.BookID = reader["book_ID"].ToString().Trim();
-                this.BookName = reader["book_Name"].ToString();
-                this.Author = reader["book_Author"].ToString();
-                this.Description = reader["book_Description"].ToString();
-                this.Edition = Convert.ToInt32(reader["edition"]);
+                this.BookCode = reader["BookCode"].ToString().Trim();
+                this.BookTitle = reader["BookTitle"].ToString();
+                this.Author = reader["BookAuthor"].ToString();
+                this.ISBN = reader["BookISBN"].ToString();
+                this.Year = long.Parse(reader["BookYear"].ToString());
+                this.Edition = long.Parse(reader["BookEdition"].ToString());
+                this.NoofCopies = long.Parse(reader["BookNoofCopies"].ToString());
             }
             else
             {
-                this.BookID = "";
+                this.BookCode = "";
             }
             connection.Close();
         }
@@ -79,11 +85,13 @@ namespace LibraryInfoSystem
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@EntryMode", "Add");
-            cmd.Parameters.AddWithValue("@book_ID", this.BookID);
-            cmd.Parameters.AddWithValue("@book_Name", this.BookName);
-            cmd.Parameters.AddWithValue("@book_Author", this.Author);
-            cmd.Parameters.AddWithValue("@book_Description", this.Description);
-            cmd.Parameters.AddWithValue("@edition", this.Edition);
+            cmd.Parameters.AddWithValue("@BookCode", this.BookCode);
+            cmd.Parameters.AddWithValue("@BookTitle", this.BookTitle);
+            cmd.Parameters.AddWithValue("@BookAuthor", this.Author);
+            cmd.Parameters.AddWithValue("@BookISBN", this.ISBN);
+            cmd.Parameters.AddWithValue("@BookYear", this.Year);
+            cmd.Parameters.AddWithValue("@BookEdition", this.Edition);
+            cmd.Parameters.AddWithValue("@BookNoofCopies", this.NoofCopies);
 
             connection.Open();
             cmd.ExecuteNonQuery();
@@ -96,11 +104,13 @@ namespace LibraryInfoSystem
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@EntryMode", "Update");
-            cmd.Parameters.AddWithValue("@book_ID", this.BookID);
-            cmd.Parameters.AddWithValue("@book_Name", this.BookName);
-            cmd.Parameters.AddWithValue("@book_Author", this.Author);
-            cmd.Parameters.AddWithValue("@book_Description", this.Description);
-            cmd.Parameters.AddWithValue("@edition", this.Edition);
+            cmd.Parameters.AddWithValue("@BookCode", this.BookCode);
+            cmd.Parameters.AddWithValue("@BookTitle", this.BookTitle);
+            cmd.Parameters.AddWithValue("@BookAuthor", this.Author);
+            cmd.Parameters.AddWithValue("@BookISBN", this.ISBN);
+            cmd.Parameters.AddWithValue("@BookYear", this.Year);
+            cmd.Parameters.AddWithValue("@BookEdition", this.Edition);
+            cmd.Parameters.AddWithValue("@BookNoofCopies", this.NoofCopies);
 
             connection.Open();
             cmd.ExecuteNonQuery();
@@ -112,7 +122,7 @@ namespace LibraryInfoSystem
             SqlCommand cmd = new SqlCommand("sp_DeleteBook", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@book_ID", this.BookID);
+            cmd.Parameters.AddWithValue("@BookCode", this.BookCode);
 
             connection.Open();
             cmd.ExecuteNonQuery();

@@ -24,9 +24,23 @@ namespace LibraryInfoSystem.menu
 
         private void btnBookManagement_Click(object sender, EventArgs e)
         {
+            //frmBook frmBook = new frmBook();
+            //frmBook.MdiParent = this;
+            //frmBook.Show();
+        }
+
+        private void bookManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             frmBook frmBook = new frmBook();
             frmBook.MdiParent = this;
             frmBook.Show();
+        }
+
+        private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBorrow frmBorrow = new frmBorrow();
+            frmBorrow.MdiParent = this;
+            frmBorrow.Show();
         }
     }
 }

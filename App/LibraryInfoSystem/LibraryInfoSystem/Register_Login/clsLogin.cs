@@ -10,6 +10,7 @@ namespace LibraryInfoSystem.Register_Login
 {
     public class ClsLogin
     {
+        public long? UID { get; set; }
         public string? UEmail { get; set; }
         public string? UPass { get; set; }
 
@@ -33,6 +34,8 @@ namespace LibraryInfoSystem.Register_Login
 
             if (reader != null && reader.HasRows)
             {
+                reader.Read();
+                this.UID = long.Parse(reader["UID"].ToString());
                 connection.Close();
                 return true;
             }
