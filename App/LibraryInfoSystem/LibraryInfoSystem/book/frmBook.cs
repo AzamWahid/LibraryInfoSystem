@@ -1,4 +1,5 @@
 using System.Data;
+using System.Net;
 
 namespace LibraryInfoSystem
 {
@@ -28,6 +29,9 @@ namespace LibraryInfoSystem
         }
         private void setGrid()
         {
+            
+            dgvList.Columns["BookID"].Visible = false;
+
             dgvList.Columns["BookCode"].HeaderText = "Book Code";
             dgvList.Columns["BookCode"].Width = 60;
 
@@ -71,7 +75,7 @@ namespace LibraryInfoSystem
         {
             if (dgvList.Rows.Count > 0)
             {
-                getEdit(dgvList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+                getEdit(dgvList.CurrentRow.Cells["BookCode"].Value.ToString().Trim());
             }
             //tbBookID.Focus();
 

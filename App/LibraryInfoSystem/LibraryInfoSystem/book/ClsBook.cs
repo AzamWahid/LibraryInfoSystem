@@ -5,12 +5,13 @@ namespace LibraryInfoSystem
 {
     public class ClsBook
     {
+        public long? BookID { get; set; }
         public string? BookCode { get; set; }
-            public string? BookTitle { get; set; }
-            public string? Author { get; set; }
-            public string? ISBN { get; set; }
-            public long? Year { get; set; }
-            public long Edition { get; set; }
+        public string? BookTitle { get; set; }
+        public string? Author { get; set; }
+        public string? ISBN { get; set; }
+        public long? Year { get; set; }
+        public long Edition { get; set; }
         public long NoofCopies { get; set; }
 
         private readonly SqlConnection connection;

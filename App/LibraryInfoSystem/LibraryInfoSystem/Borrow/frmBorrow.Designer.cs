@@ -311,7 +311,6 @@
             this.tbRefNo.BackColor = System.Drawing.Color.White;
             this.tbRefNo.Location = new System.Drawing.Point(95, 46);
             this.tbRefNo.Name = "tbRefNo";
-            this.tbRefNo.ReadOnly = true;
             this.tbRefNo.Size = new System.Drawing.Size(227, 23);
             this.tbRefNo.TabIndex = 21;
             this.tbRefNo.Text = "0";
@@ -328,6 +327,7 @@
             this.btnBorrow.TabIndex = 18;
             this.btnBorrow.Text = "Borrow";
             this.btnBorrow.UseVisualStyleBackColor = false;
+            this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
             // 
             // groupBox2
             // 

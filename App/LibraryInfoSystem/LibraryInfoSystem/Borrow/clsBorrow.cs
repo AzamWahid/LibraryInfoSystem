@@ -14,11 +14,6 @@ namespace LibraryInfoSystem.Borrow
         public DateTime? BorrowDate { get; set; }
         public long? BorrowUID { get; set; }
         public long? BorrowBookID { get; set; }
-        public string? BookTitle { get; set; }
-        public string? Author { get; set; }
-        public string? ISBN { get; set; }
-        public long? Year { get; set; }
-        public long Edition { get; set; }
         public long BorrowDays { get; set; }
 
         private readonly SqlConnection connection;
@@ -27,7 +22,7 @@ namespace LibraryInfoSystem.Borrow
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);
         }
-        public List<ClsBook> GetBooks()
+        public List<ClsBook> GetAvaBooks()
         {
 
             List<ClsBook> bookList = new List<ClsBook>();
@@ -41,20 +36,38 @@ namespace LibraryInfoSystem.Borrow
             {
                 while (reader.Read())
                 {
-                    ClsBorrow borrow = new ClsBorrow();
+                    ClsBook book = new ClsBook();
 
-                    borrow.BorrowBookID = long.Parse(reader["BookID"].ToString());
-                    borrow.BookTitle = reader["BookTitle"].ToString();
-                    borrow.Author = reader["BookAuthor"].ToString();
-                    borrow.ISBN = reader["BookISBN"].ToString();
-                    borrow.Year = long.Parse(reader["BookYear"].ToString());
-                    borrow.Edition = long.Parse(reader["BookEdition"].ToString());
+                    book.BookID = long.Parse(reader["BookID"].ToString());
+                    book.BookCode = reader["BookCode"].ToString();
+                    book.BookTitle = reader["BookTitle"].ToString();
+                    book.Author = reader["BookAuthor"].ToString();
+                    book.ISBN = reader["BookISBN"].ToString();
+                    book.Year = long.Parse(reader["BookYear"].ToString());
+                    book.Edition = long.Parse(reader["BookEdition"].ToString());
+                    book.NoofCopies = long.Parse(reader["BookNoofCopies"].ToString());
 
-                    bookList.Add(borrow);
+                    bookList.Add(book);
                 }
             }
             connection.Close();
             return bookList;
+        }
+        public void SaveBorrow()
+        {
+            SqlCommand cmd = new SqlCommand("sp_SaveBorrow", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@BorrowNo", this.BorrowNo);
+            cmd.Parameters.AddWithValue("@BorrowDate", this.BorrowDate);
+            cmd.Parameters.AddWithValue("@BorrowUID", this.BorrowUID);
+            cmd.Parameters.AddWithValue("@BorrowBookID", this.BorrowBookID);
+            cmd.Parameters.AddWithValue("@BorrowDays", this.BorrowDays);
+
+            connection.Open();
+            cmd.ExecuteNonQuery();
+            connection.Close();
+
         }
     }
 }

@@ -7,10 +7,10 @@ namespace LibraryInfoSystem
     public partial class frmBorrow : Form
     {
         string previousBookId = "";
-
-        //ClsBook Book = new ClsBook();
+        ClsLogin login = new ClsLogin();
         DataTable dt_list = new DataTable();
         List<ClsBook> BookList = new List<ClsBook>();
+        private long _bookID = 0;  
         public frmBorrow()
         {
             InitializeComponent();
@@ -18,6 +18,7 @@ namespace LibraryInfoSystem
 
         private void frmBorrow_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(login.UID.ToString());
             dcBorrowDate.Value = DateTime.Now;
             GetBorrowNumber();
             getListData();
@@ -28,12 +29,13 @@ namespace LibraryInfoSystem
         private void getListData()
         {
             ClsBorrow borrow = new ClsBorrow();
-            BookList = borrow.GetBooks();
+            BookList = borrow.GetAvaBooks();
             dgvBookList.DataSource = BookList;
             setGrid();
         }
         private void setGrid()
         {
+
             dgvBookList.Columns["BookID"].Visible = false;
             dgvBookList.Columns["BookCode"].Visible = false;
 
@@ -56,19 +58,21 @@ namespace LibraryInfoSystem
             dgvBookList.Columns["NoofCopies"].Width = 45;
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnBorrow_Click(object sender, EventArgs e)
         {
             if (saveCheck())
             {
-                ClsBook book = new ClsBook();
+                ClsBorrow borrow = new ClsBorrow();
 
-                ////book.BookID = tbBookID.Text.Trim();
-                //book.BookName = tbBookTitle.Text;
-                //book.Author = tbBookAuthor.Text;
-                //book.Description = tbBookDesc.Text;
-                //book.Edition = int.Parse(tbBookEdition.Text);
 
-                book.AddBook();
+                borrow.BorrowNo = long.Parse(tbRefNo.Text);
+                borrow.BorrowDate = dcBorrowDate.Value;
+
+                borrow.BorrowUID = login.UID;
+                borrow.BorrowBookID = _bookID;
+                borrow.BorrowDays = long.Parse(tbBorrowDays.Text);
+
+                borrow.SaveBorrow();
 
                 MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -119,28 +123,29 @@ namespace LibraryInfoSystem
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
         private bool saveCheck()
         {
-            //if (tbBookID.Text == "")
-            //{
-            //    MessageBox.Show("Book ID should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            //    tbBookID.Focus();
-            //    return false;
-            // }
-            if (tbBookTitle.Text == "")
+            if (tbRefNo.Text == "0")
             {
-                MessageBox.Show("Book Name should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Borrow No. should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbRefNo.Focus();
+                return false;
+            }
+            if (_bookID == 0)
+            {
+                MessageBox.Show("please select any book", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbBookTitle.Focus();
                 return false;
             }
-            if (tbBookDesc.Text == "")
+            if (tbBookTitle.Text == "")
             {
-                MessageBox.Show("Book Description should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookDesc.Focus();
+                MessageBox.Show("Book Title should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbBookTitle.Focus();
                 return false;
             }
-            if (tbBookAuthor.Text == "")
+
+            if (tbBorrowDays.Text == "0")
             {
-                MessageBox.Show("Book Author should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookAuthor.Focus();
+                MessageBox.Show("Borrow Days should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbBorrowDays.Focus();
                 return false;
             }
             return true;
@@ -151,7 +156,7 @@ namespace LibraryInfoSystem
         {
             if (dgvBookList.Rows.Count > 0)
             {
-
+                _bookID = long.Parse(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
                 tbBookTitle.Text = dgvBookList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
                 tbBookAuthor.Text = dgvBookList.CurrentRow.Cells["Author"].Value.ToString().Trim();
                 tbBookISBN.Text = dgvBookList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
