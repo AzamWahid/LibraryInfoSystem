@@ -4,13 +4,13 @@ using System.Data;
 
 namespace LibraryInfoSystem
 {
-    public partial class frmBorrow : Form
+    public partial class frmBorrowRet : Form
     {
         List<ClsBook> BookList = new List<ClsBook>();
         private long _bookID = 0;
 
         private ClsLogin login;
-        public frmBorrow(ClsLogin login)
+        public frmBorrowRet(ClsLogin login)
         {
             InitializeComponent();
             this.login = login;
@@ -69,28 +69,26 @@ namespace LibraryInfoSystem
             tbBookISBN.Text = "";
             mskYear.Text = "";
             tbBookEdition.Text = "0";
-            tbBorrowDays.Text = "0";
-            tbBorrowDays.Focus();
         }
-        private void btnBorrow_Click(object sender, EventArgs e)
+        private void btnReturn_Click(object sender, EventArgs e)
         {
-            if (saveCheck())
-            {
-                ClsBorrow borrow = new ClsBorrow();
+            //if (saveCheck())
+            //{
+            //    ClsBorrow borrow = new ClsBorrow();
 
 
-                borrow.BorrowNo = long.Parse(tbRefNo.Text);
-                borrow.BorrowDate = dcBorrowDate.Value;
+            //    borrow.BorrowNo = long.Parse(tbRefNo.Text);
+            //    borrow.BorrowDate = dcBorrowDate.Value;
 
-                borrow.BorrowUID = login.UID;
-                borrow.BorrowBookID = _bookID;
-                borrow.BorrowDays = long.Parse(tbBorrowDays.Text);
+            //    borrow.BorrowUID = login.UID;
+            //    borrow.BorrowBookID = _bookID;
+        
 
-                borrow.SaveBorrow();
+            //    borrow.SaveBorrow();
 
-                MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NewBorrow();
-            }
+            //    MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    NewBorrow();
+            //}
         }
 
 
@@ -139,12 +137,7 @@ namespace LibraryInfoSystem
                 tbBookTitle.Focus();
                 return false;
             }
-            if (tbBorrowDays.Text == "0")
-            {
-                MessageBox.Show("Borrow Days should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBorrowDays.Focus();
-                return false;
-            }
+
             ClsBorrow borrow = new ClsBorrow();
             borrow.BorrowUID = login.UID;
             if (borrow.ChectAlreadyBorrow(_bookID) == true)
@@ -174,20 +167,5 @@ namespace LibraryInfoSystem
         {
             getListData();
         }
-
-        //-------------------------------------------------BOOK EDITION NUMERIC ALLOW ONLY-------------------------------------------------------------------------
-        private void tbBorrowDays_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(tbBorrowDays.Text) && !int.TryParse(tbBorrowDays.Text, out _))
-            {
-                tbBorrowDays.Text = "0";
-            }
-            else if (string.IsNullOrEmpty(tbBorrowDays.Text))
-            {
-                tbBorrowDays.Text = "0";
-            }
-        }
-
-
     }
 }

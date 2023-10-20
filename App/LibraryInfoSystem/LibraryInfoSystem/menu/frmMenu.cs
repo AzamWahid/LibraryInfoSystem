@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibraryInfoSystem.Register_Login;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace LibraryInfoSystem.menu
 {
     public partial class frmMenu : Form
     {
-        public frmMenu()
+        private ClsLogin login;
+        public frmMenu(ClsLogin login)
         {
             InitializeComponent();
+
+            this.login = login;
         }
 
         private void btnUserManagement_Click(object sender, EventArgs e)
@@ -38,7 +42,7 @@ namespace LibraryInfoSystem.menu
 
         private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBorrow frmBorrow = new frmBorrow();
+            frmBorrow frmBorrow = new frmBorrow(login);
             frmBorrow.MdiParent = this;
             frmBorrow.Show();
         }

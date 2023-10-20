@@ -53,6 +53,47 @@ namespace LibraryInfoSystem.Borrow
             connection.Close();
             return bookList;
         }
+        public void GetBorrowNo()
+        {
+            SqlCommand cmd = new SqlCommand("sp_GetUserBorrowNo", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UID", this.BorrowUID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();
+            this.BorrowNo = long.Parse(reader["BorrowNo"].ToString());
+            connection.Close();
+
+        }
+        public bool ChectAlreadyBorrow(long _BookID)
+        {
+            SqlCommand cmd = new SqlCommand("Sp_ChectAlreadyBorrow", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UID", this.BorrowUID);
+            cmd.Parameters.AddWithValue("@BookID", _BookID);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+
+            if (reader != null && reader.HasRows)
+            {
+                reader.Read();
+ 
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
+            }
+
+        }
         public void SaveBorrow()
         {
             SqlCommand cmd = new SqlCommand("sp_SaveBorrow", connection);

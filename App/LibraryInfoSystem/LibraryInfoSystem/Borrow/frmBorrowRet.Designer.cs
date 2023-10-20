@@ -1,6 +1,6 @@
 ﻿namespace LibraryInfoSystem
 {
-    partial class frmBorrow
+    partial class frmBorrowRet
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -43,6 +43,10 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.gbxInputs = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblBorrowNo = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.tbBookEdition = new System.Windows.Forms.Label();
             this.mskYear = new System.Windows.Forms.Label();
             this.tbBookISBN = new System.Windows.Forms.Label();
@@ -50,12 +54,10 @@
             this.tbBookTitle = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbBorrowDays = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dcBorrowDate = new System.Windows.Forms.DateTimePicker();
             this.tbRefNo = new System.Windows.Forms.TextBox();
-            this.btnBorrow = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).BeginInit();
             this.gbxInputs.SuspendLayout();
@@ -101,16 +103,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 49);
+            this.label2.Location = new System.Drawing.Point(23, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 15);
+            this.label2.Size = new System.Drawing.Size(70, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Borrow No. :";
+            this.label2.Text = "Return No. :";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 117);
+            this.label3.Location = new System.Drawing.Point(28, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 15);
             this.label3.TabIndex = 6;
@@ -119,7 +121,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 151);
+            this.label4.Location = new System.Drawing.Point(13, 217);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 8;
@@ -128,7 +130,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 186);
+            this.label5.Location = new System.Drawing.Point(28, 252);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 15);
             this.label5.TabIndex = 10;
@@ -138,32 +140,32 @@
             // 
             this.dgvBookList.AllowUserToAddRows = false;
             this.dgvBookList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
+            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBookList.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBookList.Location = new System.Drawing.Point(3, 45);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvBookList.Location = new System.Drawing.Point(3, 48);
             this.dgvBookList.Name = "dgvBookList";
             this.dgvBookList.ReadOnly = true;
             this.dgvBookList.RowHeadersVisible = false;
             this.dgvBookList.RowTemplate.Height = 25;
             this.dgvBookList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBookList.Size = new System.Drawing.Size(455, 398);
+            this.dgvBookList.Size = new System.Drawing.Size(455, 395);
             this.dgvBookList.TabIndex = 14;
             this.dgvBookList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBookList_CellDoubleClick);
             // 
             // tbSearch
             // 
             this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbSearch.Location = new System.Drawing.Point(85, 16);
+            this.tbSearch.Location = new System.Drawing.Point(85, 22);
             this.tbSearch.Name = "tbSearch";
             this.tbSearch.Size = new System.Drawing.Size(205, 23);
             this.tbSearch.TabIndex = 13;
@@ -173,7 +175,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(4, 19);
+            this.label7.Location = new System.Drawing.Point(4, 27);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 15);
             this.label7.TabIndex = 15;
@@ -181,6 +183,10 @@
             // 
             // gbxInputs
             // 
+            this.gbxInputs.Controls.Add(this.label10);
+            this.gbxInputs.Controls.Add(this.label12);
+            this.gbxInputs.Controls.Add(this.lblBorrowNo);
+            this.gbxInputs.Controls.Add(this.label11);
             this.gbxInputs.Controls.Add(this.tbBookEdition);
             this.gbxInputs.Controls.Add(this.mskYear);
             this.gbxInputs.Controls.Add(this.tbBookISBN);
@@ -188,12 +194,10 @@
             this.gbxInputs.Controls.Add(this.tbBookTitle);
             this.gbxInputs.Controls.Add(this.label8);
             this.gbxInputs.Controls.Add(this.label9);
-            this.gbxInputs.Controls.Add(this.label6);
-            this.gbxInputs.Controls.Add(this.tbBorrowDays);
             this.gbxInputs.Controls.Add(this.label1);
             this.gbxInputs.Controls.Add(this.dcBorrowDate);
             this.gbxInputs.Controls.Add(this.tbRefNo);
-            this.gbxInputs.Controls.Add(this.btnBorrow);
+            this.gbxInputs.Controls.Add(this.btnReturn);
             this.gbxInputs.Controls.Add(this.label4);
             this.gbxInputs.Controls.Add(this.label5);
             this.gbxInputs.Controls.Add(this.label3);
@@ -205,13 +209,53 @@
             this.gbxInputs.TabIndex = 18;
             this.gbxInputs.TabStop = false;
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.Purple;
+            this.label10.Location = new System.Drawing.Point(95, 142);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(227, 29);
+            this.label10.TabIndex = 38;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 149);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(78, 15);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Borrow Date :";
+            // 
+            // lblBorrowNo
+            // 
+            this.lblBorrowNo.BackColor = System.Drawing.Color.White;
+            this.lblBorrowNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBorrowNo.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblBorrowNo.ForeColor = System.Drawing.Color.Purple;
+            this.lblBorrowNo.Location = new System.Drawing.Point(95, 107);
+            this.lblBorrowNo.Name = "lblBorrowNo";
+            this.lblBorrowNo.Size = new System.Drawing.Size(227, 29);
+            this.lblBorrowNo.TabIndex = 36;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 114);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(80, 15);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Borrown No. :";
+            // 
             // tbBookEdition
             // 
             this.tbBookEdition.BackColor = System.Drawing.Color.White;
             this.tbBookEdition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbBookEdition.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.tbBookEdition.ForeColor = System.Drawing.Color.Purple;
-            this.tbBookEdition.Location = new System.Drawing.Point(95, 250);
+            this.tbBookEdition.Location = new System.Drawing.Point(95, 316);
             this.tbBookEdition.Name = "tbBookEdition";
             this.tbBookEdition.Size = new System.Drawing.Size(227, 29);
             this.tbBookEdition.TabIndex = 34;
@@ -223,7 +267,7 @@
             this.mskYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.mskYear.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.mskYear.ForeColor = System.Drawing.Color.Purple;
-            this.mskYear.Location = new System.Drawing.Point(95, 214);
+            this.mskYear.Location = new System.Drawing.Point(95, 280);
             this.mskYear.Name = "mskYear";
             this.mskYear.Size = new System.Drawing.Size(227, 29);
             this.mskYear.TabIndex = 33;
@@ -234,7 +278,7 @@
             this.tbBookISBN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbBookISBN.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.tbBookISBN.ForeColor = System.Drawing.Color.Purple;
-            this.tbBookISBN.Location = new System.Drawing.Point(95, 179);
+            this.tbBookISBN.Location = new System.Drawing.Point(95, 245);
             this.tbBookISBN.Name = "tbBookISBN";
             this.tbBookISBN.Size = new System.Drawing.Size(227, 29);
             this.tbBookISBN.TabIndex = 32;
@@ -245,7 +289,7 @@
             this.tbBookAuthor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbBookAuthor.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.tbBookAuthor.ForeColor = System.Drawing.Color.Purple;
-            this.tbBookAuthor.Location = new System.Drawing.Point(95, 144);
+            this.tbBookAuthor.Location = new System.Drawing.Point(95, 210);
             this.tbBookAuthor.Name = "tbBookAuthor";
             this.tbBookAuthor.Size = new System.Drawing.Size(227, 29);
             this.tbBookAuthor.TabIndex = 31;
@@ -256,7 +300,7 @@
             this.tbBookTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbBookTitle.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.tbBookTitle.ForeColor = System.Drawing.Color.Purple;
-            this.tbBookTitle.Location = new System.Drawing.Point(95, 110);
+            this.tbBookTitle.Location = new System.Drawing.Point(95, 176);
             this.tbBookTitle.Name = "tbBookTitle";
             this.tbBookTitle.Size = new System.Drawing.Size(227, 29);
             this.tbBookTitle.TabIndex = 30;
@@ -264,7 +308,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(54, 221);
+            this.label8.Location = new System.Drawing.Point(54, 287);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 15);
             this.label8.TabIndex = 29;
@@ -273,36 +317,16 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(39, 251);
+            this.label9.Location = new System.Drawing.Point(39, 317);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(50, 15);
             this.label9.TabIndex = 28;
             this.label9.Text = "Edition :";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 289);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 15);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "Borrow Days :";
-            // 
-            // tbBorrowDays
-            // 
-            this.tbBorrowDays.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tbBorrowDays.Location = new System.Drawing.Point(95, 285);
-            this.tbBorrowDays.Name = "tbBorrowDays";
-            this.tbBorrowDays.Size = new System.Drawing.Size(227, 23);
-            this.tbBorrowDays.TabIndex = 0;
-            this.tbBorrowDays.Text = "0";
-            this.tbBorrowDays.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.tbBorrowDays.TextChanged += new System.EventHandler(this.tbBorrowDays_TextChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 84);
+            this.label1.Location = new System.Drawing.Point(56, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 15);
             this.label1.TabIndex = 23;
@@ -313,7 +337,7 @@
             this.dcBorrowDate.Enabled = false;
             this.dcBorrowDate.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dcBorrowDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dcBorrowDate.Location = new System.Drawing.Point(95, 80);
+            this.dcBorrowDate.Location = new System.Drawing.Point(95, 76);
             this.dcBorrowDate.Name = "dcBorrowDate";
             this.dcBorrowDate.Size = new System.Drawing.Size(115, 23);
             this.dcBorrowDate.TabIndex = 22;
@@ -330,18 +354,18 @@
             this.tbRefNo.Text = "0";
             this.tbRefNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnBorrow
+            // btnReturn
             // 
-            this.btnBorrow.BackColor = System.Drawing.Color.Green;
-            this.btnBorrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBorrow.ForeColor = System.Drawing.Color.White;
-            this.btnBorrow.Location = new System.Drawing.Point(95, 323);
-            this.btnBorrow.Name = "btnBorrow";
-            this.btnBorrow.Size = new System.Drawing.Size(61, 30);
-            this.btnBorrow.TabIndex = 18;
-            this.btnBorrow.Text = "Borrow";
-            this.btnBorrow.UseVisualStyleBackColor = false;
-            this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
+            this.btnReturn.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturn.ForeColor = System.Drawing.Color.White;
+            this.btnReturn.Location = new System.Drawing.Point(95, 357);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(61, 30);
+            this.btnReturn.TabIndex = 18;
+            this.btnReturn.Text = "Return";
+            this.btnReturn.UseVisualStyleBackColor = false;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // groupBox2
             // 
@@ -349,23 +373,23 @@
             this.groupBox2.Controls.Add(this.tbSearch);
             this.groupBox2.Controls.Add(this.dgvBookList);
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(354, 0);
+            this.groupBox2.Location = new System.Drawing.Point(354, -1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(460, 449);
+            this.groupBox2.Size = new System.Drawing.Size(460, 450);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Choose Book";
+            this.groupBox2.Text = "Borrow History";
             // 
-            // frmBorrow
+            // frmBorrowRet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 451);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.gbxInputs);
-            this.Name = "frmBorrow";
+            this.Name = "frmBorrowRet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Borrow";
+            this.Text = "Borrow Return";
             this.Load += new System.EventHandler(this.frmBorrow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).EndInit();
             this.gbxInputs.ResumeLayout(false);
@@ -394,12 +418,10 @@
         private Label label7;
         private GroupBox gbxInputs;
         private GroupBox groupBox2;
-        private Button btnBorrow;
+        private Button btnReturn;
         private Label label1;
         private DateTimePicker dcBorrowDate;
         private TextBox tbRefNo;
-        private Label label6;
-        private TextBox tbBorrowDays;
         private Label label8;
         private Label label9;
         private Label tbBookTitle;
@@ -407,5 +429,9 @@
         private Label tbBookEdition;
         private Label mskYear;
         private Label tbBookISBN;
+        private Label label10;
+        private Label label12;
+        private Label lblBorrowNo;
+        private Label label11;
     }
 }

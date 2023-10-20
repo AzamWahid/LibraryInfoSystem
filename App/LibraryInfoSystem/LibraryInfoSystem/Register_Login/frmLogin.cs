@@ -30,7 +30,7 @@ namespace LibraryInfoSystem.Register_Login
             login.UPass = tbPass.Text;
             if (login.ChectUser())
             {
-                frmMenu frmMenu = new frmMenu();
+                frmMenu frmMenu = new frmMenu(login);
                 frmMenu.Show();
                 this.Hide();
             }
