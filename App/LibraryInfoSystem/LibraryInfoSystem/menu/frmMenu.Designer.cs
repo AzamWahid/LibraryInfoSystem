@@ -33,6 +33,7 @@
             this.bookManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrowReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,14 +59,15 @@
             // bookManagementToolStripMenuItem
             // 
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.borrowToolStripMenuItem});
+            this.borrowToolStripMenuItem,
+            this.borrowReturnToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.userToolStripMenuItem.Text = "User";
@@ -76,6 +78,13 @@
             this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
+            // 
+            // borrowReturnToolStripMenuItem
+            // 
+            this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
+            this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -109,5 +118,6 @@
         private ToolStripMenuItem bookManagementToolStripMenuItem;
         private ToolStripMenuItem userToolStripMenuItem;
         private ToolStripMenuItem borrowToolStripMenuItem;
+        private ToolStripMenuItem borrowReturnToolStripMenuItem;
     }
 }

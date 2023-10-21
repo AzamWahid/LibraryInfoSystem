@@ -6,8 +6,10 @@ namespace LibraryInfoSystem
 {
     public partial class frmBorrowRet : Form
     {
-        List<ClsBook> BookList = new List<ClsBook>();
-        private long _bookID = 0;
+        List<ClsBorrowRet> BorrowtList = new List<ClsBorrowRet>();
+        private long _borrowID = 0;
+        private long _RetDayLeft = 0;
+
 
         private ClsLogin login;
         public frmBorrowRet(ClsLogin login)
@@ -16,79 +18,93 @@ namespace LibraryInfoSystem
             this.login = login;
         }
 
-        private void frmBorrow_Load(object sender, EventArgs e)
+        private void frmBorrowRet_Load(object sender, EventArgs e)
         {
 
-            NewBorrow();
+            NewBorrowRet();
             getListData();
         }
 
         private void getListData()
         {
-            ClsBorrow borrow = new ClsBorrow();
-            BookList = borrow.GetAvaBooks();
-            dgvBookList.DataSource = BookList;
+            ClsBorrowRet borrowRet = new ClsBorrowRet();
+            borrowRet.UID = login.UID;
+            BorrowtList = borrowRet.GetBorrowList();
+            dgvBookList.DataSource = BorrowtList;
             setGrid();
         }
         private void setGrid()
         {
 
-            dgvBookList.Columns["BookID"].Visible = false;
-            dgvBookList.Columns["BookCode"].Visible = false;
+            dgvBookList.Columns["UID"].Visible = false;
+            dgvBookList.Columns["BorrowRetNo"].Visible = false;
+            dgvBookList.Columns["BorrowRetDate"].Visible = false;
+            dgvBookList.Columns["BorrowID"].Visible = false;
+            dgvBookList.Columns["BRFineYN"].Visible = false;
+
+            dgvBookList.Columns["BorrowNo"].HeaderText = "Borrow No";
+            dgvBookList.Columns["BorrowNo"].Width = 50;
+
+            dgvBookList.Columns["BorrowDate"].HeaderText = "Borrow Date";
+            dgvBookList.Columns["BorrowDate"].Width = 120;
+            dgvBookList.Columns["BorrowDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
             dgvBookList.Columns["BookTitle"].HeaderText = "Book Title";
             dgvBookList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvBookList.Columns["Author"].HeaderText = "Book Author";
-            dgvBookList.Columns["Author"].Width = 80;
+            dgvBookList.Columns["Author"].Width = 100;
+
+            dgvBookList.Columns["DaysLeft"].HeaderText = "Return Day Left";
+            dgvBookList.Columns["DaysLeft"].Width = 50;
 
             dgvBookList.Columns["ISBN"].HeaderText = "Book ISBN";
             dgvBookList.Columns["ISBN"].Width = 80;
+            dgvBookList.Columns["ISBN"].Visible = false;
 
             dgvBookList.Columns["Year"].HeaderText = "Year";
-            dgvBookList.Columns["Year"].Width = 45;
+            dgvBookList.Columns["Year"].Visible = false;
 
             dgvBookList.Columns["Edition"].HeaderText = "Edition";
-            dgvBookList.Columns["Edition"].Width = 45;
-
-            dgvBookList.Columns["NoofCopies"].HeaderText = "Copies";
-            dgvBookList.Columns["NoofCopies"].Width = 45;
+            dgvBookList.Columns["Edition"].Visible = false;
         }
-        private void NewBorrow()
+        private void NewBorrowRet()
         {
-            ClsBorrow borrow = new ClsBorrow();
+            ClsBorrowRet borrowRet = new ClsBorrowRet();
 
-            borrow.BorrowUID = login.UID;
-            borrow.GetBorrowNo();
-            tbRefNo.Text = borrow.BorrowNo.ToString();
+            borrowRet.UID = login.UID;
+            borrowRet.GetBorrowRetNo();
+            tbRefNo.Text = borrowRet.BorrowRetNo.ToString();
 
             dcBorrowDate.Value = DateTime.Now;
-            _bookID = 0;
+            _borrowID = 0;
+            lblBorrowNo.Text = "";
+            lblBorrowDate.Text = "";
             tbBookTitle.Text = "";
             tbBookAuthor.Text = "";
             tbBookISBN.Text = "";
             mskYear.Text = "";
             tbBookEdition.Text = "0";
+            getListData();
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            //if (saveCheck())
-            //{
-            //    ClsBorrow borrow = new ClsBorrow();
+            if (saveCheck())
+            {
+                ClsBorrowRet borrowRet = new ClsBorrowRet();
 
 
-            //    borrow.BorrowNo = long.Parse(tbRefNo.Text);
-            //    borrow.BorrowDate = dcBorrowDate.Value;
+                borrowRet.BorrowRetNo = long.Parse(tbRefNo.Text);
+                borrowRet.BorrowRetDate = dcBorrowDate.Value;
+                borrowRet.BorrowID = _borrowID;
+                borrowRet.BRFineYN = _RetDayLeft < 0 ? 'Y' : 'N';
 
-            //    borrow.BorrowUID = login.UID;
-            //    borrow.BorrowBookID = _bookID;
-        
 
-            //    borrow.SaveBorrow();
+                borrowRet.SaveBorrowRet();
 
-            //    MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    NewBorrow();
-            //}
+                MessageBox.Show("Book Return Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                NewBorrowRet();
+            }
         }
 
 
@@ -100,19 +116,17 @@ namespace LibraryInfoSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                dgvBookList.DataSource = BookList;
+                dgvBookList.DataSource = BorrowtList;
             }
             else
             {
-                var filteredList = BookList.Where(book =>
-                    book.BookTitle.ToLower().Contains(searchTerm) ||
-                    book.Author.ToLower().Contains(searchTerm) ||
-                    book.ISBN.ToLower().Contains(searchTerm) ||
-                    book.Year.ToString().Contains(searchTerm) ||
-                    book.Edition.ToString().Contains(searchTerm) ||
-                    book.NoofCopies.ToString().Contains(searchTerm)
+                var filteredList = BorrowtList.Where(borrow =>
+                    borrow.BorrowNo.ToString().ToLower().Contains(searchTerm) ||
+                    borrow.BorrowDate.ToString().ToLower().Contains(searchTerm) ||
+                    borrow.BookTitle.ToLower().Contains(searchTerm) ||
+                    borrow.Author.ToLower().Contains(searchTerm) ||
+                    borrow.DaysLeft.ToString().ToLower().Contains(searchTerm)).ToList();
 
-                ).ToList();
                 dgvBookList.DataSource = filteredList;
             }
         }
@@ -125,7 +139,7 @@ namespace LibraryInfoSystem
                 tbRefNo.Focus();
                 return false;
             }
-            if (_bookID == 0)
+            if (_borrowID == 0)
             {
                 MessageBox.Show("please select any book", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbBookTitle.Focus();
@@ -137,14 +151,6 @@ namespace LibraryInfoSystem
                 tbBookTitle.Focus();
                 return false;
             }
-
-            ClsBorrow borrow = new ClsBorrow();
-            borrow.BorrowUID = login.UID;
-            if (borrow.ChectAlreadyBorrow(_bookID) == true)
-            {
-                MessageBox.Show("You have already borrowed this book", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return false;
-            }
             return true;
         }
         //-------------------------------------------------GRID DOUBLE CLICK EDIT-------------------------------------------------------------------------
@@ -153,12 +159,15 @@ namespace LibraryInfoSystem
         {
             if (dgvBookList.Rows.Count > 0)
             {
-                _bookID = long.Parse(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
+                _borrowID = long.Parse(dgvBookList.CurrentRow.Cells["BorrowID"].Value.ToString().Trim());
+                lblBorrowNo.Text = dgvBookList.CurrentRow.Cells["BorrowNo"].Value.ToString().Trim();
+                lblBorrowDate.Text = Convert.ToDateTime(dgvBookList.CurrentRow.Cells["BorrowDate"].Value.ToString().Trim()).ToString("dd/MM/yyyy hh:mm tt");
                 tbBookTitle.Text = dgvBookList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
                 tbBookAuthor.Text = dgvBookList.CurrentRow.Cells["Author"].Value.ToString().Trim();
                 tbBookISBN.Text = dgvBookList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
                 mskYear.Text = dgvBookList.CurrentRow.Cells["Year"].Value.ToString().Trim();
                 tbBookEdition.Text = dgvBookList.CurrentRow.Cells["Edition"].Value.ToString().Trim();
+                _RetDayLeft = long.Parse(dgvBookList.CurrentRow.Cells["DaysLeft"].Value.ToString().Trim());
             }
         }
 

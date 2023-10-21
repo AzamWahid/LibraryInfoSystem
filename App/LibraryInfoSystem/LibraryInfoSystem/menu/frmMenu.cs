@@ -46,5 +46,12 @@ namespace LibraryInfoSystem.menu
             frmBorrow.MdiParent = this;
             frmBorrow.Show();
         }
+
+        private void borrowReturnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBorrowRet frmBorrowRet = new frmBorrowRet(login);
+            frmBorrowRet.MdiParent = this;
+            frmBorrowRet.Show();
+        }
     }
 }

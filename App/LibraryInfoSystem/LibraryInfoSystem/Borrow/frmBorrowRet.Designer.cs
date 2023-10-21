@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.RightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -43,7 +43,7 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.gbxInputs = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblBorrowDate = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblBorrowNo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -140,18 +140,18 @@
             // 
             this.dgvBookList.AllowUserToAddRows = false;
             this.dgvBookList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
-            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            this.dgvBookList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBookList.BackgroundColor = System.Drawing.Color.White;
             this.dgvBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBookList.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBookList.Location = new System.Drawing.Point(3, 48);
             this.dgvBookList.Name = "dgvBookList";
             this.dgvBookList.ReadOnly = true;
@@ -165,9 +165,9 @@
             // tbSearch
             // 
             this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbSearch.Location = new System.Drawing.Point(85, 22);
+            this.tbSearch.Location = new System.Drawing.Point(53, 22);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(205, 23);
+            this.tbSearch.Size = new System.Drawing.Size(232, 23);
             this.tbSearch.TabIndex = 13;
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
@@ -177,13 +177,13 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(4, 27);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 15);
+            this.label7.Size = new System.Drawing.Size(48, 15);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Search Book :";
+            this.label7.Text = "Search :";
             // 
             // gbxInputs
             // 
-            this.gbxInputs.Controls.Add(this.label10);
+            this.gbxInputs.Controls.Add(this.lblBorrowDate);
             this.gbxInputs.Controls.Add(this.label12);
             this.gbxInputs.Controls.Add(this.lblBorrowNo);
             this.gbxInputs.Controls.Add(this.label11);
@@ -209,16 +209,16 @@
             this.gbxInputs.TabIndex = 18;
             this.gbxInputs.TabStop = false;
             // 
-            // label10
+            // lblBorrowDate
             // 
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label10.ForeColor = System.Drawing.Color.Purple;
-            this.label10.Location = new System.Drawing.Point(95, 142);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(227, 29);
-            this.label10.TabIndex = 38;
+            this.lblBorrowDate.BackColor = System.Drawing.Color.White;
+            this.lblBorrowDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBorrowDate.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblBorrowDate.ForeColor = System.Drawing.Color.Purple;
+            this.lblBorrowDate.Location = new System.Drawing.Point(95, 142);
+            this.lblBorrowDate.Name = "lblBorrowDate";
+            this.lblBorrowDate.Size = new System.Drawing.Size(227, 29);
+            this.lblBorrowDate.TabIndex = 38;
             // 
             // label12
             // 
@@ -390,7 +390,7 @@
             this.Name = "frmBorrowRet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Borrow Return";
-            this.Load += new System.EventHandler(this.frmBorrow_Load);
+            this.Load += new System.EventHandler(this.frmBorrowRet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).EndInit();
             this.gbxInputs.ResumeLayout(false);
             this.gbxInputs.PerformLayout();
@@ -429,7 +429,7 @@
         private Label tbBookEdition;
         private Label mskYear;
         private Label tbBookISBN;
-        private Label label10;
+        private Label lblBorrowDate;
         private Label label12;
         private Label lblBorrowNo;
         private Label label11;
