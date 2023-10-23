@@ -8,7 +8,7 @@ namespace LibraryInfoSystem.Register_Login
         public string? UName { get; set; }
         public string? UFName { get; set; }
         public string? UEmail { get; set; }
-        public long? UMobileNo { get; set; }
+        public string? UMobileNo { get; set; }
         public string? UPass { get; set; }
         public char? UType { get; set; }
 

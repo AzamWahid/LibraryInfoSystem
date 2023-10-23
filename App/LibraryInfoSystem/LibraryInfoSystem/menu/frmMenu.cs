@@ -53,5 +53,12 @@ namespace LibraryInfoSystem.menu
             frmBorrowRet.MdiParent = this;
             frmBorrowRet.Show();
         }
+
+        private void imposeFineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmImposeFine frmImposeFine = new frmImposeFine(login);
+            frmImposeFine.MdiParent = this;
+            frmImposeFine.Show();
+        }
     }
 }

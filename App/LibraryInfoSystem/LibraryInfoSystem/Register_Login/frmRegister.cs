@@ -68,7 +68,7 @@ namespace LibraryInfoSystem.Register_Login
 
             ClsRegister reg = new ClsRegister();
             reg.UEmail= tbUEmail.Text;
-            reg.UMobileNo = long.Parse(tbMobileNo.Text);
+            reg.UMobileNo = tbMobileNo.Text;
             if (reg.CheckExistUser())
             {
                 MessageBox.Show("User Email/Mobile already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -86,7 +86,7 @@ namespace LibraryInfoSystem.Register_Login
                 register.UName = tbUName.Text;
                 register.UFName = tbFName.Text;
                 register.UEmail = tbUEmail.Text;
-                register.UMobileNo = long.Parse(tbMobileNo.Text);
+                register.UMobileNo = tbMobileNo.Text;
                 register.UPass = tbPass.Text;
                 if (rbtnStudent.Checked)
                 {

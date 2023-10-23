@@ -34,6 +34,7 @@
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imposeFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +52,8 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookManagementToolStripMenuItem});
+            this.bookManagementToolStripMenuItem,
+            this.imposeFineToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -59,7 +61,7 @@
             // bookManagementToolStripMenuItem
             // 
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
             // 
@@ -75,16 +77,23 @@
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // borrowReturnToolStripMenuItem
             // 
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
+            // 
+            // imposeFineToolStripMenuItem
+            // 
+            this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
+            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.imposeFineToolStripMenuItem.Text = "Impose Fine";
+            this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -119,5 +128,6 @@
         private ToolStripMenuItem userToolStripMenuItem;
         private ToolStripMenuItem borrowToolStripMenuItem;
         private ToolStripMenuItem borrowReturnToolStripMenuItem;
+        private ToolStripMenuItem imposeFineToolStripMenuItem;
     }
 }

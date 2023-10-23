@@ -170,7 +170,7 @@ namespace LibraryInfoSystem
         }
 
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
-        private void frmBook_Activated(object sender, EventArgs e)
+        private void frmBorrow_Activated(object sender, EventArgs e)
         {
             getListData();
         }

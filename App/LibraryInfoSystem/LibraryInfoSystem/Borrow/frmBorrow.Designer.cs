@@ -366,6 +366,7 @@
             this.Name = "frmBorrow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Borrow";
+            this.Activated += new System.EventHandler(this.frmBorrow_Activated);
             this.Load += new System.EventHandler(this.frmBorrow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBookList)).EndInit();
             this.gbxInputs.ResumeLayout(false);
