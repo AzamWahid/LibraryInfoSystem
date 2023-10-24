@@ -54,24 +54,6 @@ namespace LibraryInfoSystem
             dgvBookList.Columns["NoofCopies"].HeaderText = "Copies";
             dgvBookList.Columns["NoofCopies"].Width = 45;
         }
-        private void NewBorrow()
-        {
-            ClsBorrow borrow = new ClsBorrow();
-
-            borrow.BorrowUID = login.UID;
-            borrow.GetBorrowNo();
-            tbRefNo.Text = borrow.BorrowNo.ToString();
-
-            dcBorrowDate.Value = DateTime.Now;
-            _bookID = 0;
-            tbBookTitle.Text = "";
-            tbBookAuthor.Text = "";
-            tbBookISBN.Text = "";
-            mskYear.Text = "";
-            tbBookEdition.Text = "0";
-            tbBorrowDays.Text = "0";
-            tbBorrowDays.Focus();
-        }
         private void btnBorrow_Click(object sender, EventArgs e)
         {
             if (saveCheck())
@@ -92,8 +74,6 @@ namespace LibraryInfoSystem
                 NewBorrow();
             }
         }
-
-
 
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -186,6 +166,25 @@ namespace LibraryInfoSystem
             {
                 tbBorrowDays.Text = "0";
             }
+        }
+        //-------------------------------------NEW-------------------------------
+        private void NewBorrow()
+        {
+            ClsBorrow borrow = new ClsBorrow();
+
+            borrow.BorrowUID = login.UID;
+            borrow.GetBorrowNo();
+            tbRefNo.Text = borrow.BorrowNo.ToString();
+
+            dcBorrowDate.Value = DateTime.Now;
+            _bookID = 0;
+            tbBookTitle.Text = "";
+            tbBookAuthor.Text = "";
+            tbBookISBN.Text = "";
+            mskYear.Text = "";
+            tbBookEdition.Text = "0";
+            tbBorrowDays.Text = "0";
+            tbBorrowDays.Focus();
         }
 
 

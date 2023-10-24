@@ -20,6 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Borrow\frmFinePay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Borrow\frmUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Borrow\frmBorrow.cs">
       <SubType>Form</SubType>
     </Compile>

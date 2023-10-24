@@ -41,6 +41,9 @@ namespace LibraryInfoSystem
             dgvBorrowList.Columns["BorrowRetDate"].Visible = false;
             dgvBorrowList.Columns["BorrowID"].Visible = false;
             dgvBorrowList.Columns["BRFineYN"].Visible = false;
+            dgvBorrowList.Columns["ISBN"].Visible = false;
+            dgvBorrowList.Columns["Year"].Visible = false;
+            dgvBorrowList.Columns["Edition"].Visible = false;
 
             dgvBorrowList.Columns["BorrowNo"].HeaderText = "Borrow No";
             dgvBorrowList.Columns["BorrowNo"].Width = 50;
@@ -57,35 +60,6 @@ namespace LibraryInfoSystem
 
             dgvBorrowList.Columns["DaysLeft"].HeaderText = "Return Day Left";
             dgvBorrowList.Columns["DaysLeft"].Width = 50;
-
-            dgvBorrowList.Columns["ISBN"].HeaderText = "Book ISBN";
-            dgvBorrowList.Columns["ISBN"].Width = 80;
-            dgvBorrowList.Columns["ISBN"].Visible = false;
-
-            dgvBorrowList.Columns["Year"].HeaderText = "Year";
-            dgvBorrowList.Columns["Year"].Visible = false;
-
-            dgvBorrowList.Columns["Edition"].HeaderText = "Edition";
-            dgvBorrowList.Columns["Edition"].Visible = false;
-        }
-        private void NewBorrowRet()
-        {
-            ClsBorrowRet borrowRet = new ClsBorrowRet();
-
-            borrowRet.UID = login.UID;
-            borrowRet.GetBorrowRetNo();
-            tbRefNo.Text = borrowRet.BorrowRetNo.ToString();
-
-            dcBorrowDate.Value = DateTime.Now;
-            _borrowID = 0;
-            lblBorrowNo.Text = "";
-            lblBorrowDate.Text = "";
-            tbBookTitle.Text = "";
-            tbBookAuthor.Text = "";
-            tbBookISBN.Text = "";
-            mskYear.Text = "";
-            tbBookEdition.Text = "0";
-            getListData();
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {
@@ -170,7 +144,26 @@ namespace LibraryInfoSystem
                 _RetDayLeft = long.Parse(dgvBorrowList.CurrentRow.Cells["DaysLeft"].Value.ToString().Trim());
             }
         }
+        //-----------------------------------------NEW-----------------------------------
+        private void NewBorrowRet()
+        {
+            ClsBorrowRet borrowRet = new ClsBorrowRet();
 
+            borrowRet.UID = login.UID;
+            borrowRet.GetBorrowRetNo();
+            tbRefNo.Text = borrowRet.BorrowRetNo.ToString();
+
+            dcBorrowDate.Value = DateTime.Now;
+            _borrowID = 0;
+            lblBorrowNo.Text = "";
+            lblBorrowDate.Text = "";
+            tbBookTitle.Text = "";
+            tbBookAuthor.Text = "";
+            tbBookISBN.Text = "";
+            mskYear.Text = "";
+            tbBookEdition.Text = "0";
+            getListData();
+        }
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
         private void frmBorrowRet_Activated(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryInfoSystem.Borrow
 {
-    public class ClsImopseFine
+    public class clsFinePay
     {
         public string? UEmail { get; set; }
         public string? UName { get; set; }
@@ -33,7 +33,7 @@ namespace LibraryInfoSystem.Borrow
         public decimal? FineAmnt { get; set; }
 
         private readonly SqlConnection connection;
-        public ClsImopseFine()
+        public clsFinePay()
         {
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);

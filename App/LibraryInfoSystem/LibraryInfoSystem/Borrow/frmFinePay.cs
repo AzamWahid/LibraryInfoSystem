@@ -4,20 +4,20 @@ using System.Data;
 
 namespace LibraryInfoSystem
 {
-    public partial class frmImposeFine : Form
+    public partial class frmFinePay : Form
     {
         List<ClsImopseFine> LateRetList = new List<ClsImopseFine>();
         private long _borrowRetID = 0;
 
 
         private ClsLogin login;
-        public frmImposeFine(ClsLogin login)
+        public frmFinePay(ClsLogin login)
         {
             InitializeComponent();
             this.login = login;
         }
 
-        private void frmImposeFine_Load(object sender, EventArgs e)
+        private void frmFinePay_Load(object sender, EventArgs e)
         {
             NewImposeFineRefNo();
         }
@@ -56,7 +56,7 @@ namespace LibraryInfoSystem
                 }
                 else
                 {
-                    dgvLateRetList.DataSource = LateRetList;
+                    dgvIFList.DataSource = LateRetList;
                     setGrid();
                 }
             }
@@ -64,50 +64,50 @@ namespace LibraryInfoSystem
         private void setGrid()
         {
 
-            dgvLateRetList.Columns["UEmail"].Visible = false;
-            dgvLateRetList.Columns["UName"].Visible = false;
-            dgvLateRetList.Columns["UMobile"].Visible = false;
-            dgvLateRetList.Columns["UType"].Visible = false;
-            dgvLateRetList.Columns["IFineRefNo"].Visible = false;
-            dgvLateRetList.Columns["IFineRefDate"].Visible = false;
-            dgvLateRetList.Columns["BorrowID"].Visible = false;
-            dgvLateRetList.Columns["BorrowRetID"].Visible = false;
-            dgvLateRetList.Columns["Author"].Visible = false;
-            dgvLateRetList.Columns["ISBN"].Visible = false;
-            dgvLateRetList.Columns["Year"].Visible = false;
-            dgvLateRetList.Columns["Edition"].Visible = false;
-            dgvLateRetList.Columns["BRFineYN"].Visible = false;
-            dgvLateRetList.Columns["FineAmnt"].Visible = false;
+            dgvIFList.Columns["UEmail"].Visible = false;
+            dgvIFList.Columns["UName"].Visible = false;
+            dgvIFList.Columns["UMobile"].Visible = false;
+            dgvIFList.Columns["UType"].Visible = false;
+            dgvIFList.Columns["IFineRefNo"].Visible = false;
+            dgvIFList.Columns["IFineRefDate"].Visible = false;
+            dgvIFList.Columns["BorrowID"].Visible = false;
+            dgvIFList.Columns["BorrowRetID"].Visible = false;
+            dgvIFList.Columns["Author"].Visible = false;
+            dgvIFList.Columns["ISBN"].Visible = false;
+            dgvIFList.Columns["Year"].Visible = false;
+            dgvIFList.Columns["Edition"].Visible = false;
+            dgvIFList.Columns["BRFineYN"].Visible = false;
+            dgvIFList.Columns["FineAmnt"].Visible = false;
 
-            dgvLateRetList.Columns["BorrowNo"].HeaderText = "Borrow No";
-            dgvLateRetList.Columns["BorrowNo"].Width = 50;
-            dgvLateRetList.Columns["BorrowNo"].Visible = false;
+            dgvIFList.Columns["BorrowNo"].HeaderText = "Borrow No";
+            dgvIFList.Columns["BorrowNo"].Width = 50;
+            dgvIFList.Columns["BorrowNo"].Visible = false;
 
-            dgvLateRetList.Columns["BorrowDate"].HeaderText = "Borrow Date";
-            dgvLateRetList.Columns["BorrowDate"].Width = 120;
-            dgvLateRetList.Columns["BorrowDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
+            dgvIFList.Columns["BorrowDate"].HeaderText = "Borrow Date";
+            dgvIFList.Columns["BorrowDate"].Width = 120;
+            dgvIFList.Columns["BorrowDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
-            dgvLateRetList.Columns["BorrowRetNo"].HeaderText = "Return No";
-            dgvLateRetList.Columns["BorrowRetNo"].Width = 50;
-            dgvLateRetList.Columns["BorrowRetNo"].Visible = false;
+            dgvIFList.Columns["BorrowRetNo"].HeaderText = "Return No";
+            dgvIFList.Columns["BorrowRetNo"].Width = 50;
+            dgvIFList.Columns["BorrowRetNo"].Visible = false;
 
-            dgvLateRetList.Columns["BorrowDays"].HeaderText = "Borrow Days";
-            dgvLateRetList.Columns["BorrowDays"].Width = 50;
-            dgvLateRetList.Columns["BorrowDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvIFList.Columns["BorrowDays"].HeaderText = "Borrow Days";
+            dgvIFList.Columns["BorrowDays"].Width = 50;
+            dgvIFList.Columns["BorrowDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dgvLateRetList.Columns["BorrowRetDate"].HeaderText = "Return Date"; ;
-            dgvLateRetList.Columns["BorrowRetDate"].Width = 120;
-            dgvLateRetList.Columns["BorrowRetDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
+            dgvIFList.Columns["BorrowRetDate"].HeaderText = "Return Date"; ;
+            dgvIFList.Columns["BorrowRetDate"].Width = 120;
+            dgvIFList.Columns["BorrowRetDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
-            dgvLateRetList.Columns["BookTitle"].HeaderText = "Book Title";
-            dgvLateRetList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvIFList.Columns["BookTitle"].HeaderText = "Book Title";
+            dgvIFList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            dgvLateRetList.Columns["LateDays"].HeaderText = "Late Days";
-            dgvLateRetList.Columns["LateDays"].Width = 50;
-            dgvLateRetList.Columns["LateDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvIFList.Columns["LateDays"].HeaderText = "Late Days";
+            dgvIFList.Columns["LateDays"].Width = 50;
+            dgvIFList.Columns["LateDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
      
-        private void btnImpose_Click(object sender, EventArgs e)
+        private void btnPay_Click(object sender, EventArgs e)
         {
             if (saveCheck())
             {
@@ -115,7 +115,7 @@ namespace LibraryInfoSystem
 
 
                 imopseFine.IFineRefNo = long.Parse(tbRefNo.Text);
-                imopseFine.IFineRefDate = dcImposeDate.Value;
+                imopseFine.IFineRefDate = dcFinePauDate.Value;
                 imopseFine.BorrowRetID = _borrowRetID;
                 imopseFine.FineAmnt = decimal.Parse(tbFineValue.Text);
 
@@ -125,25 +125,6 @@ namespace LibraryInfoSystem
                 NewImposeFineRefNo();
             }
         }
-        private void btnNeglect_Click(object sender, EventArgs e)
-        {
-            if (_borrowRetID != 0)
-            {
-                ClsImopseFine imopseFine = new ClsImopseFine();
-
-                imopseFine.BorrowRetID = _borrowRetID;
-
-                imopseFine.NeglectImposeFine();
-
-                MessageBox.Show("Neglected Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NewImposeFineRefNo();
-            }
-            else
-            {
-                MessageBox.Show("Please select any Late Return", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-        }
-
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -151,7 +132,7 @@ namespace LibraryInfoSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                dgvLateRetList.DataSource = LateRetList;
+                dgvIFList.DataSource = LateRetList;
             }
             else
             {
@@ -162,7 +143,7 @@ namespace LibraryInfoSystem
                     LateRet.BookTitle.ToLower().Contains(searchTerm) ||
                     LateRet.LateDays.ToString().ToLower().Contains(searchTerm)).ToList();
 
-                dgvLateRetList.DataSource = filteredList;
+                dgvIFList.DataSource = filteredList;
             }
         }
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
@@ -195,22 +176,22 @@ namespace LibraryInfoSystem
         }
         //-------------------------------------------------GRID DOUBLE CLICK EDIT-------------------------------------------------------------------------
 
-        private void dgvLateRetList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvIFList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvLateRetList.Rows.Count > 0)
+            if (dgvIFList.Rows.Count > 0)
             {
-                lblBorrowNo.Text = dgvLateRetList.CurrentRow.Cells["BorrowNo"].Value.ToString().Trim();
-                lblBorrowDate.Text = Convert.ToDateTime(dgvLateRetList.CurrentRow.Cells["BorrowDate"].Value.ToString().Trim()).ToString("dd/MM/yyyy hh:mm tt");
-                lblBorrowDays.Text = dgvLateRetList.CurrentRow.Cells["BorrowDays"].Value.ToString().Trim();
-                _borrowRetID = long.Parse(dgvLateRetList.CurrentRow.Cells["BorrowRetID"].Value.ToString().Trim());
-                lblRetNo.Text = dgvLateRetList.CurrentRow.Cells["BorrowRetNo"].Value.ToString().Trim();
-                lblRetDate.Text = Convert.ToDateTime(dgvLateRetList.CurrentRow.Cells["BorrowRetDate"].Value.ToString().Trim()).ToString("dd/MM/yyyy hh:mm tt");
-                tbBookTitle.Text = dgvLateRetList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
-                tbBookAuthor.Text = dgvLateRetList.CurrentRow.Cells["Author"].Value.ToString().Trim();
-                tbBookISBN.Text = dgvLateRetList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
-                mskYear.Text = dgvLateRetList.CurrentRow.Cells["Year"].Value.ToString().Trim();
-                tbBookEdition.Text = dgvLateRetList.CurrentRow.Cells["Edition"].Value.ToString().Trim();
-                lblLateDays.Text = dgvLateRetList.CurrentRow.Cells["LateDays"].Value.ToString().Trim();
+                lblBorrowNo.Text = dgvIFList.CurrentRow.Cells["BorrowNo"].Value.ToString().Trim();
+                lblBorrowDate.Text = Convert.ToDateTime(dgvIFList.CurrentRow.Cells["BorrowDate"].Value.ToString().Trim()).ToString("dd/MM/yyyy hh:mm tt");
+                lblBorrowDays.Text = dgvIFList.CurrentRow.Cells["BorrowDays"].Value.ToString().Trim();
+                _borrowRetID = long.Parse(dgvIFList.CurrentRow.Cells["BorrowRetID"].Value.ToString().Trim());
+                lblRetNo.Text = dgvIFList.CurrentRow.Cells["BorrowRetNo"].Value.ToString().Trim();
+                lblRetDate.Text = Convert.ToDateTime(dgvIFList.CurrentRow.Cells["BorrowRetDate"].Value.ToString().Trim()).ToString("dd/MM/yyyy hh:mm tt");
+                tbBookTitle.Text = dgvIFList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
+                tbBookAuthor.Text = dgvIFList.CurrentRow.Cells["Author"].Value.ToString().Trim();
+                tbBookISBN.Text = dgvIFList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
+                mskYear.Text = dgvIFList.CurrentRow.Cells["Year"].Value.ToString().Trim();
+                tbBookEdition.Text = dgvIFList.CurrentRow.Cells["Edition"].Value.ToString().Trim();
+                lblLateDays.Text = dgvIFList.CurrentRow.Cells["LateDays"].Value.ToString().Trim();
             }
         }
         //----------------------------NewImposeFineRefNo------------------------------------------------------------------
@@ -220,7 +201,7 @@ namespace LibraryInfoSystem
 
             ImopseFine.GetImposeFineNo();
             tbRefNo.Text = ImopseFine.IFineRefNo.ToString();
-            dcImposeDate.Value = DateTime.Now;
+            dcFinePauDate.Value = DateTime.Now;
 
             _borrowRetID = 0;
             lblBorrowNo.Text = "";
@@ -238,7 +219,7 @@ namespace LibraryInfoSystem
 
             ImopseFine.UEmail = tbUEmail.Text;
             LateRetList = ImopseFine.GetLateRetList();
-            dgvLateRetList.DataSource = LateRetList;
+            dgvIFList.DataSource = LateRetList;
             setGrid();
         }
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
