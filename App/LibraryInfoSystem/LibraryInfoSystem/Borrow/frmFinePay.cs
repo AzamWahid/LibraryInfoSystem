@@ -192,7 +192,7 @@ namespace LibraryInfoSystem
         private void button1_Click(object sender, EventArgs e)
         {
             BaseFont baseFont = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
-            PdfPTable PdfPTable = new PdfPTable(dgvIFList.Rows.Count);
+            PdfPTable PdfPTable = new PdfPTable(dgvIFList.Columns.Cast<DataGridViewColumn>().Count(c => c.Visible));
             PdfPTable.DefaultCell.Padding = 3;
             PdfPTable.WidthPercentage = 100;
             PdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -210,6 +210,7 @@ namespace LibraryInfoSystem
                     PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, text));
                     cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
 
+      
 
 
                     PdfPTable.AddCell(cell);
