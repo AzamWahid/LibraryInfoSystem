@@ -31,10 +31,11 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imposeFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imposeFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.finePaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,15 +62,23 @@
             // bookManagementToolStripMenuItem
             // 
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
+            // 
+            // imposeFineToolStripMenuItem
+            // 
+            this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
+            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.imposeFineToolStripMenuItem.Text = "Impose Fine";
+            this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.borrowToolStripMenuItem,
-            this.borrowReturnToolStripMenuItem});
+            this.borrowReturnToolStripMenuItem,
+            this.finePaymentToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
             this.userToolStripMenuItem.Text = "User";
@@ -77,23 +86,23 @@
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // borrowReturnToolStripMenuItem
             // 
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
-            // imposeFineToolStripMenuItem
+            // finePaymentToolStripMenuItem
             // 
-            this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
-            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.imposeFineToolStripMenuItem.Text = "Impose Fine";
-            this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
+            this.finePaymentToolStripMenuItem.Name = "finePaymentToolStripMenuItem";
+            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.finePaymentToolStripMenuItem.Text = "Fine Payment";
+            this.finePaymentToolStripMenuItem.Click += new System.EventHandler(this.finePaymentToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -129,5 +138,6 @@
         private ToolStripMenuItem borrowToolStripMenuItem;
         private ToolStripMenuItem borrowReturnToolStripMenuItem;
         private ToolStripMenuItem imposeFineToolStripMenuItem;
+        private ToolStripMenuItem finePaymentToolStripMenuItem;
     }
 }

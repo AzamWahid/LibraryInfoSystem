@@ -60,5 +60,12 @@ namespace LibraryInfoSystem.menu
             frmImposeFine.MdiParent = this;
             frmImposeFine.Show();
         }
+
+        private void finePaymentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFinePay frmFinePay = new frmFinePay(login);
+            frmFinePay.MdiParent = this;
+            frmFinePay.Show();
+        }
     }
 }

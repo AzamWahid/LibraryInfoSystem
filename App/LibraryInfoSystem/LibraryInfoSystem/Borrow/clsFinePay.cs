@@ -10,10 +10,10 @@ namespace LibraryInfoSystem.Borrow
 {
     public class clsFinePay
     {
-        public string? UEmail { get; set; }
-        public string? UName { get; set; }
-        public string? UMobile { get; set; }
-        public string? UType { get; set; }
+        public long? UID { get; set; }
+        public long? FinePayRefNo { get; set; }
+        public DateTime? FinePayRefDate { get; set; }
+        public long? IFID {get; set; }
         public long? IFineRefNo { get; set; }
         public DateTime? IFineRefDate { get; set; }
         public long? BorrowID { get; set; }
@@ -38,13 +38,13 @@ namespace LibraryInfoSystem.Borrow
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);
         }
-        public List<ClsImopseFine> GetLateRetList()
+        public List<clsFinePay> GetImposeFineList()
         {
 
-            List<ClsImopseFine> LateRetList = new List<ClsImopseFine>();
-            SqlCommand cmd = new SqlCommand("Sp_GetLateReturnList", connection);
+            List<clsFinePay> FinePayList = new List<clsFinePay>();
+            SqlCommand cmd = new SqlCommand("Sp_GetUserImposeFine", connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@UEmail", this.UEmail);
+            cmd.Parameters.AddWithValue("@UID", this.UID);
 
             connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -57,31 +57,35 @@ namespace LibraryInfoSystem.Borrow
 
                 while (reader.Read())
                 {
-                    ClsImopseFine ImopseFine = new ClsImopseFine();
+                    clsFinePay finePay = new clsFinePay();
 
-                    ImopseFine.BorrowID = long.Parse(reader["BBID"].ToString());
-                    ImopseFine.BorrowNo = long.Parse(reader["BBRefNo"].ToString());
-                    ImopseFine.BorrowDate = DateTime.Parse(reader["BBRefDate"].ToString());
-                    ImopseFine.BorrowDays = long.Parse(reader["BBDays"].ToString());
-                    ImopseFine.BorrowRetID = long.Parse(reader["BRID"].ToString());
-                    ImopseFine.BorrowRetNo = long.Parse(reader["BRRefNo"].ToString());
-                    ImopseFine.BorrowRetDate = DateTime.Parse(reader["BRRefDate"].ToString());
-                    ImopseFine.BookTitle = reader["BookTitle"].ToString();
-                    ImopseFine.Author = reader["BookAuthor"].ToString();
-                    ImopseFine.ISBN = reader["BookISBN"].ToString();
-                    ImopseFine.Year = long.Parse(reader["BookYear"].ToString());
-                    ImopseFine.Edition = long.Parse(reader["BookEdition"].ToString());
-                    ImopseFine.LateDays = long.Parse(reader["late_Days"].ToString());
+                    finePay.IFID = long.Parse(reader["IFID"].ToString());
+                    finePay.IFineRefNo = long.Parse(reader["IFRefNo"].ToString());
+                    finePay.IFineRefDate = DateTime.Parse(reader["IFRefDate"].ToString());
+                    finePay.BorrowID = long.Parse(reader["BBID"].ToString());
+                    finePay.BorrowNo = long.Parse(reader["BBRefNo"].ToString());
+                    finePay.BorrowDate = DateTime.Parse(reader["BBRefDate"].ToString());
+                    finePay.BorrowDays = long.Parse(reader["BBDays"].ToString());
+                    finePay.BorrowRetID = long.Parse(reader["BRID"].ToString());
+                    finePay.BorrowRetNo = long.Parse(reader["BRRefNo"].ToString());
+                    finePay.BorrowRetDate = DateTime.Parse(reader["BRRefDate"].ToString());
+                    finePay.BookTitle = reader["BookTitle"].ToString();
+                    finePay.Author = reader["BookAuthor"].ToString();
+                    finePay.ISBN = reader["BookISBN"].ToString();
+                    finePay.Year = long.Parse(reader["BookYear"].ToString());
+                    finePay.Edition = long.Parse(reader["BookEdition"].ToString());
+                    finePay.LateDays = long.Parse(reader["late_Days"].ToString());
+                    finePay.FineAmnt = decimal.Parse(reader["IFAmnt"].ToString());
 
-                    LateRetList.Add(ImopseFine);
+                    FinePayList.Add(finePay);
                 }
             }
             connection.Close();
-            return LateRetList;
+            return FinePayList;
         }
-        public void GetImposeFineNo()
+        public void GetFinePayNo()
         {
-            SqlCommand cmd = new SqlCommand("sp_GetImposeFineNo", connection);
+            SqlCommand cmd = new SqlCommand("sp_GetFinePayNo", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -89,60 +93,20 @@ namespace LibraryInfoSystem.Borrow
             SqlDataReader reader = cmd.ExecuteReader();
 
             reader.Read();
-            this.IFineRefNo = long.Parse(reader["ImposeRefNo"].ToString());
+            this.FinePayRefNo = long.Parse(reader["FRefNo"].ToString());
             connection.Close();
 
         }
-        public bool ChectUser()
+
+        public void SaveFinePay()
         {
-            SqlCommand cmd = new SqlCommand("sp_CheckUserExists", connection);
+            SqlCommand cmd = new SqlCommand("sp_SaveFinePay", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@UEmail", this.UEmail);
-
-            connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-
-            if (reader != null && reader.HasRows)
-            {
-                reader.Read();
-                this.UEmail = reader["UEmail"].ToString();
-                this.UName = reader["UName"].ToString();
-                this.UMobile = reader["UMobileNo"].ToString();
-                this.UType = reader["UType"].ToString();
-                connection.Close();
-                return true;
-            }
-            else
-            {
-                connection.Close();
-                return false;
-            }
-        }
-
-
-        public void SaveImposeFine()
-        {
-            SqlCommand cmd = new SqlCommand("sp_SaveImposeFine", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@IFRefNo", this.IFineRefNo);
-            cmd.Parameters.AddWithValue("@IFRefDate", this.IFineRefDate);
-            cmd.Parameters.AddWithValue("@BorrowRetID", this.BorrowRetID);
-            cmd.Parameters.AddWithValue("@FineAmnt", this.FineAmnt);
-
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
-
-        }
-        public void NeglectImposeFine()
-        {
-            SqlCommand cmd = new SqlCommand("sp_NeglectImposeFine", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@BorrowRetID", this.BorrowRetID);
+            cmd.Parameters.AddWithValue("@FRefNo", this.FinePayRefNo);
+            cmd.Parameters.AddWithValue("@FRefDate", this.FinePayRefDate);
+            cmd.Parameters.AddWithValue("@FIFID", this.IFID);
+            cmd.Parameters.AddWithValue("@FAmnt", this.FineAmnt);
 
             connection.Open();
             cmd.ExecuteNonQuery();

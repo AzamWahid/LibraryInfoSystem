@@ -43,6 +43,10 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.gbxInputs = new System.Windows.Forms.GroupBox();
+            this.lblImposeDate = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lblImposeNo = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.tbFineValue = new System.Windows.Forms.Label();
             this.lblBorrowDays = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -69,10 +73,7 @@
             this.tbRefNo = new System.Windows.Forms.TextBox();
             this.btnPay = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblImposeDate = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblImposeNo = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIFList)).BeginInit();
             this.gbxInputs.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -236,6 +237,48 @@
             this.gbxInputs.Size = new System.Drawing.Size(364, 445);
             this.gbxInputs.TabIndex = 18;
             this.gbxInputs.TabStop = false;
+            // 
+            // lblImposeDate
+            // 
+            this.lblImposeDate.BackColor = System.Drawing.Color.White;
+            this.lblImposeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblImposeDate.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblImposeDate.ForeColor = System.Drawing.Color.Purple;
+            this.lblImposeDate.Location = new System.Drawing.Point(193, 82);
+            this.lblImposeDate.Name = "lblImposeDate";
+            this.lblImposeDate.Size = new System.Drawing.Size(159, 29);
+            this.lblImposeDate.TabIndex = 54;
+            this.lblImposeDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(158, 89);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 15);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "Date :";
+            // 
+            // lblImposeNo
+            // 
+            this.lblImposeNo.BackColor = System.Drawing.Color.White;
+            this.lblImposeNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblImposeNo.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblImposeNo.ForeColor = System.Drawing.Color.Purple;
+            this.lblImposeNo.Location = new System.Drawing.Point(88, 82);
+            this.lblImposeNo.Name = "lblImposeNo";
+            this.lblImposeNo.Size = new System.Drawing.Size(68, 29);
+            this.lblImposeNo.TabIndex = 52;
+            this.lblImposeNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 89);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(74, 15);
+            this.label16.TabIndex = 51;
+            this.label16.Text = "Impose No. :";
             // 
             // tbFineValue
             // 
@@ -508,6 +551,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.tbSearch);
             this.groupBox2.Controls.Add(this.dgvIFList);
@@ -519,47 +563,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impose Fine List";
             // 
-            // lblImposeDate
+            // button1
             // 
-            this.lblImposeDate.BackColor = System.Drawing.Color.White;
-            this.lblImposeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblImposeDate.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblImposeDate.ForeColor = System.Drawing.Color.Purple;
-            this.lblImposeDate.Location = new System.Drawing.Point(193, 82);
-            this.lblImposeDate.Name = "lblImposeDate";
-            this.lblImposeDate.Size = new System.Drawing.Size(159, 29);
-            this.lblImposeDate.TabIndex = 54;
-            this.lblImposeDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(158, 89);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 15);
-            this.label10.TabIndex = 53;
-            this.label10.Text = "Date :";
-            // 
-            // lblImposeNo
-            // 
-            this.lblImposeNo.BackColor = System.Drawing.Color.White;
-            this.lblImposeNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblImposeNo.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lblImposeNo.ForeColor = System.Drawing.Color.Purple;
-            this.lblImposeNo.Location = new System.Drawing.Point(88, 82);
-            this.lblImposeNo.Name = "lblImposeNo";
-            this.lblImposeNo.Size = new System.Drawing.Size(68, 29);
-            this.lblImposeNo.TabIndex = 52;
-            this.lblImposeNo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 89);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 15);
-            this.label16.TabIndex = 51;
-            this.label16.Text = "Impose No. :";
+            this.button1.BackColor = System.Drawing.Color.Green;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(291, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(71, 30);
+            this.button1.TabIndex = 55;
+            this.button1.Text = "Pay";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmFinePay
             // 
@@ -574,7 +589,7 @@
             this.Name = "frmFinePay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fine Payment";
-            this.Activated += new System.EventHandler(this.frmImposeFine_Activated);
+            this.Activated += new System.EventHandler(this.frmFinePay_Activated);
             this.Load += new System.EventHandler(this.frmFinePay_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIFList)).EndInit();
             this.gbxInputs.ResumeLayout(false);
@@ -632,5 +647,6 @@
         private Label label10;
         private Label lblImposeNo;
         private Label label16;
+        private Button button1;
     }
 }
