@@ -36,6 +36,9 @@
             this.borrowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowReturnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.finePaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +46,9 @@
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
-            this.userToolStripMenuItem});
+            this.userToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.reportsToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(792, 24);
@@ -86,23 +91,43 @@
             // borrowToolStripMenuItem
             // 
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // borrowReturnToolStripMenuItem
             // 
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
             // finePaymentToolStripMenuItem
             // 
             this.finePaymentToolStripMenuItem.Name = "finePaymentToolStripMenuItem";
-            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.finePaymentToolStripMenuItem.Text = "Fine Payment";
             this.finePaymentToolStripMenuItem.Click += new System.EventHandler(this.finePaymentToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(12, 20);
+            // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bookDetailsToolStripMenuItem});
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+            this.reportsToolStripMenuItem.Text = "Admin Reports";
+            // 
+            // bookDetailsToolStripMenuItem
+            // 
+            this.bookDetailsToolStripMenuItem.Name = "bookDetailsToolStripMenuItem";
+            this.bookDetailsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.bookDetailsToolStripMenuItem.Text = "Book Details";
+            this.bookDetailsToolStripMenuItem.Click += new System.EventHandler(this.bookDetailsToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -115,6 +140,7 @@
             this.Name = "frmMenu";
             this.Text = "Library Information System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -139,5 +165,8 @@
         private ToolStripMenuItem borrowReturnToolStripMenuItem;
         private ToolStripMenuItem imposeFineToolStripMenuItem;
         private ToolStripMenuItem finePaymentToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem reportsToolStripMenuItem;
+        private ToolStripMenuItem bookDetailsToolStripMenuItem;
     }
 }

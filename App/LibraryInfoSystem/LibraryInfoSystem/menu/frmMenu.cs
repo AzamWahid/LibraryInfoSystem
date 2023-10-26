@@ -20,7 +20,9 @@ namespace LibraryInfoSystem.menu
 
             this.login = login;
         }
-
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+        }
         private void btnUserManagement_Click(object sender, EventArgs e)
         {
 
@@ -66,6 +68,13 @@ namespace LibraryInfoSystem.menu
             frmFinePay frmFinePay = new frmFinePay(login);
             frmFinePay.MdiParent = this;
             frmFinePay.Show();
+        }
+
+        private void bookDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBookReport frmBookReport = new frmBookReport(login);
+            frmBookReport.MdiParent = this;
+            frmBookReport.Show();
         }
     }
 }

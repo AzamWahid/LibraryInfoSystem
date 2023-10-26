@@ -26,8 +26,8 @@ namespace LibraryInfoSystem.Borrow
         public string? BookTitle { get; set; }
         public string? Author { get; set; }
         public string? ISBN { get; set; }
-        public long? Year { get; set; }
         public long? Edition { get; set; }
+        public long? Year { get; set; }
         public char? BRFineYN { get; set; }
         public long? LateDays { get; set; }
         public decimal? FineAmnt { get; set; }
@@ -69,8 +69,8 @@ namespace LibraryInfoSystem.Borrow
                     ImopseFine.BookTitle = reader["BookTitle"].ToString();
                     ImopseFine.Author = reader["BookAuthor"].ToString();
                     ImopseFine.ISBN = reader["BookISBN"].ToString();
-                    ImopseFine.Year = long.Parse(reader["BookYear"].ToString());
                     ImopseFine.Edition = long.Parse(reader["BookEdition"].ToString());
+                    ImopseFine.Year = long.Parse(reader["BookYear"].ToString());
                     ImopseFine.LateDays = long.Parse(reader["late_Days"].ToString());
 
                     LateRetList.Add(ImopseFine);

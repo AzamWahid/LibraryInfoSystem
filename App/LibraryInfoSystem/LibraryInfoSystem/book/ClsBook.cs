@@ -10,8 +10,8 @@ namespace LibraryInfoSystem
         public string? BookTitle { get; set; }
         public string? Author { get; set; }
         public string? ISBN { get; set; }
-        public long? Year { get; set; }
         public long Edition { get; set; }
+        public long? Year { get; set; }
         public long NoofCopies { get; set; }
 
         private readonly SqlConnection connection;
@@ -42,8 +42,8 @@ namespace LibraryInfoSystem
                     book.BookTitle = reader["BookTitle"].ToString();
                     book.Author = reader["BookAuthor"].ToString();
                     book.ISBN = reader["BookISBN"].ToString();
-                    book.Year = long.Parse(reader["BookYear"].ToString());
                     book.Edition = long.Parse(reader["BookEdition"].ToString());
+                    book.Year = long.Parse(reader["BookYear"].ToString());
                     book.NoofCopies = long.Parse(reader["BookNoofCopies"].ToString());
                     bookList.Add(book);
                 }

@@ -26,8 +26,8 @@ namespace LibraryInfoSystem.Borrow
         public string? BookTitle { get; set; }
         public string? Author { get; set; }
         public string? ISBN { get; set; }
-        public long? Year { get; set; }
         public long? Edition { get; set; }
+        public long? Year { get; set; }
         public char? BRFineYN { get; set; }
         public long? LateDays { get; set; }
         public decimal? FineAmnt { get; set; }
@@ -72,8 +72,8 @@ namespace LibraryInfoSystem.Borrow
                     finePay.BookTitle = reader["BookTitle"].ToString();
                     finePay.Author = reader["BookAuthor"].ToString();
                     finePay.ISBN = reader["BookISBN"].ToString();
-                    finePay.Year = long.Parse(reader["BookYear"].ToString());
                     finePay.Edition = long.Parse(reader["BookEdition"].ToString());
+                    finePay.Year = long.Parse(reader["BookYear"].ToString());
                     finePay.LateDays = long.Parse(reader["late_Days"].ToString());
                     finePay.FineAmnt = decimal.Parse(reader["IFAmnt"].ToString());
 

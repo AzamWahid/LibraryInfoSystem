@@ -1,10 +1,8 @@
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.collection;
 using LibraryInfoSystem.Borrow;
 using LibraryInfoSystem.Register_Login;
 using System.Data;
-using System.IO;
 
 namespace LibraryInfoSystem
 {
@@ -63,6 +61,7 @@ namespace LibraryInfoSystem
             dgvIFList.Columns["LateDays"].HeaderText = "Late Days";
             dgvIFList.Columns["LateDays"].Width = 50;
             dgvIFList.Columns["LateDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvIFList.Columns["LateDays"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvIFList.Columns["FineAmnt"].HeaderText = "Fine Value";
             dgvIFList.Columns["FineAmnt"].Width = 50;
@@ -191,63 +190,131 @@ namespace LibraryInfoSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            BaseFont baseFont = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
-            PdfPTable PdfPTable = new PdfPTable(dgvIFList.Columns.Cast<DataGridViewColumn>().Count(c => c.Visible));
-            PdfPTable.DefaultCell.Padding = 3;
-            PdfPTable.WidthPercentage = 100;
-            PdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            PdfPTable.DefaultCell.BorderWidth = 1;
-
-            iTextSharp.text.Font text = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
-
-
-
-            // Add column headers
-            foreach (DataGridViewColumn column in dgvIFList.Columns)
+            try
             {
-                if (column.Visible)  // Check if the column is visible
+                BaseFont baseFont = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
+                PdfPTable PdfPTable = new PdfPTable(dgvIFList.Columns.Cast<DataGridViewColumn>().Count(c => c.Visible));
+                PdfPTable.DefaultCell.Padding = 3;
+                PdfPTable.WidthPercentage = 100;
+                PdfPTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                PdfPTable.DefaultCell.BorderWidth = 0;
+
+                iTextSharp.text.Font text = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
+                float[] columnWidths = { 2f, 4f, 2f, 2f };
+                PdfPTable.SetWidths(columnWidths);
+                foreach (DataGridViewColumn column in dgvIFList.Columns)
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, text));
-                    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-
-      
-
-
-                    PdfPTable.AddCell(cell);
-                }
-            }
-
-            // Add data rows
-            foreach (DataGridViewRow row in dgvIFList.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    if (cell.Visible)  // Check if the column is visible
+                    if (column.Visible)
                     {
-                        PdfPTable.AddCell(new Phrase(cell.Value.ToString(), text));
+                        PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, text));
+                        cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+
+                        if (column.HeaderCell.Style.Alignment == DataGridViewContentAlignment.MiddleCenter)
+                        {
+                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        }
+                        // Set alignment for right-aligned columns
+                        else if (column.HeaderCell.Style.Alignment == DataGridViewContentAlignment.MiddleRight)
+                        {
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                        }
+                        else
+                        {
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT; // Default to center alignment
+                        }
+
+                        PdfPTable.AddCell(cell);
                     }
                 }
-            }
 
-            var savefileddialogue = new SaveFileDialog();
-            savefileddialogue.FileName = "hello";
-            savefileddialogue.DefaultExt = ".pdf";
-            if (savefileddialogue.ShowDialog()==DialogResult.OK)
-            {
-                using (FileStream stream = new FileStream(savefileddialogue.FileName,FileMode.Create))
-                { 
-                    Document pdfdoc = new Document(PageSize.A4,10f,10f,10f,0f);
-                    PdfWriter.GetInstance(pdfdoc,stream);
-                    pdfdoc.Open();
-                    pdfdoc.Add(PdfPTable);
-                    pdfdoc.Close();
-                    stream.Close();
+                // Add data rows
+                foreach (DataGridViewRow row in dgvIFList.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.Visible)  // Check if the column is visible
+                        {
+                            PdfPCell dataCell = new PdfPCell(new Phrase(cell.Value.ToString(), text));
 
+                            if (cell.InheritedStyle.Alignment == DataGridViewContentAlignment.MiddleCenter)
+                            {
+                                dataCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                            }
+                            // Set alignment for right-aligned cells
+                            else if (cell.InheritedStyle.Alignment == DataGridViewContentAlignment.MiddleRight)
+                            {
+                                dataCell.HorizontalAlignment = Element.ALIGN_RIGHT;
+                            }
+                            else
+                            {
+                                dataCell.HorizontalAlignment = Element.ALIGN_LEFT; // Default to center alignment
+                            }
+                            if (cell.OwningColumn.Name == "IFineRefDate")
+                            {
+                                DateTime dateTimeValue;
+                                if (DateTime.TryParse(cell.Value.ToString(), out dateTimeValue))
+                                {
+                                    dataCell.Phrase = new Phrase(dateTimeValue.ToString("dd/MM/yyyy hh:mm tt"), text);
+                                }
+                            }
+                            PdfPTable.AddCell(dataCell);
+                        }
+                    }
                 }
+
+                var savefileddialogue = new SaveFileDialog();
+                savefileddialogue.FileName = "hello";
+                savefileddialogue.DefaultExt = ".pdf";
+                if (savefileddialogue.ShowDialog() == DialogResult.OK)
+                {
+                    using (FileStream stream = new FileStream(savefileddialogue.FileName, FileMode.Create))
+                    {
+                        Document pdfdoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                        PdfWriter.GetInstance(pdfdoc, stream);
+                        pdfdoc.Open();
+
+
+
+                        PdfPTable headerTable = new PdfPTable(1);
+                        headerTable.WidthPercentage = 100;
+                        headerTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                        PdfPCell companyNameCell = new PdfPCell(new Phrase("Library Information System", text));
+                        companyNameCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        companyNameCell.PaddingTop = 10f;
+                        headerTable.AddCell(companyNameCell);
+
+                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Impose Fine List", text));
+                        reportNameCell.HorizontalAlignment = Element.ALIGN_CENTER;
+                        headerTable.AddCell(reportNameCell);
+                        PdfPTable userDetailsTable = new PdfPTable(1);
+                        userDetailsTable.WidthPercentage = 100;
+                        userDetailsTable.DefaultCell.Border = PdfPCell.NO_BORDER;
+
+                        // Add a cell for user details
+                        PdfPCell userDetailsCell = new PdfPCell(new Phrase("User Name: " + login.UName + "           Email: " + login.UEmail + "         Mobile No. : " + login.UMobileNo, text));
+                        userDetailsCell.HorizontalAlignment = Element.ALIGN_LEFT;
+                        userDetailsTable.AddCell(userDetailsCell);
+
+                        pdfdoc.Add(headerTable);
+                        pdfdoc.Add(userDetailsTable);
+                        pdfdoc.Add(PdfPTable);
+                        pdfdoc.Close();
+                        stream.Close();
+
+                    }
+                    MessageBox.Show("PDF saved successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Process Cancel", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
             }
-
-            MessageBox.Show("PDF saved successfully!");
-
+            catch
+            {
+                MessageBox.Show("An error occurred while saving the PDF. Please make sure the file is not already open.", "Warning", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
 
         }
     }

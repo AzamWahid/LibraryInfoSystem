@@ -43,9 +43,9 @@ namespace LibraryInfoSystem.Borrow
                     book.BookTitle = reader["BookTitle"].ToString();
                     book.Author = reader["BookAuthor"].ToString();
                     book.ISBN = reader["BookISBN"].ToString();
-                    book.Year = long.Parse(reader["BookYear"].ToString());
                     book.Edition = long.Parse(reader["BookEdition"].ToString());
-                    book.NoofCopies = long.Parse(reader["BookNoofCopies"].ToString());
+                    book.Year = long.Parse(reader["BookYear"].ToString());
+                    book.NoofCopies = long.Parse(reader["remainingCopies"].ToString());
 
                     bookList.Add(book);
                 }

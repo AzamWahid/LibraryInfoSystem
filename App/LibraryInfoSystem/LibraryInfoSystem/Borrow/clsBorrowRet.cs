@@ -19,8 +19,8 @@ namespace LibraryInfoSystem.Borrow
         public string? BookTitle { get; set; }
         public string? Author { get; set; }
         public string? ISBN { get; set; }
-        public long? Year { get; set; }
         public long? Edition { get; set; }
+        public long? Year { get; set; }
         public char? BRFineYN { get; set; }
         public long? DaysLeft { get; set; }
 
@@ -53,8 +53,8 @@ namespace LibraryInfoSystem.Borrow
                     BorrowRet.BookTitle = reader["BookTitle"].ToString();
                     BorrowRet.Author = reader["BookAuthor"].ToString();
                     BorrowRet.ISBN = reader["BookISBN"].ToString();
-                    BorrowRet.Year = long.Parse(reader["BookYear"].ToString());
                     BorrowRet.Edition = long.Parse(reader["BookEdition"].ToString());
+                    BorrowRet.Year = long.Parse(reader["BookYear"].ToString());
                     BorrowRet.DaysLeft = long.Parse(reader["DaysLeft"].ToString());
 
                     borrowList.Add(BorrowRet);

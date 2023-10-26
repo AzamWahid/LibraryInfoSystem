@@ -31,6 +31,7 @@ namespace LibraryInfoSystem
         {
             
             dgvList.Columns["BookID"].Visible = false;
+            dgvList.Columns["ISBN"].Visible = false;
 
             dgvList.Columns["BookCode"].HeaderText = "Book Code";
             dgvList.Columns["BookCode"].Width = 60;
@@ -39,19 +40,22 @@ namespace LibraryInfoSystem
             dgvList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvList.Columns["Author"].HeaderText = "Book Author";
-            dgvList.Columns["Author"].Width = 80;
-
-            dgvList.Columns["ISBN"].HeaderText = "Book ISBN";
-            dgvList.Columns["ISBN"].Width = 80;
-
-            dgvList.Columns["Year"].HeaderText = "Year";
-            dgvList.Columns["Year"].Width = 45;
+            dgvList.Columns["Author"].Width = 100;
 
             dgvList.Columns["Edition"].HeaderText = "Edition";
             dgvList.Columns["Edition"].Width = 45;
+            dgvList.Columns["Edition"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["Edition"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvList.Columns["Year"].HeaderText = "Year";
+            dgvList.Columns["Year"].Width = 45;
+            dgvList.Columns["Year"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["Year"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             dgvList.Columns["NoofCopies"].HeaderText = "Copies";
-            dgvList.Columns["NoofCopies"].Width = 45;
+            dgvList.Columns["NoofCopies"].Width = 55;
+            dgvList.Columns["NoofCopies"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["NoofCopies"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void btnNew_Click(object sender, EventArgs e)
         {

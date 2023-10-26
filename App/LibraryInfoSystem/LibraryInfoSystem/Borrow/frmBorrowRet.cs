@@ -44,9 +44,7 @@ namespace LibraryInfoSystem
             dgvBorrowList.Columns["ISBN"].Visible = false;
             dgvBorrowList.Columns["Year"].Visible = false;
             dgvBorrowList.Columns["Edition"].Visible = false;
-
-            dgvBorrowList.Columns["BorrowNo"].HeaderText = "Borrow No";
-            dgvBorrowList.Columns["BorrowNo"].Width = 50;
+            dgvBorrowList.Columns["BorrowNo"].Visible = false;
 
             dgvBorrowList.Columns["BorrowDate"].HeaderText = "Borrow Date";
             dgvBorrowList.Columns["BorrowDate"].Width = 120;
@@ -60,6 +58,8 @@ namespace LibraryInfoSystem
 
             dgvBorrowList.Columns["DaysLeft"].HeaderText = "Return Day Left";
             dgvBorrowList.Columns["DaysLeft"].Width = 50;
+            dgvBorrowList.Columns["DaysLeft"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBorrowList.Columns["DaysLeft"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
         private void btnReturn_Click(object sender, EventArgs e)
         {

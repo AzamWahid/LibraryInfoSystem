@@ -20,7 +20,6 @@ namespace LibraryInfoSystem
         {
 
             NewBorrow();
-            getListData();
         }
 
         private void getListData()
@@ -35,24 +34,29 @@ namespace LibraryInfoSystem
 
             dgvBookList.Columns["BookID"].Visible = false;
             dgvBookList.Columns["BookCode"].Visible = false;
+            dgvBookList.Columns["ISBN"].Visible = false;
 
             dgvBookList.Columns["BookTitle"].HeaderText = "Book Title";
             dgvBookList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvBookList.Columns["Author"].HeaderText = "Book Author";
-            dgvBookList.Columns["Author"].Width = 80;
-
-            dgvBookList.Columns["ISBN"].HeaderText = "Book ISBN";
-            dgvBookList.Columns["ISBN"].Width = 80;
-
-            dgvBookList.Columns["Year"].HeaderText = "Year";
-            dgvBookList.Columns["Year"].Width = 45;
+            dgvBookList.Columns["Author"].Width = 100;
 
             dgvBookList.Columns["Edition"].HeaderText = "Edition";
             dgvBookList.Columns["Edition"].Width = 45;
+            dgvBookList.Columns["Edition"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBookList.Columns["Edition"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dgvBookList.Columns["NoofCopies"].HeaderText = "Copies";
-            dgvBookList.Columns["NoofCopies"].Width = 45;
+            dgvBookList.Columns["Year"].HeaderText = "Year";
+            dgvBookList.Columns["Year"].Width = 45;
+            dgvBookList.Columns["Year"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBookList.Columns["Year"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;;
+
+            dgvBookList.Columns["NoofCopies"].HeaderText = "Available Copies";
+            dgvBookList.Columns["NoofCopies"].Width = 60;
+            dgvBookList.Columns["NoofCopies"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBookList.Columns["NoofCopies"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
         }
         private void btnBorrow_Click(object sender, EventArgs e)
         {
@@ -89,7 +93,6 @@ namespace LibraryInfoSystem
                 var filteredList = BookList.Where(book =>
                     book.BookTitle.ToLower().Contains(searchTerm) ||
                     book.Author.ToLower().Contains(searchTerm) ||
-                    book.ISBN.ToLower().Contains(searchTerm) ||
                     book.Year.ToString().Contains(searchTerm) ||
                     book.Edition.ToString().Contains(searchTerm) ||
                     book.NoofCopies.ToString().Contains(searchTerm)
@@ -185,6 +188,7 @@ namespace LibraryInfoSystem
             tbBookEdition.Text = "0";
             tbBorrowDays.Text = "0";
             tbBorrowDays.Focus();
+            getListData();
         }
 
 
