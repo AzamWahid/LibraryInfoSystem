@@ -24,7 +24,7 @@ namespace LibraryInfoSystem.Borrow
         public string? UMobileNo { get; set; }
 
         private readonly SqlConnection connection;
-        public clsBorrowReport()
+        public clsImposeFineReport()
         {
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);
