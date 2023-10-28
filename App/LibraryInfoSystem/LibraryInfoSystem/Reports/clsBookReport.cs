@@ -31,7 +31,7 @@ namespace LibraryInfoSystem.Borrow
         {
 
             List<clsBookReport> bookList = new List<clsBookReport>();
-            SqlCommand cmd = new SqlCommand("sp_getAvailableBook", connection);
+            SqlCommand cmd = new SqlCommand("sp_RptBookDetails", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             connection.Open();

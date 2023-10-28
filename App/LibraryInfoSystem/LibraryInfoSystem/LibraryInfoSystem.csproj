@@ -41,6 +41,9 @@
     <Compile Update="Register_Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Reports\frmBorrowReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Reports\frmBookReport.cs">
       <SubType>Form</SubType>
     </Compile>

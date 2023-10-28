@@ -76,5 +76,12 @@ namespace LibraryInfoSystem.menu
             frmBookReport.MdiParent = this;
             frmBookReport.Show();
         }
+
+        private void borrowBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBorrowReport frmBorrowReport = new frmBorrowReport(login);
+            frmBorrowReport.MdiParent = this;
+            frmBorrowReport.Show();
+        }
     }
 }

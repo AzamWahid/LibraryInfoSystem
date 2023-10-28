@@ -39,6 +39,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.borrowBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +118,8 @@
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bookDetailsToolStripMenuItem});
+            this.bookDetailsToolStripMenuItem,
+            this.borrowBooksToolStripMenuItem});
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.reportsToolStripMenuItem.Text = "Admin Reports";
@@ -125,9 +127,16 @@
             // bookDetailsToolStripMenuItem
             // 
             this.bookDetailsToolStripMenuItem.Name = "bookDetailsToolStripMenuItem";
-            this.bookDetailsToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.bookDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bookDetailsToolStripMenuItem.Text = "Book Details";
             this.bookDetailsToolStripMenuItem.Click += new System.EventHandler(this.bookDetailsToolStripMenuItem_Click);
+            // 
+            // borrowBooksToolStripMenuItem
+            // 
+            this.borrowBooksToolStripMenuItem.Name = "borrowBooksToolStripMenuItem";
+            this.borrowBooksToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.borrowBooksToolStripMenuItem.Text = "Borrow Books";
+            this.borrowBooksToolStripMenuItem.Click += new System.EventHandler(this.borrowBooksToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -168,5 +177,6 @@
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem reportsToolStripMenuItem;
         private ToolStripMenuItem bookDetailsToolStripMenuItem;
+        private ToolStripMenuItem borrowBooksToolStripMenuItem;
     }
 }
