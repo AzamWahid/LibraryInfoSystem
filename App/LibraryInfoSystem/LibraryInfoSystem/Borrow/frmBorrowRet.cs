@@ -95,7 +95,6 @@ namespace LibraryInfoSystem
             else
             {
                 var filteredList = BorrowtList.Where(borrow =>
-                    borrow.BorrowNo.ToString().ToLower().Contains(searchTerm) ||
                     borrow.BorrowDate.ToString().ToLower().Contains(searchTerm) ||
                     borrow.BookTitle.ToLower().Contains(searchTerm) ||
                     borrow.Author.ToLower().Contains(searchTerm) ||

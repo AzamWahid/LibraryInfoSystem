@@ -6,21 +6,21 @@ using System.Data;
 
 namespace LibraryInfoSystem
 {
-    public partial class frmImpFineSummReport : Form
+    public partial class frmImpFineDetReport : Form
     {
-        List<clsBorrowReport> BorrowList = new List<clsBorrowReport>();
+        List<clsFineDetReport> DetList = new List<clsFineDetReport>();
 
         private ClsLogin login;
-        public frmImpFineSummReport(ClsLogin login)
+        public frmImpFineDetReport(ClsLogin login)
         {
             InitializeComponent();
             this.login = login;
         }
 
-        private void frmImpFineSummReport_Load(object sender, EventArgs e)
+        private void frmImpFineDetReport_Load(object sender, EventArgs e)
         {
             rbtnAll.Checked = true;
-          //  getListData();
+            //  getListData();
         }
 
         private void getListData()
@@ -29,38 +29,79 @@ namespace LibraryInfoSystem
         }
         private void btnFetch_Click(object sender, EventArgs e)
         {
-            clsBorrowReport borrow = new clsBorrowReport();
-            borrow.UEmail = tbEmail.Text;
-            BorrowList = borrow.GetBorrowList();
-            if (BorrowList.Count == 0)
+            clsFineDetReport FineDet = new clsFineDetReport();
+            FineDet.UEmail = tbEmail.Text;
+            DetList = FineDet.GetImposeFineDetail();
+            if (DetList.Count == 0)
             {
                 MessageBox.Show("No record found", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dgvList.DataSource = BorrowList;
+                dgvList.DataSource = DetList;
                 setGrid();
             }
             else
             {
-                dgvList.DataSource = BorrowList;
+                dgvList.DataSource = DetList;
                 setGrid();
             }
         }
         private void setGrid()
         {
+            dgvList.Columns["IFRefDate"].HeaderText = "Impose Fine Date";
+            dgvList.Columns["IFRefDate"].Width = 120;
+            dgvList.Columns["IFRefDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
             dgvList.Columns["UEmail"].HeaderText = "User Email";
             dgvList.Columns["UEmail"].Width = 150;
 
             dgvList.Columns["UName"].HeaderText = "User Name";
-            dgvList.Columns["UName"].Width = 140;
+            dgvList.Columns["UName"].Width = 80;
 
             dgvList.Columns["UMobileNo"].HeaderText = "User Mobile";
-            dgvList.Columns["UMobileNo"].Width = 120;
+            dgvList.Columns["UMobileNo"].Width = 80;
 
-            dgvList.Columns["IFAmnt"].HeaderText = "Fine Amount";
-            dgvList.Columns["IFAmnt"].Width = 45;
-            dgvList.Columns["IFAmnt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvList.Columns["IFAmnt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvList.Columns["BBRefDate"].HeaderText = "Borrow Date";
+            dgvList.Columns["BBRefDate"].Width = 120;
+            dgvList.Columns["BBRefDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
+            dgvList.Columns["BBDays"].HeaderText = "Borrow Days";
+            dgvList.Columns["BBDays"].Width = 50;
+            dgvList.Columns["BBDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["BBDays"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvList.Columns["BRRefDate"].HeaderText = "Borrow Return Date";
+            dgvList.Columns["BRREfDate"].Width = 120;
+            dgvList.Columns["BRREfDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
+
+            dgvList.Columns["late_Days"].HeaderText = "Late Days";
+            dgvList.Columns["late_Days"].Width = 45;
+            dgvList.Columns["late_Days"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["late_Days"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvList.Columns["BookTitle"].HeaderText = "Book Title";
+            dgvList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgvList.Columns["Author"].HeaderText = "Book Author";
+            dgvList.Columns["Author"].Width = 130;
+            dgvList.Columns["Author"].Visible = false;
+
+            dgvList.Columns["ISBN"].HeaderText = "ISBN";
+            dgvList.Columns["ISBN"].Visible = false;
+
+            dgvList.Columns["Edition"].HeaderText = "Edition";
+            dgvList.Columns["Edition"].Width = 42;
+            dgvList.Columns["Edition"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["Edition"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvList.Columns["Year"].HeaderText = "Year";
+            dgvList.Columns["Year"].Width = 40;
+            dgvList.Columns["Year"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["Year"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["Year"].Visible = false;
+
+            dgvList.Columns["FineAmnt"].HeaderText = "Fine Amount";
+            dgvList.Columns["FineAmnt"].Width = 60;
+            dgvList.Columns["FineAmnt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvList.Columns["FineAmnt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void tbSearch_KeyDown(object sender, KeyEventArgs e)
@@ -69,17 +110,24 @@ namespace LibraryInfoSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                dgvList.DataSource = BorrowList;
+                dgvList.DataSource = DetList;
             }
             else
             {
-                var filteredList = BorrowList.Where(fine =>
-                    fine.UEmail.ToString().Contains(searchTerm) ||
-                    fine.UName.ToString().Contains(searchTerm) ||
-                    fine.UMobileNo.ToString().Contains(searchTerm) ||
-                    fine.IFAmnt.ToString().Contains(searchTerm)
-
-                ).ToList();
+                var filteredList = DetList.Where(Fine =>
+                    Fine.IFRefDate.ToString().Contains(searchTerm) ||
+                    Fine.UEmail.ToString().Contains(searchTerm) ||
+                    Fine.UName.ToString().Contains(searchTerm) ||
+                    Fine.UMobileNo.ToString().Contains(searchTerm) ||
+                    Fine.BBRefDate.ToString().Contains(searchTerm) ||
+                    Fine.BBDays.ToString().Contains(searchTerm) ||
+                    Fine.BRRefDate.ToString().Contains(searchTerm) ||
+                    Fine.late_Days.ToString().Contains(searchTerm) ||
+                    Fine.BookTitle.ToLower().Contains(searchTerm) ||
+                    Fine.Author.ToLower().Contains(searchTerm) ||
+                    Fine.Year.ToString().Contains(searchTerm) ||
+                    Fine.ISBN.ToString().Contains(searchTerm) ||
+                    Fine.Edition.ToString().Contains(searchTerm)).ToList();
                 dgvList.DataSource = filteredList;
             }
         }

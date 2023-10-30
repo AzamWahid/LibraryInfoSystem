@@ -83,5 +83,34 @@ namespace LibraryInfoSystem.menu
             frmBorrowReport.MdiParent = this;
             frmBorrowReport.Show();
         }
+
+        private void imposeFineMemberToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFineMembersReport frmFineMembersReport = new frmFineMembersReport(login);
+            frmFineMembersReport.MdiParent = this;
+            frmFineMembersReport.Show();
+        }
+
+        private void imposeFineDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmImpFineDetReport frmImpFineDetReport = new frmImpFineDetReport(login);
+            frmImpFineDetReport.MdiParent = this;
+            frmImpFineDetReport.Show();
+        }
+
+        private void myBorrowBookToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserBorrowReport frmUserBorrowReport = new frmUserBorrowReport(login);
+            frmUserBorrowReport.MdiParent = this;
+            frmUserBorrowReport.Show();
+        }
+
+        private void myFineDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserFineReport frmUserFineReport = new frmUserFineReport(login);
+            frmUserFineReport.MdiParent = this;
+            frmUserFineReport.Show();
+
+        }
     }
 }
