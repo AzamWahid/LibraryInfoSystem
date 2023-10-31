@@ -43,7 +43,7 @@ namespace LibraryInfoSystem
             dgvIFList.Columns["BorrowDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
             dgvIFList.Columns["BorrowDays"].HeaderText = "Borrow Days";
-            dgvIFList.Columns["BorrowDays"].Width = 40;
+            dgvIFList.Columns["BorrowDays"].Width = 50;
             dgvIFList.Columns["BorrowDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvIFList.Columns["BorrowDays"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -61,7 +61,7 @@ namespace LibraryInfoSystem
 
             dgvIFList.Columns["Author"].HeaderText = "Book Author";
             dgvIFList.Columns["Author"].Width = 120;
-            //dgvIFList.Columns["Author"].Visible = false;
+            dgvIFList.Columns["Author"].Visible = false;
 
             dgvIFList.Columns["ISBN"].HeaderText = "ISBN";
             dgvIFList.Columns["ISBN"].Width = 100;
@@ -79,7 +79,7 @@ namespace LibraryInfoSystem
             dgvIFList.Columns["Year"].Visible = false;
 
             dgvIFList.Columns["FineAmnt"].HeaderText = "Fine Value";
-            dgvIFList.Columns["FineAmnt"].Width = 50;
+            dgvIFList.Columns["FineAmnt"].Width = 80;
             dgvIFList.Columns["FineAmnt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvIFList.Columns["FineAmnt"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
