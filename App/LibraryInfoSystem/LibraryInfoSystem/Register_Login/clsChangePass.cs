@@ -8,27 +8,26 @@ using System.Threading.Tasks;
 
 namespace LibraryInfoSystem.Register_Login
 {
-    public class ClsLogin
+    public class clsChangePass
     {
-        public long? UID { get; set; }
-        public string? UName { get; set; }
         public string? UEmail { get; set; }
-        public string? UMobileNo { get; set; }
-        public string? UPass { get; set; }
+        public string? UCurrPass { get; set; }
+        public string? UNewPass { get; set; }
+        public string? UReNewPass { get; set; }
 
         private readonly SqlConnection connection;
-        public ClsLogin()
+        public clsChangePass()
         {
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);
         }
-        public bool CheckUser()
+        public bool CheckCurrPass()
         {
             SqlCommand cmd = new SqlCommand("sp_CheckUserCredentials", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@UEmail", this.UEmail);
-            cmd.Parameters.AddWithValue("@UPass", this.UPass);
+            cmd.Parameters.AddWithValue("@UPass", this.UCurrPass);
 
             connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -37,10 +36,6 @@ namespace LibraryInfoSystem.Register_Login
             if (reader != null && reader.HasRows)
             {
                 reader.Read();
-                this.UID = long.Parse(reader["UID"].ToString());
-                this.UName = reader["UName"].ToString();
-                this.UEmail = reader["UEmail"].ToString();
-                this.UMobileNo = reader["UMobileNo"].ToString();
                 connection.Close();
                 return true;
             }
@@ -49,6 +44,20 @@ namespace LibraryInfoSystem.Register_Login
                 connection.Close();
                 return false;
             }
+
+        }
+        public void UpdatePass()
+        {
+            SqlCommand cmd = new SqlCommand("sp_UpdatePassword", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@UEmail", this.UEmail);
+            cmd.Parameters.AddWithValue("@UCurrPass", this.UCurrPass);
+            cmd.Parameters.AddWithValue("@UNewPass", this.UNewPass);
+
+            connection.Open();
+            cmd.ExecuteNonQuery();
+            connection.Close();
 
         }
 

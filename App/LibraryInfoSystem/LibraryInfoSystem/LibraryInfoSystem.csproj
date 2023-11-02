@@ -38,6 +38,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Register_Login\frmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Register_Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

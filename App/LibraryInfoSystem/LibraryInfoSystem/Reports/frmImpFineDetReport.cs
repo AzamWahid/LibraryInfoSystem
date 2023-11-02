@@ -145,7 +145,7 @@ namespace LibraryInfoSystem
 
                 iTextSharp.text.Font HeaderFont = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font text = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
-                float[] columnWidths = { 3f, 6f, 4f, 2f, 2f, 2f, 2f, 2f, 2f, 2f, 2f };
+                float[] columnWidths = { 3f, 3f, 3f, 3f, 3f, 2f, 3f, 2f, 6f, 2f,3f };
                 PdfPTable.SetWidths(columnWidths);
                 foreach (DataGridViewColumn column in dgvList.Columns)
                 {
@@ -201,7 +201,7 @@ namespace LibraryInfoSystem
                 }
 
                 var savefileddialogue = new SaveFileDialog();
-                savefileddialogue.FileName = "BorrowBook";
+                savefileddialogue.FileName = "ImposeFineDetail";
                 savefileddialogue.DefaultExt = ".pdf";
                 if (savefileddialogue.ShowDialog() == DialogResult.OK)
                 {
@@ -222,7 +222,7 @@ namespace LibraryInfoSystem
                         companyNameCell.PaddingTop = 10f;
                         headerTable.AddCell(companyNameCell);
 
-                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Book Details", text));
+                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Impose Fine Details", text));
                         reportNameCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         headerTable.AddCell(reportNameCell);
                         PdfPTable userDetailsTable = new PdfPTable(1);

@@ -39,6 +39,7 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIFList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -125,6 +126,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnPDF);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.tbSearch);
             this.groupBox2.Controls.Add(this.dgvIFList);
@@ -135,6 +137,19 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "My Fine List";
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.BackColor = System.Drawing.Color.White;
+            this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPDF.ForeColor = System.Drawing.Color.Red;
+            this.btnPDF.Location = new System.Drawing.Point(334, 16);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnPDF.TabIndex = 19;
+            this.btnPDF.Text = "PDF";
+            this.btnPDF.UseVisualStyleBackColor = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // frmUserFineReport
             // 
@@ -169,5 +184,6 @@
         private TextBox tbSearch;
         private Label label7;
         private GroupBox groupBox2;
+        private Button btnPDF;
     }
 }

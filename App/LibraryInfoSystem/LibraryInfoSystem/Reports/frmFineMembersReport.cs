@@ -146,7 +146,7 @@ namespace LibraryInfoSystem
                 }
 
                 var savefileddialogue = new SaveFileDialog();
-                savefileddialogue.FileName = "BorrowBook";
+                savefileddialogue.FileName = "FineMembers";
                 savefileddialogue.DefaultExt = ".pdf";
                 if (savefileddialogue.ShowDialog() == DialogResult.OK)
                 {
@@ -167,7 +167,7 @@ namespace LibraryInfoSystem
                         companyNameCell.PaddingTop = 10f;
                         headerTable.AddCell(companyNameCell);
 
-                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Book Details", text));
+                        PdfPCell reportNameCell = new PdfPCell(new Phrase("All Members Fine ", text));
                         reportNameCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         headerTable.AddCell(reportNameCell);
                         PdfPTable userDetailsTable = new PdfPTable(1);

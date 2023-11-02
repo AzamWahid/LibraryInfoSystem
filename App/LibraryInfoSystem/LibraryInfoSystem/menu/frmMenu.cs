@@ -112,5 +112,12 @@ namespace LibraryInfoSystem.menu
             frmUserFineReport.Show();
 
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePass frmChangePass = new frmChangePass(login);
+            frmChangePass.MdiParent = this;
+            frmChangePass.Show();
+        }
     }
 }

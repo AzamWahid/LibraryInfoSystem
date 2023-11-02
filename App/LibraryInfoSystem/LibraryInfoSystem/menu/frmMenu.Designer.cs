@@ -44,12 +44,15 @@
             this.userReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myBorrowBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myFineDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.managementToolStripMenuItem,
             this.adminToolStripMenuItem,
             this.userToolStripMenuItem,
             this.reportsToolStripMenuItem,
@@ -165,16 +168,31 @@
             // myBorrowBookToolStripMenuItem
             // 
             this.myBorrowBookToolStripMenuItem.Name = "myBorrowBookToolStripMenuItem";
-            this.myBorrowBookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.myBorrowBookToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.myBorrowBookToolStripMenuItem.Text = "My Borrow Book";
             this.myBorrowBookToolStripMenuItem.Click += new System.EventHandler(this.myBorrowBookToolStripMenuItem_Click);
             // 
             // myFineDetailsToolStripMenuItem
             // 
             this.myFineDetailsToolStripMenuItem.Name = "myFineDetailsToolStripMenuItem";
-            this.myFineDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.myFineDetailsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.myFineDetailsToolStripMenuItem.Text = "My Fine Details";
             this.myFineDetailsToolStripMenuItem.Click += new System.EventHandler(this.myFineDetailsToolStripMenuItem_Click);
+            // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem});
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.managementToolStripMenuItem.Text = "Management";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -221,5 +239,7 @@
         private ToolStripMenuItem userReportsToolStripMenuItem;
         private ToolStripMenuItem myBorrowBookToolStripMenuItem;
         private ToolStripMenuItem myFineDetailsToolStripMenuItem;
+        private ToolStripMenuItem managementToolStripMenuItem;
+        private ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

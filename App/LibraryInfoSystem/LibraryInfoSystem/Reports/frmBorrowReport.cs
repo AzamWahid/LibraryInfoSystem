@@ -207,7 +207,7 @@ namespace LibraryInfoSystem
                         companyNameCell.PaddingTop = 10f;
                         headerTable.AddCell(companyNameCell);
 
-                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Book Details", text));
+                        PdfPCell reportNameCell = new PdfPCell(new Phrase("Borrow Books", text));
                         reportNameCell.HorizontalAlignment = Element.ALIGN_CENTER;
                         headerTable.AddCell(reportNameCell);
                         PdfPTable userDetailsTable = new PdfPTable(1);

@@ -28,7 +28,7 @@ namespace LibraryInfoSystem.Register_Login
             ClsLogin login = new ClsLogin();
             login.UEmail = tbUEmail.Text;
             login.UPass = tbPass.Text;
-            if (login.ChectUser())
+            if (login.CheckUser())
             {
                 frmMenu frmMenu = new frmMenu(login);
                 frmMenu.Show();
