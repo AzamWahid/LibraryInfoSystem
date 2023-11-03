@@ -143,6 +143,16 @@ namespace LibraryInfoSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bookRpt_new {
+            get {
+                object obj = ResourceManager.GetObject("bookRpt_new", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap borrowRptNew {
             get {
                 object obj = ResourceManager.GetObject("borrowRptNew", resourceCulture);
@@ -153,9 +163,29 @@ namespace LibraryInfoSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chnagePass {
+            get {
+                object obj = ResourceManager.GetObject("chnagePass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fine {
             get {
                 object obj = ResourceManager.GetObject("Fine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fineDetails {
+            get {
+                object obj = ResourceManager.GetObject("fineDetails", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +226,26 @@ namespace LibraryInfoSystem.Properties {
         internal static System.Drawing.Bitmap imposeFinememberRpt {
             get {
                 object obj = ResourceManager.GetObject("imposeFinememberRpt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap myBorrow {
+            get {
+                object obj = ResourceManager.GetObject("myBorrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap myFIne {
+            get {
+                object obj = ResourceManager.GetObject("myFIne", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
