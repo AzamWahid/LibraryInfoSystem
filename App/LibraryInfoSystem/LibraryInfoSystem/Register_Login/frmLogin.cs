@@ -46,6 +46,9 @@ namespace LibraryInfoSystem.Register_Login
             frmRegister.Show();
         }
 
-
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

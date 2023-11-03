@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imposeFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +46,6 @@
             this.userReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myBorrowBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myFineDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,21 @@
             this.menuStrip2.TabIndex = 3;
             this.menuStrip2.Text = "menuStrip2";
             // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changePasswordToolStripMenuItem});
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.managementToolStripMenuItem.Text = "Management";
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
+            // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -74,15 +89,20 @@
             // 
             // bookManagementToolStripMenuItem
             // 
+            this.bookManagementToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bookManagementToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.NewBook;
+            this.bookManagementToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
             // 
             // imposeFineToolStripMenuItem
             // 
+            this.imposeFineToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.Fine;
+            this.imposeFineToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
-            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
             this.imposeFineToolStripMenuItem.Text = "Impose Fine";
             this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
             // 
@@ -98,22 +118,28 @@
             // 
             // borrowToolStripMenuItem
             // 
+            this.borrowToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources._1245338;
+            this.borrowToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
             // borrowReturnToolStripMenuItem
             // 
+            this.borrowReturnToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.returnMenu;
+            this.borrowReturnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
             // finePaymentToolStripMenuItem
             // 
+            this.finePaymentToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.finePay;
+            this.finePaymentToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.finePaymentToolStripMenuItem.Name = "finePaymentToolStripMenuItem";
-            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.finePaymentToolStripMenuItem.Text = "Fine Payment";
             this.finePaymentToolStripMenuItem.Click += new System.EventHandler(this.finePaymentToolStripMenuItem_Click);
             // 
@@ -130,22 +156,28 @@
             // 
             // bookDetailsToolStripMenuItem
             // 
+            this.bookDetailsToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.BookRpt;
+            this.bookDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bookDetailsToolStripMenuItem.Name = "bookDetailsToolStripMenuItem";
-            this.bookDetailsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.bookDetailsToolStripMenuItem.Size = new System.Drawing.Size(209, 54);
             this.bookDetailsToolStripMenuItem.Text = "Book Details";
             this.bookDetailsToolStripMenuItem.Click += new System.EventHandler(this.bookDetailsToolStripMenuItem_Click);
             // 
             // borrowBooksToolStripMenuItem
             // 
+            this.borrowBooksToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.borrowRptNew;
+            this.borrowBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowBooksToolStripMenuItem.Name = "borrowBooksToolStripMenuItem";
-            this.borrowBooksToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.borrowBooksToolStripMenuItem.Size = new System.Drawing.Size(218, 54);
             this.borrowBooksToolStripMenuItem.Text = "Borrow Books";
             this.borrowBooksToolStripMenuItem.Click += new System.EventHandler(this.borrowBooksToolStripMenuItem_Click);
             // 
             // imposeFineMemberToolStripMenuItem
             // 
+            this.imposeFineMemberToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.imposeFinememberRpt;
+            this.imposeFineMemberToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.imposeFineMemberToolStripMenuItem.Name = "imposeFineMemberToolStripMenuItem";
-            this.imposeFineMemberToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.imposeFineMemberToolStripMenuItem.Size = new System.Drawing.Size(218, 54);
             this.imposeFineMemberToolStripMenuItem.Text = "Impose Fine Member";
             this.imposeFineMemberToolStripMenuItem.Click += new System.EventHandler(this.imposeFineMemberToolStripMenuItem_Click);
             // 
@@ -179,25 +211,13 @@
             this.myFineDetailsToolStripMenuItem.Text = "My Fine Details";
             this.myFineDetailsToolStripMenuItem.Click += new System.EventHandler(this.myFineDetailsToolStripMenuItem_Click);
             // 
-            // managementToolStripMenuItem
-            // 
-            this.managementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordToolStripMenuItem});
-            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
-            this.managementToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.managementToolStripMenuItem.Text = "Management";
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.changePasswordToolStripMenuItem.Text = "Change Password";
-            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::LibraryInfoSystem.Properties.Resources._1749;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(792, 422);
             this.Controls.Add(this.menuStrip2);
             this.IsMdiContainer = true;
