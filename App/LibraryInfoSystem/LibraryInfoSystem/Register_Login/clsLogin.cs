@@ -15,6 +15,7 @@ namespace LibraryInfoSystem.Register_Login
         public string? UEmail { get; set; }
         public string? UMobileNo { get; set; }
         public string? UPass { get; set; }
+        public char? UType { get; set; }
 
         private readonly SqlConnection connection;
         public ClsLogin()
@@ -41,6 +42,7 @@ namespace LibraryInfoSystem.Register_Login
                 this.UName = reader["UName"].ToString();
                 this.UEmail = reader["UEmail"].ToString();
                 this.UMobileNo = reader["UMobileNo"].ToString();
+                this.UType =  char.Parse(reader["UType"].ToString());
                 connection.Close();
                 return true;
             }

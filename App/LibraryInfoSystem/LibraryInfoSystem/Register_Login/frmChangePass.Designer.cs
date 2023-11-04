@@ -113,7 +113,7 @@
             this.tbReNewPass.Name = "tbReNewPass";
             this.tbReNewPass.PasswordChar = '●';
             this.tbReNewPass.Size = new System.Drawing.Size(227, 23);
-            this.tbReNewPass.TabIndex = 17;
+            this.tbReNewPass.TabIndex = 10;
             // 
             // tbUEmail
             // 

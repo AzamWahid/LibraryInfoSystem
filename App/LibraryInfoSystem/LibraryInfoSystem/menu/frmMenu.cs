@@ -14,6 +14,16 @@ namespace LibraryInfoSystem.menu
         }
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            if (login.UType == 'A')
+            {
+                userToolStripMenuItem.Visible = false;
+                userReportsToolStripMenuItem.Visible = false;
+            }
+            else 
+            {
+                adminToolStripMenuItem.Visible = false;
+                reportsToolStripMenuItem.Visible = false;
+            }
         }
         private void btnUserManagement_Click(object sender, EventArgs e)
         {
@@ -106,6 +116,20 @@ namespace LibraryInfoSystem.menu
         }
 
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePass frmChangePass = new frmChangePass(login);
+            frmChangePass.MdiParent = this;
+            frmChangePass.Show();
+        }
+
+        private void btnChangePass_Click(object sender, EventArgs e)
+        {
+            frmChangePass frmChangePass = new frmChangePass(login);
+            frmChangePass.MdiParent = this;
+            frmChangePass.Show();
+        }
+
+        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePass frmChangePass = new frmChangePass(login);
             frmChangePass.MdiParent = this;
