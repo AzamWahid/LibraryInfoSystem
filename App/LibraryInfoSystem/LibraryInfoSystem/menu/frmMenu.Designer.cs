@@ -57,7 +57,9 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -100,7 +102,7 @@
             this.bookManagementToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.NewBook;
             this.bookManagementToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(221, 54);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
             // 
@@ -109,7 +111,7 @@
             this.imposeFineToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.Fine;
             this.imposeFineToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
-            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
+            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(221, 54);
             this.imposeFineToolStripMenuItem.Text = "Impose Fine";
             this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
             // 
@@ -423,6 +425,17 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(957, 59);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(138, 153);
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -430,6 +443,7 @@
             this.BackgroundImage = global::LibraryInfoSystem.Properties.Resources._1749;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1165, 803);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button11);
@@ -452,6 +466,7 @@
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -495,5 +510,6 @@
         private Button button11;
         private Button button6;
         private Button button8;
+        private PictureBox pictureBox1;
     }
 }
