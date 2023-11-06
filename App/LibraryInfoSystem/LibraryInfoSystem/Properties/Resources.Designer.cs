@@ -293,6 +293,16 @@ namespace LibraryInfoSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout {
+            get {
+                object obj = ResourceManager.GetObject("logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap myBorrow {
             get {
                 object obj = ResourceManager.GetObject("myBorrow", resourceCulture);
@@ -376,6 +386,36 @@ namespace LibraryInfoSystem.Properties {
         internal static System.Drawing.Bitmap usericon {
             get {
                 object obj = ResourceManager.GetObject("usericon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UserIcon1 {
+            get {
+                object obj = ResourceManager.GetObject("UserIcon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usericon2 {
+            get {
+                object obj = ResourceManager.GetObject("usericon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usericon3 {
+            get {
+                object obj = ResourceManager.GetObject("usericon3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

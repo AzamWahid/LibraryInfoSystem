@@ -44,6 +44,10 @@ namespace LibraryInfoSystem.Register_Login
                 {
                     MessageBox.Show("Password and re-entered password mismatch.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if (tbCurrPass.Text == tbNewPass.Text)
+                { 
+                    MessageBox.Show("Currentr Password and New password should be different to each other.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
                     changePass.UNewPass = tbNewPass.Text;
@@ -51,6 +55,7 @@ namespace LibraryInfoSystem.Register_Login
                     changePass.UpdatePass();
 
                     MessageBox.Show("Password change Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    login.logoutClick = true;
                     List<Form> formsToClose = new List<Form>();
 
                     foreach (Form form in Application.OpenForms)

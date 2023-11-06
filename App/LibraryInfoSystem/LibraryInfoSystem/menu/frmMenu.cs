@@ -24,6 +24,7 @@ namespace LibraryInfoSystem.menu
                 adminToolStripMenuItem.Visible = false;
                 reportsToolStripMenuItem.Visible = false;
             }
+            timer1.Start();
         }
         private void btnUserManagement_Click(object sender, EventArgs e)
         {
@@ -135,5 +136,42 @@ namespace LibraryInfoSystem.menu
             frmChangePass.MdiParent = this;
             frmChangePass.Show();
         }
+
+
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            login.logoutClick = true;
+            List<Form> formsToClose = new List<Form>();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name != "frmLogin")
+                {
+                    formsToClose.Add(form);
+                }
+            }
+
+            foreach (Form form in formsToClose)
+            {
+                form.Close();
+            }
+
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.Text = "Library Information System             User : " + login.UName + "              Date Time : " + DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
+
+        }
+
+        private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (login.logoutClick == false)
+            {
+                Application.Exit();
+            } }
     }
 }

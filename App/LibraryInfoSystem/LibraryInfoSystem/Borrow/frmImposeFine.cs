@@ -135,8 +135,11 @@ namespace LibraryInfoSystem
 
                 imopseFine.NeglectImposeFine();
 
-                MessageBox.Show("Neglected Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NewImposeFineRefNo();
+                if (MessageBox.Show("Are you sure you want to Neglect?", "Neglect Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    MessageBox.Show("Neglected Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    NewImposeFineRefNo();
+                }
             }
             else
             {

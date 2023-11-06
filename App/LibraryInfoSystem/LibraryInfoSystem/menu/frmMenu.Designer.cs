@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,14 +58,15 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
             // 
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logoutToolStripMenuItem,
             this.managementToolStripMenuItem,
             this.adminToolStripMenuItem,
             this.userToolStripMenuItem,
@@ -425,16 +427,19 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Visible = false;
             // 
-            // pictureBox1
+            // timer1
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(957, 59);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 153);
-            this.pictureBox1.TabIndex = 42;
-            this.pictureBox1.TabStop = false;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // logoutToolStripMenuItem
+            // 
+            this.logoutToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.logout;
+            this.logoutToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(105, 52);
+            this.logoutToolStripMenuItem.Text = "Logout";
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
             // frmMenu
             // 
@@ -443,7 +448,6 @@
             this.BackgroundImage = global::LibraryInfoSystem.Properties.Resources._1749;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1165, 803);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button11);
@@ -463,10 +467,10 @@
             this.Name = "frmMenu";
             this.Text = "Library Information System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenu_FormClosing);
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -511,5 +515,8 @@
         private Button button6;
         private Button button8;
         private PictureBox pictureBox1;
+        private Label label1;
+        private System.Windows.Forms.Timer timer1;
+        private ToolStripMenuItem logoutToolStripMenuItem;
     }
 }

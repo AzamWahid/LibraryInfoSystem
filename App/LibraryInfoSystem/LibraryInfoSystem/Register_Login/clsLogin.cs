@@ -16,6 +16,7 @@ namespace LibraryInfoSystem.Register_Login
         public string? UMobileNo { get; set; }
         public string? UPass { get; set; }
         public char? UType { get; set; }
+        public bool logoutClick { get; set; } = false;
 
         private readonly SqlConnection connection;
         public ClsLogin()
