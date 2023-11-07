@@ -40,6 +40,11 @@ namespace LibraryInfoSystem
             dgvBorrowList.Columns["BorrowDate"].Width = 150;
             dgvBorrowList.Columns["BorrowDate"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm tt";
 
+            dgvBorrowList.Columns["BBDays"].HeaderText = "Borrow Days";
+            dgvBorrowList.Columns["BBDays"].Width = 60;
+            dgvBorrowList.Columns["BBDays"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBorrowList.Columns["BBDays"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             dgvBorrowList.Columns["BookTitle"].HeaderText = "Book Title";
             dgvBorrowList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -100,7 +105,7 @@ namespace LibraryInfoSystem
 
                 iTextSharp.text.Font HeaderFont = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font text = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
-                float[] columnWidths = { 3f, 6f, 5f, 4f, 2f, 2f, 2f };
+                float[] columnWidths = { 3f,2f, 6f, 5f, 4f, 2f, 2f, 2f };
                 PdfPTable.SetWidths(columnWidths);
                 foreach (DataGridViewColumn column in dgvBorrowList.Columns)
                 {

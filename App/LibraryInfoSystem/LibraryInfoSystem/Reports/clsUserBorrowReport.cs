@@ -12,6 +12,7 @@ namespace LibraryInfoSystem.Borrow
     {
         public long? UID { get; set; }
         public DateTime? BorrowDate { get; set; }
+        public long? BBDays { get; set; }
         public string? BookTitle { get; set; }
         public string? Author { get; set; }
         public string? ISBN { get; set; }
@@ -43,6 +44,7 @@ namespace LibraryInfoSystem.Borrow
                     clsUserBorrowReport BorrowRet = new clsUserBorrowReport();
 
                     BorrowRet.BorrowDate = DateTime.Parse(reader["BBRefDate"].ToString());
+                    BorrowRet.BBDays = long.Parse(reader["BBDays"].ToString());
                     BorrowRet.BookTitle = reader["BookTitle"].ToString();
                     BorrowRet.Author = reader["BookAuthor"].ToString();
                     BorrowRet.ISBN = reader["BookISBN"].ToString();

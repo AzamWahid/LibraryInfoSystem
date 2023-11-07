@@ -59,11 +59,19 @@ namespace LibraryInfoSystem
             dgvBookList.Columns["NoofCopies"].Width = 80;
             dgvBookList.Columns["NoofCopies"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvBookList.Columns["NoofCopies"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            if (login.UType != 'A')
+            {
+                dgvBookList.Columns["NoofCopies"].Visible = false;
+            }
 
             dgvBookList.Columns["Borrow"].HeaderText = "Borrow";
             dgvBookList.Columns["Borrow"].Width = 80;
             dgvBookList.Columns["Borrow"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvBookList.Columns["Borrow"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            if (login.UType != 'A')
+            {
+                dgvBookList.Columns["Borrow"].Visible = false;
+            }
 
             dgvBookList.Columns["remainingCopies"].HeaderText = "Remaining Copies";
             dgvBookList.Columns["remainingCopies"].Width = 80;
@@ -111,7 +119,15 @@ namespace LibraryInfoSystem
 
                 iTextSharp.text.Font HeaderFont = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.BOLD);
                 iTextSharp.text.Font text = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.NORMAL);
-                float[] columnWidths = { 6f, 4f, 3f, 2f,2f, 2f, 2f,2f };
+                float[] columnWidths = { 6f, 4f, 3f, 2f, 2f, 2f, 2f, 2f };
+                if (login.UType != 'A')
+                {
+                    columnWidths = new float[] { 6f, 4f, 3f, 2f, 2f, 2f };
+                }
+                else 
+                {
+                    columnWidths = new float[] { 6f, 4f, 3f, 2f, 2f, 2f, 2f, 2f };
+                }
                 PdfPTable.SetWidths(columnWidths);
                 foreach (DataGridViewColumn column in dgvBookList.Columns)
                 {

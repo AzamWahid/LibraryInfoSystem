@@ -115,7 +115,12 @@ namespace LibraryInfoSystem.menu
             frmUserFineReport.Show();
 
         }
-
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmBookReport frmBookReport = new frmBookReport(login);
+            frmBookReport.MdiParent = this;
+            frmBookReport.Show();
+        }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePass frmChangePass = new frmChangePass(login);
@@ -173,5 +178,7 @@ namespace LibraryInfoSystem.menu
             {
                 Application.Exit();
             } }
+
+
     }
 }
