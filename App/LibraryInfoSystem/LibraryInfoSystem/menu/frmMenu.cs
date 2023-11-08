@@ -121,6 +121,13 @@ namespace LibraryInfoSystem.menu
             frmBookReport.MdiParent = this;
             frmBookReport.Show();
         }
+        private void lateReturnBooksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLateRetuenReport frmLateRetuenReport = new frmLateRetuenReport(login);
+            frmLateRetuenReport.MdiParent = this;
+            frmLateRetuenReport.Show();
+
+        }
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmChangePass frmChangePass = new frmChangePass(login);

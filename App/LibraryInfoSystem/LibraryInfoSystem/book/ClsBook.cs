@@ -117,6 +117,31 @@ namespace LibraryInfoSystem
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+        public bool CheckDeleteBook()
+        {
+            SqlCommand cmd = new SqlCommand("Sp_DeleteCheckBook", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@BookCode", this.BookCode);
+
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+
+            if (reader != null && reader.HasRows)
+            {
+                reader.Read();
+
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
+            }
+
+        }
         public void DeleteBook()
         {
 

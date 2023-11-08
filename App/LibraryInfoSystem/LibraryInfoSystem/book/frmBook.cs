@@ -162,17 +162,26 @@ namespace LibraryInfoSystem
                 ClsBook book = new ClsBook();
                 book.BookCode = bookCode;
 
-                if (MessageBox.Show("Are you sure you want to delete " + dgvList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (book.CheckDeleteBook())
                 {
-                    book.DeleteBook();
-                    MessageBox.Show("Record Delete Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Can't delete, Book is borrowed or has pending fine payment", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     btnNew_Click(sender, e);
                     getListData();
-
                 }
                 else
                 {
-                    MessageBox.Show("Delete Cancel", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (MessageBox.Show("Are you sure you want to delete " + dgvList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim() + " Book?", "Delete Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        book.DeleteBook();
+                        MessageBox.Show("Record Delete Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnNew_Click(sender, e);
+                        getListData();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete Cancel", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }

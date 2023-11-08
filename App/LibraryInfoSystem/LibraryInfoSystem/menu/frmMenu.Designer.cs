@@ -42,9 +42,11 @@
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.borrowBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lateReturnBooksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imposeFineMemberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imposeFineDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userReportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.myBorrowBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myFineDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnChangePass = new System.Windows.Forms.Button();
@@ -60,7 +62,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +145,7 @@
             this.borrowToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources._1245338;
             this.borrowToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
@@ -153,7 +154,7 @@
             this.borrowReturnToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.returnMenu;
             this.borrowReturnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
@@ -162,7 +163,7 @@
             this.finePaymentToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.finePay;
             this.finePaymentToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.finePaymentToolStripMenuItem.Name = "finePaymentToolStripMenuItem";
-            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
+            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
             this.finePaymentToolStripMenuItem.Text = "Fine Payment";
             this.finePaymentToolStripMenuItem.Click += new System.EventHandler(this.finePaymentToolStripMenuItem_Click);
             // 
@@ -171,6 +172,7 @@
             this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bookDetailsToolStripMenuItem,
             this.borrowBooksToolStripMenuItem,
+            this.lateReturnBooksToolStripMenuItem,
             this.imposeFineMemberToolStripMenuItem,
             this.imposeFineDetailsToolStripMenuItem});
             this.reportsToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.repotview;
@@ -196,6 +198,15 @@
             this.borrowBooksToolStripMenuItem.Size = new System.Drawing.Size(218, 54);
             this.borrowBooksToolStripMenuItem.Text = "Borrow Books";
             this.borrowBooksToolStripMenuItem.Click += new System.EventHandler(this.borrowBooksToolStripMenuItem_Click);
+            // 
+            // lateReturnBooksToolStripMenuItem
+            // 
+            this.lateReturnBooksToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.lateReturn;
+            this.lateReturnBooksToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.lateReturnBooksToolStripMenuItem.Name = "lateReturnBooksToolStripMenuItem";
+            this.lateReturnBooksToolStripMenuItem.Size = new System.Drawing.Size(218, 54);
+            this.lateReturnBooksToolStripMenuItem.Text = "Late Return Books";
+            this.lateReturnBooksToolStripMenuItem.Click += new System.EventHandler(this.lateReturnBooksToolStripMenuItem_Click);
             // 
             // imposeFineMemberToolStripMenuItem
             // 
@@ -227,12 +238,21 @@
             this.userReportsToolStripMenuItem.Size = new System.Drawing.Size(133, 52);
             this.userReportsToolStripMenuItem.Text = "User Reports";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Image = global::LibraryInfoSystem.Properties.Resources.bookRpt_new;
+            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(194, 54);
+            this.toolStripMenuItem2.Text = "Book List";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // myBorrowBookToolStripMenuItem
             // 
             this.myBorrowBookToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.myBorrow;
             this.myBorrowBookToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.myBorrowBookToolStripMenuItem.Name = "myBorrowBookToolStripMenuItem";
-            this.myBorrowBookToolStripMenuItem.Size = new System.Drawing.Size(212, 54);
+            this.myBorrowBookToolStripMenuItem.Size = new System.Drawing.Size(194, 54);
             this.myBorrowBookToolStripMenuItem.Text = "My Borrow Book";
             this.myBorrowBookToolStripMenuItem.Click += new System.EventHandler(this.myBorrowBookToolStripMenuItem_Click);
             // 
@@ -241,7 +261,7 @@
             this.myFineDetailsToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.myFIne;
             this.myFineDetailsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.myFineDetailsToolStripMenuItem.Name = "myFineDetailsToolStripMenuItem";
-            this.myFineDetailsToolStripMenuItem.Size = new System.Drawing.Size(212, 54);
+            this.myFineDetailsToolStripMenuItem.Size = new System.Drawing.Size(194, 54);
             this.myFineDetailsToolStripMenuItem.Text = "My Fine Details";
             this.myFineDetailsToolStripMenuItem.Click += new System.EventHandler(this.myFineDetailsToolStripMenuItem_Click);
             // 
@@ -443,15 +463,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Image = global::LibraryInfoSystem.Properties.Resources.bookRpt_new;
-            this.toolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(212, 54);
-            this.toolStripMenuItem2.Text = "Book List";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -530,5 +541,6 @@
         private System.Windows.Forms.Timer timer1;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem lateReturnBooksToolStripMenuItem;
     }
 }
