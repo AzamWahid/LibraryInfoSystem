@@ -32,6 +32,7 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bookManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imposeFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +63,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.bookManagementToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +72,7 @@
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem,
             this.managementToolStripMenuItem,
+            this.userManagementToolStripMenuItem,
             this.adminToolStripMenuItem,
             this.userToolStripMenuItem,
             this.reportsToolStripMenuItem,
@@ -98,6 +101,15 @@
             this.managementToolStripMenuItem.Text = "Change Password";
             this.managementToolStripMenuItem.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
             // 
+            // userManagementToolStripMenuItem
+            // 
+            this.userManagementToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.userManage;
+            this.userManagementToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(164, 52);
+            this.userManagementToolStripMenuItem.Text = "User Management";
+            this.userManagementToolStripMenuItem.Click += new System.EventHandler(this.userManagementToolStripMenuItem_Click);
+            // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -115,7 +127,7 @@
             this.bookManagementToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.NewBook;
             this.bookManagementToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.bookManagementToolStripMenuItem.Name = "bookManagementToolStripMenuItem";
-            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(221, 54);
+            this.bookManagementToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
             this.bookManagementToolStripMenuItem.Text = "Book Management";
             this.bookManagementToolStripMenuItem.Click += new System.EventHandler(this.bookManagementToolStripMenuItem_Click);
             // 
@@ -124,13 +136,14 @@
             this.imposeFineToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.Fine;
             this.imposeFineToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.imposeFineToolStripMenuItem.Name = "imposeFineToolStripMenuItem";
-            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(221, 54);
+            this.imposeFineToolStripMenuItem.Size = new System.Drawing.Size(226, 54);
             this.imposeFineToolStripMenuItem.Text = "Impose Fine";
             this.imposeFineToolStripMenuItem.Click += new System.EventHandler(this.imposeFineToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bookManagementToolStripMenuItem1,
             this.borrowToolStripMenuItem,
             this.borrowReturnToolStripMenuItem,
             this.finePaymentToolStripMenuItem});
@@ -145,7 +158,7 @@
             this.borrowToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources._1245338;
             this.borrowToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowToolStripMenuItem.Name = "borrowToolStripMenuItem";
-            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
+            this.borrowToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.borrowToolStripMenuItem.Text = "Borrow Book";
             this.borrowToolStripMenuItem.Click += new System.EventHandler(this.borrowToolStripMenuItem_Click);
             // 
@@ -154,7 +167,7 @@
             this.borrowReturnToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.returnMenu;
             this.borrowReturnToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.borrowReturnToolStripMenuItem.Name = "borrowReturnToolStripMenuItem";
-            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
+            this.borrowReturnToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.borrowReturnToolStripMenuItem.Text = "Borrow Return";
             this.borrowReturnToolStripMenuItem.Click += new System.EventHandler(this.borrowReturnToolStripMenuItem_Click);
             // 
@@ -163,7 +176,7 @@
             this.finePaymentToolStripMenuItem.Image = global::LibraryInfoSystem.Properties.Resources.finePay;
             this.finePaymentToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.finePaymentToolStripMenuItem.Name = "finePaymentToolStripMenuItem";
-            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(193, 54);
+            this.finePaymentToolStripMenuItem.Size = new System.Drawing.Size(223, 54);
             this.finePaymentToolStripMenuItem.Text = "Fine Payment";
             this.finePaymentToolStripMenuItem.Click += new System.EventHandler(this.finePaymentToolStripMenuItem_Click);
             // 
@@ -463,6 +476,15 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // bookManagementToolStripMenuItem1
+            // 
+            this.bookManagementToolStripMenuItem1.Image = global::LibraryInfoSystem.Properties.Resources.NewBook;
+            this.bookManagementToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.bookManagementToolStripMenuItem1.Name = "bookManagementToolStripMenuItem1";
+            this.bookManagementToolStripMenuItem1.Size = new System.Drawing.Size(223, 54);
+            this.bookManagementToolStripMenuItem1.Text = "Book Management";
+            this.bookManagementToolStripMenuItem1.Visible = false;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -542,5 +564,7 @@
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem lateReturnBooksToolStripMenuItem;
+        private ToolStripMenuItem userManagementToolStripMenuItem;
+        private ToolStripMenuItem bookManagementToolStripMenuItem1;
     }
 }

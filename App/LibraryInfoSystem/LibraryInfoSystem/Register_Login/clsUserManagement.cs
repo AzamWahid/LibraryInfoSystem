@@ -10,11 +10,14 @@ namespace LibraryInfoSystem.Borrow
 {
     public class clsUserManagement
     {
-        public long? BorrowNo { get; set; }
-        public DateTime? BorrowDate { get; set; }
-        public long? BorrowUID { get; set; }
-        public long? BorrowBookID { get; set; }
-        public long BorrowDays { get; set; }
+        public long? UID { get; set; }
+        public string? UName { get; set; }
+        public string? UFName { get; set; }
+        public string? UEmail { get; set; }
+        public string? UMobileNo { get; set; }
+        public string? UType { get; set; }
+        public char? UAllowBorrow { get; set; }
+        public char? UBookRights { get; set; }
 
         private readonly SqlConnection connection;
         public clsUserManagement()
@@ -22,11 +25,11 @@ namespace LibraryInfoSystem.Borrow
             string connectionString = clsGeneral.getConnectionString();
             connection = new SqlConnection(connectionString);
         }
-        public List<ClsBook> GetAvaBooks()
+        public List<clsUserManagement> GetUsers()
         {
 
-            List<ClsBook> bookList = new List<ClsBook>();
-            SqlCommand cmd = new SqlCommand("sp_getAvailableBook", connection);
+            List<clsUserManagement> userList = new List<clsUserManagement>();
+            SqlCommand cmd = new SqlCommand("sp_GetUsers", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             connection.Open();
@@ -36,74 +39,34 @@ namespace LibraryInfoSystem.Borrow
             {
                 while (reader.Read())
                 {
-                    ClsBook book = new ClsBook();
+                    clsUserManagement user = new clsUserManagement();
 
-                    book.BookID = long.Parse(reader["BookID"].ToString());
-                    book.BookCode = reader["BookCode"].ToString();
-                    book.BookTitle = reader["BookTitle"].ToString();
-                    book.Author = reader["BookAuthor"].ToString();
-                    book.ISBN = reader["BookISBN"].ToString();
-                    book.Edition = long.Parse(reader["BookEdition"].ToString());
-                    book.Year = long.Parse(reader["BookYear"].ToString());
-                    book.NoofCopies = long.Parse(reader["remainingCopies"].ToString());
+                    user.UID = long.Parse(reader["UID"].ToString());
+                    user.UName = reader["UName"].ToString();
+                    user.UFName = reader["UFName"].ToString();
+                    user.UEmail = reader["UEmail"].ToString();
+                    user.UMobileNo = reader["UMobileNo"].ToString();
+                    user.UType = reader["UType"].ToString();
+                    user.UAllowBorrow = char.Parse(reader["UAllowBorrow"].ToString());
+                    user.UBookRights = char.Parse(reader["UBookRights"].ToString());
 
-                    bookList.Add(book);
+
+                    userList.Add(user);
                 }
             }
             connection.Close();
-            return bookList;
+            return userList;
         }
-        public void GetBorrowNo()
+
+      
+        public void UpdateUsers()
         {
-            SqlCommand cmd = new SqlCommand("sp_GetUserBorrowNo", connection);
+            SqlCommand cmd = new SqlCommand("sp_UpdateUserRights", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@UID", this.BorrowUID);
-
-            connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            reader.Read();
-            this.BorrowNo = long.Parse(reader["BorrowNo"].ToString());
-            connection.Close();
-
-        }
-        public bool ChectAlreadyBorrow(long _BookID)
-        {
-            SqlCommand cmd = new SqlCommand("Sp_ChectAlreadyBorrow", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@UID", this.BorrowUID);
-            cmd.Parameters.AddWithValue("@BookID", _BookID);
-
-            connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-
-            if (reader != null && reader.HasRows)
-            {
-                reader.Read();
- 
-                connection.Close();
-                return true;
-            }
-            else
-            {
-                connection.Close();
-                return false;
-            }
-
-        }
-        public void SaveBorrow()
-        {
-            SqlCommand cmd = new SqlCommand("sp_SaveBorrow", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@BorrowNo", this.BorrowNo);
-            cmd.Parameters.AddWithValue("@BorrowDate", this.BorrowDate);
-            cmd.Parameters.AddWithValue("@BorrowUID", this.BorrowUID);
-            cmd.Parameters.AddWithValue("@BorrowBookID", this.BorrowBookID);
-            cmd.Parameters.AddWithValue("@BorrowDays", this.BorrowDays);
+            cmd.Parameters.AddWithValue("@UID", this.UID);
+            cmd.Parameters.AddWithValue("@UAllowBorrow", this.UAllowBorrow);
+            cmd.Parameters.AddWithValue("@UBookRights", this.UBookRights);
 
             connection.Open();
             cmd.ExecuteNonQuery();

@@ -23,6 +23,12 @@ namespace LibraryInfoSystem.menu
             {
                 adminToolStripMenuItem.Visible = false;
                 reportsToolStripMenuItem.Visible = false;
+                userManagementToolStripMenuItem.Visible = false;
+            }
+
+            if (login.UBookRights == 'Y')
+            {
+                bookManagementToolStripMenuItem1.Visible = true;
             }
             timer1.Start();
         }
@@ -47,9 +53,16 @@ namespace LibraryInfoSystem.menu
 
         private void borrowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBorrow frmBorrow = new frmBorrow(login);
-            frmBorrow.MdiParent = this;
-            frmBorrow.Show();
+            if (login.UAllowBorrow == 'Y')
+            {
+                frmBorrow frmBorrow = new frmBorrow(login);
+                frmBorrow.MdiParent = this;
+                frmBorrow.Show();
+            }
+            else
+            {
+                MessageBox.Show("You are not allow to borrow book, please contact admin", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void borrowReturnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,6 +163,12 @@ namespace LibraryInfoSystem.menu
         }
 
 
+        private void userManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserManagement frmUserManagement = new frmUserManagement(login);
+            frmUserManagement.MdiParent = this;
+            frmUserManagement.Show();
+        }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -185,7 +204,6 @@ namespace LibraryInfoSystem.menu
             {
                 Application.Exit();
             } }
-
 
     }
 }

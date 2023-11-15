@@ -6,8 +6,8 @@ namespace LibraryInfoSystem
 {
     public partial class frmUserManagement : Form
     {
-        List<ClsBook> BookList = new List<ClsBook>();
-        private long _bookID = 0;
+        List<clsUserManagement> UserList = new List<clsUserManagement>();
+        private long _UID = 0;
 
         private ClsLogin login;
         public frmUserManagement(ClsLogin login)
@@ -16,66 +16,54 @@ namespace LibraryInfoSystem
             this.login = login;
         }
 
-        private void frmBorrow_Load(object sender, EventArgs e)
+        private void frmUserManagement_Load(object sender, EventArgs e)
         {
-
-            NewBorrow();
+            New();
+           
         }
 
         private void getListData()
         {
-            ClsBorrow borrow = new ClsBorrow();
-            BookList = borrow.GetAvaBooks();
-            dgvBookList.DataSource = BookList;
+            clsUserManagement users = new clsUserManagement();
+            UserList = users.GetUsers();
+            dgvList.DataSource = UserList;
             setGrid();
         }
         private void setGrid()
         {
 
-            dgvBookList.Columns["BookID"].Visible = false;
-            dgvBookList.Columns["BookCode"].Visible = false;
-            dgvBookList.Columns["ISBN"].Visible = false;
+            dgvList.Columns["UID"].Visible = false;
+            dgvList.Columns["UFName"].Visible = false;
+            dgvList.Columns["UAllowBorrow"].Visible = false;
+            dgvList.Columns["UBookRights"].Visible = false;
 
-            dgvBookList.Columns["BookTitle"].HeaderText = "Book Title";
-            dgvBookList.Columns["BookTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvList.Columns["UName"].HeaderText = "Name";
+            dgvList.Columns["UName"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            dgvBookList.Columns["Author"].HeaderText = "Book Author";
-            dgvBookList.Columns["Author"].Width = 100;
+            dgvList.Columns["UEmail"].HeaderText = "Email";
+            dgvList.Columns["UEmail"].Width = 150;
 
-            dgvBookList.Columns["Edition"].HeaderText = "Edition";
-            dgvBookList.Columns["Edition"].Width = 45;
-            dgvBookList.Columns["Edition"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvBookList.Columns["Edition"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["UMobileNo"].HeaderText = "Mobile No.";
+            dgvList.Columns["UMobileNo"].Width = 80;
 
-            dgvBookList.Columns["Year"].HeaderText = "Year";
-            dgvBookList.Columns["Year"].Width = 45;
-            dgvBookList.Columns["Year"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvBookList.Columns["Year"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;;
-
-            dgvBookList.Columns["NoofCopies"].HeaderText = "Available Copies";
-            dgvBookList.Columns["NoofCopies"].Width = 60;
-            dgvBookList.Columns["NoofCopies"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvBookList.Columns["NoofCopies"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvList.Columns["UType"].HeaderText = "Type";
+            dgvList.Columns["UType"].Width = 60;
 
         }
-        private void btnBorrow_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (saveCheck())
             {
-                ClsBorrow borrow = new ClsBorrow();
+                clsUserManagement usermanage = new clsUserManagement();
 
+                usermanage.UID = _UID;
+                usermanage.UAllowBorrow = rbtnAllowYes.Checked ? 'Y' : 'N';
+                usermanage.UBookRights = rbtnBookManageYes.Checked ? 'Y' : 'N';
 
-                borrow.BorrowNo = long.Parse(tbRefNo.Text);
-                borrow.BorrowDate = dcBorrowDate.Value;
-
-                borrow.BorrowUID = login.UID;
-                borrow.BorrowBookID = _bookID;
-                borrow.BorrowDays = long.Parse(tbBorrowDays.Text);
-
-                borrow.SaveBorrow();
+                usermanage.UpdateUsers();
 
                 MessageBox.Show("Book Borrow Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NewBorrow();
+                New();
             }
         }
 
@@ -86,108 +74,83 @@ namespace LibraryInfoSystem
 
             if (string.IsNullOrWhiteSpace(searchTerm))
             {
-                dgvBookList.DataSource = BookList;
+                dgvList.DataSource = UserList;
             }
             else
             {
-                var filteredList = BookList.Where(book =>
-                    book.BookTitle.ToLower().Contains(searchTerm) ||
-                    book.Author.ToLower().Contains(searchTerm) ||
-                    book.Year.ToString().Contains(searchTerm) ||
-                    book.Edition.ToString().Contains(searchTerm) ||
-                    book.NoofCopies.ToString().Contains(searchTerm)
-
-                ).ToList();
-                dgvBookList.DataSource = filteredList;
+                var filteredList = UserList.Where(user =>
+                    user.UName.ToLower().Contains(searchTerm) ||
+                    user.UEmail.ToLower().Contains(searchTerm) ||
+                    user.UMobileNo.ToString().Contains(searchTerm) ||
+                    user.UType.ToString().Contains(searchTerm)).ToList();
+                dgvList.DataSource = filteredList;
             }
         }
         //-------------------------------------------------SAVE CHECK-------------------------------------------------------------------------
         private bool saveCheck()
         {
-            if (tbRefNo.Text == "0")
+            if (tbUName.Text == "")
             {
-                MessageBox.Show("Borrow No. should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbRefNo.Focus();
+                MessageBox.Show("User Name should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
-            if (_bookID == 0)
+
+            if (tbUEmail.Text == "")
             {
-                MessageBox.Show("please select any book", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookTitle.Focus();
+                MessageBox.Show("User Email should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return false;
             }
-            if (tbBookTitle.Text == "")
-            {
-                MessageBox.Show("Book Title should not be empty", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBookTitle.Focus();
-                return false;
-            }
-            if (tbBorrowDays.Text == "0")
-            {
-                MessageBox.Show("Borrow Days should not be zero", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbBorrowDays.Focus();
-                return false;
-            }
-            ClsBorrow borrow = new ClsBorrow();
-            borrow.BorrowUID = login.UID;
-            if (borrow.ChectAlreadyBorrow(_bookID) == true)
-            {
-                MessageBox.Show("You have already borrowed this book", "Stop", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                return false;
-            }
+
             return true;
         }
         //-------------------------------------------------GRID DOUBLE CLICK EDIT-------------------------------------------------------------------------
 
         private void dgvBookList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvBookList.Rows.Count > 0)
+            if (dgvList.Rows.Count > 0)
             {
-                _bookID = long.Parse(dgvBookList.CurrentRow.Cells["BookID"].Value.ToString().Trim());
-                tbBookTitle.Text = dgvBookList.CurrentRow.Cells["BookTitle"].Value.ToString().Trim();
-                tbBookAuthor.Text = dgvBookList.CurrentRow.Cells["Author"].Value.ToString().Trim();
-                tbBookISBN.Text = dgvBookList.CurrentRow.Cells["ISBN"].Value.ToString().Trim();
-                mskYear.Text = dgvBookList.CurrentRow.Cells["Year"].Value.ToString().Trim();
-                tbBookEdition.Text = dgvBookList.CurrentRow.Cells["Edition"].Value.ToString().Trim();
+                _UID = long.Parse(dgvList.CurrentRow.Cells["UID"].Value.ToString().Trim());
+                tbUName.Text = dgvList.CurrentRow.Cells["UName"].Value.ToString().Trim();
+                tbUFName.Text = dgvList.CurrentRow.Cells["UFName"].Value.ToString().Trim();
+                tbUEmail.Text = dgvList.CurrentRow.Cells["UEmail"].Value.ToString().Trim();
+                tbUMobNo.Text = dgvList.CurrentRow.Cells["UMobileNo"].Value.ToString().Trim();
+                tbUType.Text = dgvList.CurrentRow.Cells["UType"].Value.ToString().Trim();
+                if (dgvList.CurrentRow.Cells["UAllowBorrow"].Value.ToString() == "Y")
+                {
+                    rbtnAllowYes.Checked = true;
+                }
+                else if (dgvList.CurrentRow.Cells["UAllowBorrow"].Value.ToString() == "N")
+                {
+                    rbtnAllowNo.Checked = true;
+                }
+
+                if (dgvList.CurrentRow.Cells["UBookRights"].Value.ToString() == "Y")
+                {
+                    rbtnBookManageYes.Checked = true;
+                }
+                else if (dgvList.CurrentRow.Cells["UBookRights"].Value.ToString() == "N")
+                {
+                    rbtnBookManageNo.Checked = true;
+                }
             }
         }
 
         //-------------------------------------------------FOCUS ON FORM FORM REFRESH-------------------------------------------------------------------------
-        private void frmBorrow_Activated(object sender, EventArgs e)
+        private void frmUserManagement_Activated(object sender, EventArgs e)
         {
             getListData();
         }
 
-        //-------------------------------------------------BOOK EDITION NUMERIC ALLOW ONLY-------------------------------------------------------------------------
-        private void tbBorrowDays_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(tbBorrowDays.Text) && !int.TryParse(tbBorrowDays.Text, out _))
-            {
-                tbBorrowDays.Text = "0";
-            }
-            else if (string.IsNullOrEmpty(tbBorrowDays.Text))
-            {
-                tbBorrowDays.Text = "0";
-            }
-        }
+
         //-------------------------------------NEW-------------------------------
-        private void NewBorrow()
+        private void New()
         {
-            ClsBorrow borrow = new ClsBorrow();
-
-            borrow.BorrowUID = login.UID;
-            borrow.GetBorrowNo();
-            tbRefNo.Text = borrow.BorrowNo.ToString();
-
-            dcBorrowDate.Value = DateTime.Now;
-            _bookID = 0;
-            tbBookTitle.Text = "";
-            tbBookAuthor.Text = "";
-            tbBookISBN.Text = "";
-            mskYear.Text = "";
-            tbBookEdition.Text = "0";
-            tbBorrowDays.Text = "0";
-            tbBorrowDays.Focus();
+            _UID = 0;
+            tbUName.Text = "";
+            tbUFName.Text = "";
+            tbUEmail.Text = "";
+            tbUMobNo.Text = "";
+            tbUType.Text = "";
             getListData();
         }
 
