@@ -201,7 +201,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 288);
+            this.label8.Location = new System.Drawing.Point(7, 291);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(94, 15);
             this.label8.TabIndex = 44;
@@ -210,7 +210,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 249);
+            this.label6.Location = new System.Drawing.Point(9, 253);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(92, 15);
             this.label6.TabIndex = 43;
@@ -358,7 +358,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.Green;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(100, 332);
+            this.btnUpdate.Location = new System.Drawing.Point(104, 333);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(61, 30);
             this.btnUpdate.TabIndex = 18;
