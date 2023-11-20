@@ -1,13 +1,5 @@
 ﻿using LibraryInfoSystem.menu;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace LibraryInfoSystem.Register_Login
 {
@@ -30,9 +22,17 @@ namespace LibraryInfoSystem.Register_Login
             login.UPass = tbPass.Text;
             if (login.CheckUser())
             {
-                frmMenu frmMenu = new frmMenu(login);
-                frmMenu.Show();
-                this.Hide();
+                if (login.UBlock == 'N')
+                {
+                    frmMenu frmMenu = new frmMenu(login);
+                    frmMenu.Show();
+                    this.Hide();
+                }
+                else if (login.UBlock == 'Y')
+                {
+                    MessageBox.Show("Your account is block. Please contact administrator", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else
             {
