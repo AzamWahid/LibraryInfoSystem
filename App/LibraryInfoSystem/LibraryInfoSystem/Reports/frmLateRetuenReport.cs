@@ -19,6 +19,7 @@ namespace LibraryInfoSystem
 
         private void frmLateRetuenReport_Load(object sender, EventArgs e)
         {
+            rbtnAll.Checked = true;
             getListData();
         }
 
@@ -34,7 +35,7 @@ namespace LibraryInfoSystem
         }
         private void btnFetch_Click(object sender, EventArgs e)
         {
-
+            getListData();
         }
         private void setGrid()
         {

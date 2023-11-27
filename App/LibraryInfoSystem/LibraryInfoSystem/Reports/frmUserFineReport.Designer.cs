@@ -39,6 +39,8 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTotFine = new System.Windows.Forms.Label();
             this.btnPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIFList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -126,6 +128,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.lblTotFine);
             this.groupBox2.Controls.Add(this.btnPDF);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.tbSearch);
@@ -137,6 +141,27 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "My Fine List";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(580, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Total Fine :";
+            // 
+            // lblTotFine
+            // 
+            this.lblTotFine.BackColor = System.Drawing.Color.White;
+            this.lblTotFine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotFine.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotFine.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotFine.Location = new System.Drawing.Point(645, 14);
+            this.lblTotFine.Name = "lblTotFine";
+            this.lblTotFine.Size = new System.Drawing.Size(157, 23);
+            this.lblTotFine.TabIndex = 20;
+            this.lblTotFine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnPDF
             // 
@@ -185,5 +210,7 @@
         private Label label7;
         private GroupBox groupBox2;
         private Button btnPDF;
+        private Label lblTotFine;
+        private Label label2;
     }
 }

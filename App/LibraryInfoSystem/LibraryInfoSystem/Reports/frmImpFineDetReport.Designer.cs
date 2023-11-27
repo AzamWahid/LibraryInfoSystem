@@ -46,6 +46,8 @@
             this.rbtnSpecific = new System.Windows.Forms.RadioButton();
             this.rbtnAll = new System.Windows.Forms.RadioButton();
             this.btnPDF = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTotFine = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -115,9 +117,9 @@
             // tbSearch
             // 
             this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.tbSearch.Location = new System.Drawing.Point(579, 22);
+            this.tbSearch.Location = new System.Drawing.Point(541, 22);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(351, 23);
+            this.tbSearch.Size = new System.Drawing.Size(195, 23);
             this.tbSearch.TabIndex = 13;
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
@@ -125,7 +127,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(528, 26);
+            this.label7.Location = new System.Drawing.Point(489, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(48, 15);
             this.label7.TabIndex = 15;
@@ -133,6 +135,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.lblTotFine);
             this.groupBox2.Controls.Add(this.btnFetch);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.tbEmail);
@@ -154,7 +158,7 @@
             this.btnFetch.BackColor = System.Drawing.Color.SteelBlue;
             this.btnFetch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFetch.ForeColor = System.Drawing.Color.White;
-            this.btnFetch.Location = new System.Drawing.Point(432, 21);
+            this.btnFetch.Location = new System.Drawing.Point(411, 21);
             this.btnFetch.Name = "btnFetch";
             this.btnFetch.Size = new System.Drawing.Size(58, 25);
             this.btnFetch.TabIndex = 21;
@@ -177,7 +181,7 @@
             this.tbEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.tbEmail.Location = new System.Drawing.Point(234, 22);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(195, 23);
+            this.tbEmail.Size = new System.Drawing.Size(174, 23);
             this.tbEmail.TabIndex = 19;
             // 
             // groupBox1
@@ -219,13 +223,34 @@
             this.btnPDF.BackColor = System.Drawing.Color.White;
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDF.ForeColor = System.Drawing.Color.Red;
-            this.btnPDF.Location = new System.Drawing.Point(969, 22);
+            this.btnPDF.Location = new System.Drawing.Point(756, 22);
             this.btnPDF.Name = "btnPDF";
-            this.btnPDF.Size = new System.Drawing.Size(75, 23);
+            this.btnPDF.Size = new System.Drawing.Size(64, 23);
             this.btnPDF.TabIndex = 17;
             this.btnPDF.Text = "PDF";
             this.btnPDF.UseVisualStyleBackColor = false;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(847, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Total Fine :";
+            // 
+            // lblTotFine
+            // 
+            this.lblTotFine.BackColor = System.Drawing.Color.White;
+            this.lblTotFine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotFine.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotFine.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotFine.Location = new System.Drawing.Point(912, 22);
+            this.lblTotFine.Name = "lblTotFine";
+            this.lblTotFine.Size = new System.Drawing.Size(133, 23);
+            this.lblTotFine.TabIndex = 24;
+            this.lblTotFine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmImpFineDetReport
             // 
@@ -268,5 +293,7 @@
         private RadioButton rbtnSpecific;
         private RadioButton rbtnAll;
         private Button btnFetch;
+        private Label label2;
+        private Label lblTotFine;
     }
 }

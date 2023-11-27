@@ -10,6 +10,7 @@ namespace LibraryInfoSystem
     {
         List<clsFineMembersReport> ImposeFineList = new List<clsFineMembersReport>();
 
+        private decimal _totFineVal;
         private ClsLogin login;
         public frmFineMembersReport(ClsLogin login)
         {
@@ -38,6 +39,11 @@ namespace LibraryInfoSystem
                 setGrid();
             }
 
+            for (int i = 0; i < dgvList.Rows.Count; i++)
+            {
+                _totFineVal += Math.Round(Convert.ToDecimal(dgvList.Rows[i].Cells["FineAmnt"].Value), 2);
+            }
+            lblTotFine.Text = _totFineVal.ToString("N2");
         }
         private void setGrid()
         {

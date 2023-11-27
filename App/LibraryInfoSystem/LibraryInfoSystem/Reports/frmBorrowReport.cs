@@ -20,14 +20,10 @@ namespace LibraryInfoSystem
         private void frmBorrowReport_Load(object sender, EventArgs e)
         {
             rbtnAll.Checked = true;
-          //  getListData();
+            getListData();
         }
 
         private void getListData()
-        {
-
-        }
-        private void btnFetch_Click(object sender, EventArgs e)
         {
             clsBorrowReport borrow = new clsBorrowReport();
             borrow.UEmail = tbEmail.Text;
@@ -43,6 +39,10 @@ namespace LibraryInfoSystem
                 dgvList.DataSource = BorrowList;
                 setGrid();
             }
+        }
+        private void btnFetch_Click(object sender, EventArgs e)
+        {
+            getListData();
         }
         private void setGrid()
         {

@@ -10,6 +10,7 @@ namespace LibraryInfoSystem
     {
         List<clsFineDetReport> DetList = new List<clsFineDetReport>();
 
+        private decimal _totFineVal;
         private ClsLogin login;
         public frmImpFineDetReport(ClsLogin login)
         {
@@ -20,14 +21,10 @@ namespace LibraryInfoSystem
         private void frmImpFineDetReport_Load(object sender, EventArgs e)
         {
             rbtnAll.Checked = true;
-            //  getListData();
+            getListData();
         }
 
         private void getListData()
-        {
-
-        }
-        private void btnFetch_Click(object sender, EventArgs e)
         {
             clsFineDetReport FineDet = new clsFineDetReport();
             FineDet.UEmail = tbEmail.Text;
@@ -43,6 +40,15 @@ namespace LibraryInfoSystem
                 dgvList.DataSource = DetList;
                 setGrid();
             }
+            for (int i = 0; i < dgvList.Rows.Count; i++)
+            {
+                _totFineVal += Math.Round(Convert.ToDecimal(dgvList.Rows[i].Cells["FineAmnt"].Value), 2);
+            }
+            lblTotFine.Text = _totFineVal.ToString("N2");
+        }
+        private void btnFetch_Click(object sender, EventArgs e)
+        {
+            getListData();
         }
         private void setGrid()
         {

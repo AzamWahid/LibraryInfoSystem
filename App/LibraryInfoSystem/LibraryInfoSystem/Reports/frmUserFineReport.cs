@@ -9,7 +9,7 @@ namespace LibraryInfoSystem
     public partial class frmUserFineReport : Form
     {
         List<clsUserFineReport> FinePayList = new List<clsUserFineReport>();
-
+        private decimal _totFineVal;
 
         private ClsLogin login;
         public frmUserFineReport(ClsLogin login)
@@ -29,6 +29,12 @@ namespace LibraryInfoSystem
             FinePayList = FinePay.GetImposeFineList();
             dgvIFList.DataSource = FinePayList;
             setGrid();
+
+            for (int i = 0; i < dgvIFList.Rows.Count; i++)
+            {
+                _totFineVal += Math.Round(Convert.ToDecimal(dgvIFList.Rows[i].Cells["FineAmnt"].Value), 2);
+            }
+            lblTotFine.Text = _totFineVal.ToString("N2");
         }
         private void setGrid()
         {

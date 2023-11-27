@@ -39,6 +39,8 @@
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTotFine = new System.Windows.Forms.Label();
             this.btnPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -110,7 +112,7 @@
             this.tbSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.tbSearch.Location = new System.Drawing.Point(57, 22);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(351, 23);
+            this.tbSearch.Size = new System.Drawing.Size(239, 23);
             this.tbSearch.TabIndex = 13;
             this.tbSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbSearch_KeyDown);
             // 
@@ -126,6 +128,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.lblTotFine);
             this.groupBox2.Controls.Add(this.btnPDF);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.tbSearch);
@@ -138,12 +142,33 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impose Fine Members";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(407, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Total Fine :";
+            // 
+            // lblTotFine
+            // 
+            this.lblTotFine.BackColor = System.Drawing.Color.White;
+            this.lblTotFine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotFine.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblTotFine.ForeColor = System.Drawing.Color.Purple;
+            this.lblTotFine.Location = new System.Drawing.Point(472, 20);
+            this.lblTotFine.Name = "lblTotFine";
+            this.lblTotFine.Size = new System.Drawing.Size(133, 23);
+            this.lblTotFine.TabIndex = 22;
+            this.lblTotFine.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // btnPDF
             // 
             this.btnPDF.BackColor = System.Drawing.Color.White;
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDF.ForeColor = System.Drawing.Color.Red;
-            this.btnPDF.Location = new System.Drawing.Point(453, 22);
+            this.btnPDF.Location = new System.Drawing.Point(302, 22);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(75, 23);
             this.btnPDF.TabIndex = 17;
@@ -151,14 +176,14 @@
             this.btnPDF.UseVisualStyleBackColor = false;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
-            // frmImpFineSummReport
+            // frmFineMembersReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(618, 543);
             this.Controls.Add(this.groupBox2);
             this.MaximizeBox = false;
-            this.Name = "frmImpFineSummReport";
+            this.Name = "frmFineMembersReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Impose Fine Members Report";
             this.Load += new System.EventHandler(this.frmFineMembersReport_Load);
@@ -183,5 +208,7 @@
         private Label label7;
         private GroupBox groupBox2;
         private Button btnPDF;
+        private Label label2;
+        private Label lblTotFine;
     }
 }
